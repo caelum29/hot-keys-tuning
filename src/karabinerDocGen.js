@@ -16,6 +16,15 @@
 const fs = require('fs');
 const path = require('path');
 
+// Key mapper to substitute key_code strings (e.g., "comma" becomes ",")
+const keyMapper = {
+  comma: ',',
+  // Add additional mappings as needed:
+  period: '.',
+  semicolon: ';',
+  // etc.
+};
+
 // Check command-line arguments
 if (process.argv.length < 3) {
   console.error('Usage: node karabinerDocGen.js <path to karabiner.json> [filterKeyCode]');
@@ -172,14 +181,22 @@ function manipulatorMatchesFilter(manipulator, filterKey) {
  *   ["right_command", "right_control", "right_shift", "right_option"]
  * they are substituted by <kbd>✱</kbd>. Any additional modifiers are appended.
  *
+ * Additionally, keyMapper is used to substitute key codes (e.g., "comma" is replaced by ",").
+ *
  * @param {Object} keyDef - The key definition object.
  * @returns {string} - A formatted string representation.
  */
 function formatKeyDefinition(keyDef) {
   const hyperModifiers = ['right_command', 'right_control', 'right_shift', 'right_option'];
   let str = '';
+
+  // Use keyMapper substitution if applicable
   if (keyDef.key_code) {
-    str += `<kbd>${keyDef.key_code}</kbd>`;
+    let displayKey = keyDef.key_code;
+    if (keyMapper[displayKey]) {
+      displayKey = keyMapper[displayKey];
+    }
+    str += `<kbd>${displayKey}</kbd>`;
   }
   if (keyDef.modifiers) {
     // Process modifiers provided as an object with mandatory/optional
@@ -190,9 +207,12 @@ function formatKeyDefinition(keyDef) {
         const hyperUsed = mods.filter(m => hyperModifiers.includes(m));
         const otherMods = mods.filter(m => !hyperModifiers.includes(m));
         let modStr = '';
-        const sortedMandatory = hyperUsed.slice().sort();
+        // If all hyper modifiers are used, substitute with <kbd>✱</kbd>
+        const sortedHyperUsed = hyperUsed.slice().sort();
         const sortedHyper = hyperModifiers.slice().sort();
-        if (JSON.stringify(sortedMandatory) === JSON.stringify(sortedHyper)) {
+        if (JSON.stringify(sortedHyperUsed) === JSON.stringify(sortedHyper)) {
+          modStr += `<kbd>✱</kbd>`;
+        } else if (hyperUsed.length > 0) {
           modStr += `<kbd>✱</kbd>`;
         }
         if (otherMods.length > 0) {
