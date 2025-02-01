@@ -99,10 +99,10 @@ function generateMarkdown(data, filterKey) {
           if (matchingManipulators.length > 0) {
             md += `#### Rule ${ruleIndex + 1}: ${rule.description || 'No Description'}\n\n`;
             matchingManipulators.forEach((manipulator, manipIndex) => {
-              md += `##### ${manipIndex + 1}:`;
+              md += `##### ${manipIndex + 1}: `;
               if (manipulator.description) {
                 md += `description: ${manipulator.description}\n`;
-                }
+              }
               // "from" field
               if (manipulator.from) {
                 md += `- **From:** ${formatKeyDefinition(manipulator.from)}\n`;
@@ -168,26 +168,61 @@ function manipulatorMatchesFilter(manipulator, filterKey) {
 /**
  * Formats a key definition (from or to) into a human-readable string.
  *
+ * If keyDef.modifiers.mandatory (or keyDef.modifiers as an array) contains any of:
+ *   ["right_command", "right_control", "right_shift", "right_option"]
+ * they are substituted by <kbd>✱</kbd>. Any additional modifiers are appended.
+ *
  * @param {Object} keyDef - The key definition object.
  * @returns {string} - A formatted string representation.
  */
 function formatKeyDefinition(keyDef) {
-  const hypher = ['right_command', 'right_control', 'right_shift', 'right_option']
+  const hyperModifiers = ['right_command', 'right_control', 'right_shift', 'right_option'];
   let str = '';
   if (keyDef.key_code) {
     str += `<kbd>${keyDef.key_code}</kbd>`;
   }
   if (keyDef.modifiers) {
-    // modifiers can be an object (with mandatory/optional) or an array
+    // Process modifiers provided as an object with mandatory/optional
     if (typeof keyDef.modifiers === 'object' && !Array.isArray(keyDef.modifiers)) {
       if (keyDef.modifiers.mandatory) {
-        str += ` + [${keyDef.modifiers.mandatory.map(m => `<kbd>${m}</kbd>`).join(', ')}]`;
+        const mods = keyDef.modifiers.mandatory;
+        // Separate hyper modifiers from any others
+        const hyperUsed = mods.filter(m => hyperModifiers.includes(m));
+        const otherMods = mods.filter(m => !hyperModifiers.includes(m));
+        let modStr = '';
+        const sortedMandatory = hyperUsed.slice().sort();
+        const sortedHyper = hyperModifiers.slice().sort();
+        if (JSON.stringify(sortedMandatory) === JSON.stringify(sortedHyper)) {
+          modStr += `<kbd>✱</kbd>`;
+        }
+        if (otherMods.length > 0) {
+          if (modStr) {
+            modStr += ', ';
+          }
+          modStr += otherMods.map(m => `<kbd>${m}</kbd>`).join(', ');
+        }
+        str += ` + [${modStr}]`;
       }
       if (keyDef.modifiers.optional) {
         str += ` (optional: ${keyDef.modifiers.optional.join(', ')})`;
       }
-    } else if (Array.isArray(keyDef.modifiers)) {
-      str += ` + [${keyDef.modifiers.map(m => `<kbd>${m}</kbd>`).join(', ')}]`;
+    }
+    // Process modifiers if provided as an array
+    else if (Array.isArray(keyDef.modifiers)) {
+      const mods = keyDef.modifiers;
+      const hyperUsed = mods.filter(m => hyperModifiers.includes(m));
+      const otherMods = mods.filter(m => !hyperModifiers.includes(m));
+      let modStr = '';
+      if (hyperUsed.length > 0) {
+        modStr += `<kbd>✱</kbd>`;
+      }
+      if (otherMods.length > 0) {
+        if (modStr) {
+          modStr += ', ';
+        }
+        modStr += otherMods.map(m => `<kbd>${m}</kbd>`).join(', ');
+      }
+      str += ` + [${modStr}]`;
     }
   }
   return str;
