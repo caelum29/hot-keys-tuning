@@ -23,10 +23,28 @@ const keyMapper = {
   period: '.',
   semicolon: ';',
   left_arrow: '<-',
+  left_command: '⌘',
+  left_control: '⌃',
+  left_shift: '  ⇧ ',
+  left_option: '⌥'
   // etc.
 };
 
 const hyperModifiers = ['right_command', 'right_control', 'right_shift', 'right_option'];
+
+/**
+ * Substitutes a key code using the keyMapper and returns the key wrapped in <kbd> tags.
+ *
+ * @param {string} keyCode - The original key code.
+ * @returns {string} - The substituted key wrapped in <kbd>...</kbd>.
+ */
+function substituteKeyCode(keyCode) {
+  let displayKey = keyCode;
+  if (keyMapper[displayKey]) {
+    displayKey = keyMapper[displayKey];
+  }
+  return `<kbd>${displayKey}</kbd>`;
+}
 
 // Check command-line arguments
 if (process.argv.length < 3) {
@@ -192,13 +210,9 @@ function manipulatorMatchesFilter(manipulator, filterKey) {
 function formatKeyDefinition(keyDef) {
   let str = '';
 
-  // Use keyMapper substitution if applicable
+  // Use the separate function for key code substitution
   if (keyDef.key_code) {
-    let displayKey = keyDef.key_code;
-    if (keyMapper[displayKey]) {
-      displayKey = keyMapper[displayKey];
-    }
-    str += `<kbd>${displayKey}</kbd>`;
+    str += substituteKeyCode(keyDef.key_code);
   }
   if (keyDef.modifiers) {
     // Process modifiers provided as an object with mandatory/optional
@@ -221,7 +235,7 @@ function formatKeyDefinition(keyDef) {
           if (modStr) {
             modStr += ', ';
           }
-          modStr += otherMods.map(m => `<kbd>${m}</kbd>`).join(', ');
+          modStr += otherMods.map(m => `${substituteKeyCode(m)}`).join(', ');
         }
         str += ` + [${modStr}]`;
       }
@@ -240,9 +254,9 @@ function formatKeyDefinition(keyDef) {
       }
       if (otherMods.length > 0) {
         if (modStr) {
-          modStr += ', ';
+          modStr += ' , ';
         }
-        modStr += otherMods.map(m => `<kbd>${m}</kbd>`).join(', ');
+        modStr += otherMods.map(m => `${substituteKeyCode(m)}`).join(', ');
       }
       str += ` + [${modStr}]`;
     }
