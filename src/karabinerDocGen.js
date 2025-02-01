@@ -3,11 +3,14 @@
  * karabinerDocGen.js
  *
  * This script reads a Karabiner‑Elements configuration JSON file and generates
- * Markdown documentation describing its profiles, simple modifications, and
- * complex modifications (rules and manipulators).
+ * Markdown documentation describing its contents. It also accepts an optional
+ * filter for key definitions by key_code.
  *
  * Usage:
- *   node karabinerDocGen.js path/to/karabiner.json
+ *   node karabinerDocGen.js path/to/karabiner.json [filterKeyCode]
+ *
+ * Example:
+ *   node karabinerDocGen.js ./karabiner.json spacebar
  */
 
 const fs = require('fs');
@@ -15,11 +18,13 @@ const path = require('path');
 
 // Check command-line arguments
 if (process.argv.length < 3) {
-  console.error('Usage: node karabinerDocGen.js <path to karabiner.json>');
+  console.error('Usage: node karabinerDocGen.js <path to karabiner.json> [filterKeyCode]');
   process.exit(1);
 }
 
 const inputPath = process.argv[2];
+// Optional filter: a key_code to filter by (e.g., "spacebar")
+const filterKeyCode = process.argv[3] || null;
 
 // Read the Karabiner JSON file
 fs.readFile(inputPath, 'utf8', (err, data) => {
@@ -37,7 +42,7 @@ fs.readFile(inputPath, 'utf8', (err, data) => {
   }
 
   // Generate the Markdown documentation
-  const markdown = generateMarkdown(karabinerData);
+  const markdown = generateMarkdown(karabinerData, filterKeyCode);
 
   // Write the Markdown to an output file in the current directory
   const outputPath = path.join(process.cwd(), 'karabiner_documentation.md');
@@ -54,11 +59,15 @@ fs.readFile(inputPath, 'utf8', (err, data) => {
  * Generates Markdown documentation from the Karabiner JSON data.
  *
  * @param {Object} data - The parsed Karabiner JSON data.
+ * @param {string|null} filterKey - Optional key_code filter.
  * @returns {string} - The generated Markdown string.
  */
-function generateMarkdown(data) {
+function generateMarkdown(data, filterKey) {
   let md = `# Karabiner‑Elements Configuration Documentation\n\n`;
   md += `**Generated on:** ${new Date().toLocaleString()}\n\n`;
+  if (filterKey) {
+    md += `**Filter applied:** Only manipulators matching key_code \`${filterKey}\` are included.\n\n`;
+  }
 
   if (data.profiles && Array.isArray(data.profiles)) {
     data.profiles.forEach((profile, profileIndex) => {
@@ -78,13 +87,22 @@ function generateMarkdown(data) {
       if (profile.complex_modifications && profile.complex_modifications.rules && profile.complex_modifications.rules.length > 0) {
         md += `### Complex Modifications\n\n`;
         profile.complex_modifications.rules.forEach((rule, ruleIndex) => {
-          md += `#### Rule ${ruleIndex + 1}: ${rule.description || 'No Description'}\n\n`;
+          // Collect matching manipulators (if a filter is set)
+          let matchingManipulators = [];
           if (rule.manipulators && Array.isArray(rule.manipulators)) {
-            rule.manipulators.forEach((manipulator, manipIndex) => {
+            rule.manipulators.forEach((manipulator) => {
+              if (!filterKey || manipulatorMatchesFilter(manipulator, filterKey)) {
+                matchingManipulators.push(manipulator);
+              }
+            });
+          }
+          if (matchingManipulators.length > 0) {
+            md += `#### Rule ${ruleIndex + 1}: ${rule.description || 'No Description'}\n\n`;
+            matchingManipulators.forEach((manipulator, manipIndex) => {
               md += `##### ${manipIndex + 1}:`;
               if (manipulator.description) {
                 md += `description: ${manipulator.description}\n`;
-              }
+                }
               // "from" field
               if (manipulator.from) {
                 md += `- **From:** ${formatKeyDefinition(manipulator.from)}\n`;
@@ -109,7 +127,6 @@ function generateMarkdown(data) {
               md += `\n`;
             });
           }
-          md += `\n`;
         });
       }
       md += `\n`;
@@ -122,27 +139,55 @@ function generateMarkdown(data) {
 }
 
 /**
+ * Checks if a manipulator matches the given filter key_code.
+ *
+ * @param {Object} manipulator - The manipulator object.
+ * @param {string} filterKey - The key_code to filter by.
+ * @returns {boolean} - True if the manipulator's "from" or "to" contains the filter key_code.
+ */
+function manipulatorMatchesFilter(manipulator, filterKey) {
+  // Check the "from" definition
+  if (manipulator.from && manipulator.from.key_code && manipulator.from.key_code === filterKey) {
+    return true;
+  }
+  // Check the "to" definition: could be an array or an object
+  if (manipulator.to) {
+    if (Array.isArray(manipulator.to)) {
+      for (let toDef of manipulator.to) {
+        if (toDef.key_code && toDef.key_code === filterKey) {
+          return true;
+        }
+      }
+    } else if (manipulator.to.key_code && manipulator.to.key_code === filterKey) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
  * Formats a key definition (from or to) into a human-readable string.
  *
  * @param {Object} keyDef - The key definition object.
  * @returns {string} - A formatted string representation.
  */
 function formatKeyDefinition(keyDef) {
+  const hypher = ['right_command', 'right_control', 'right_shift', 'right_option']
   let str = '';
   if (keyDef.key_code) {
-    str += keyDef.key_code;
+    str += `<kbd>${keyDef.key_code}</kbd>`;
   }
   if (keyDef.modifiers) {
     // modifiers can be an object (with mandatory/optional) or an array
     if (typeof keyDef.modifiers === 'object' && !Array.isArray(keyDef.modifiers)) {
       if (keyDef.modifiers.mandatory) {
-        str += ` + [${keyDef.modifiers.mandatory.join(', ')}]`;
+        str += ` + [${keyDef.modifiers.mandatory.map(m => `<kbd>${m}</kbd>`).join(', ')}]`;
       }
       if (keyDef.modifiers.optional) {
         str += ` (optional: ${keyDef.modifiers.optional.join(', ')})`;
       }
     } else if (Array.isArray(keyDef.modifiers)) {
-      str += ` + [${keyDef.modifiers.join(', ')}]`;
+      str += ` + [${keyDef.modifiers.map(m => `<kbd>${m}</kbd>`).join(', ')}]`;
     }
   }
   return str;
