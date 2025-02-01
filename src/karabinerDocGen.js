@@ -22,8 +22,11 @@ const keyMapper = {
   // Add additional mappings as needed:
   period: '.',
   semicolon: ';',
+  left_arrow: '<-',
   // etc.
 };
+
+const hyperModifiers = ['right_command', 'right_control', 'right_shift', 'right_option'];
 
 // Check command-line arguments
 if (process.argv.length < 3) {
@@ -187,7 +190,6 @@ function manipulatorMatchesFilter(manipulator, filterKey) {
  * @returns {string} - A formatted string representation.
  */
 function formatKeyDefinition(keyDef) {
-  const hyperModifiers = ['right_command', 'right_control', 'right_shift', 'right_option'];
   let str = '';
 
   // Use keyMapper substitution if applicable
