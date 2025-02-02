@@ -102,10 +102,18 @@
     <action id="NavBar-selectLeft">
         <keyboard-shortcut first-keystroke="left" />
     </action>
+    <action id="NextTab">
+        <keyboard-shortcut first-keystroke="ctrl right" />
+        <keyboard-shortcut first-keystroke="shift meta l" />
+    </action>
     <action id="ParameterInfo" />
     <action id="PasteMultiple">
         <keyboard-shortcut first-keystroke="shift meta v" />
         <keyboard-shortcut first-keystroke="alt v" />
+    </action>
+    <action id="PreviousTab">
+        <keyboard-shortcut first-keystroke="ctrl left" />
+        <keyboard-shortcut first-keystroke="shift meta h" />
     </action>
     <action id="ShowNavBar">
         <keyboard-shortcut first-keystroke="meta up" />
@@ -131,6 +139,12 @@
     </action>
     <action id="StretchSplitToTop">
         <keyboard-shortcut first-keystroke="shift ctrl alt k" />
+    </action>
+    <action id="SwitcherBackward">
+        <keyboard-shortcut first-keystroke="shift right" />
+    </action>
+    <action id="SwitcherForward">
+        <keyboard-shortcut first-keystroke="shift left" />
     </action>
     <action id="Terminal.ClearBuffer">
         <keyboard-shortcut first-keystroke="meta k" />
