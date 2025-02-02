@@ -23,6 +23,7 @@ const keyMapper = {
   period: '.',
   semicolon: ';',
   left_arrow: '<-',
+  right_arrow: '->',
   left_command: '⌘',
   left_control: '⌃',
   left_shift: '  ⇧ ',
@@ -134,13 +135,15 @@ function generateMarkdown(data, filterKey) {
               if (manipulator.description) {
                 md += `description: ${manipulator.description}\n`;
               }
+              md += `| From | To  | \n`;
+              md += `| --- | --- |\n`;
               // "from" field
               if (manipulator.from) {
-                md += `- **From:** ${formatKeyDefinition(manipulator.from)}\n`;
+                md += `|${formatKeyDefinition(manipulator.from)}`;
               }
               // "to" field
               if (manipulator.to) {
-                md += `- **To:** `;
+                md += ` |`;
                 if (Array.isArray(manipulator.to)) {
                   md += manipulator.to.map(formatKeyDefinition).join(', ');
                 } else {
