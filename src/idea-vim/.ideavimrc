@@ -336,3 +336,7 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " Set primary color for QuickScope highlights
 let g:qs_primary_color = 'F8E71C'
+
+" Remap conflict in karabiner
+imap <D-M-C-d> (
+imap <D-M-C-f> )
