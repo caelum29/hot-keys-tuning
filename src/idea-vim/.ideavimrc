@@ -39,7 +39,7 @@ set ideajoin
 "set ideawrite
 
 " Enable relative line numbering (commented out)
-"set relativenumber
+set relativenumber
 
 " Enable Surround plugin for manipulating surrounding characters (e.g., quotes, brackets)
 set surround
