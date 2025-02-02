@@ -19,41 +19,41 @@ Modifiers are represented as follows:
 
 ## Horizontal Navigation Key Bindings (H / L)
 
-| Modifier Combination | Keystroke Notation        | Vim | Action                                                        |
-|----------------------|---------------------------|-----|---------------------------------------------------------------|
-| None                 | H / L                     |     | *Default: Move left/right one character*                      |
-| ⇧                    | ⇧ + H / L                 | [x] | *" Navigate to the previous/next bookmark*                    |
-| ⌃                    | ⌃ + H / L                 | [x] | *EditorJoinLines/Custom action*                               |
-| ⌥                    | ⌥ + H / L                 |     | *Move caret to Next/Previous word*                            |
-| ⌘                    | ⌘ + H / L                 |     | *Custom action/EditorCompleteStatement*                       |
-| ⇧ + ⌃                | ⇧ + ⌃ + H / L             |     | *Custom action/Custom action*                                 |
-| ⇧ + ⌥                | ⇧ + ⌥ + H / L             |     | *EditorPreviousWordWithSelection/EditorNextWordWithSelection* |
-| ⇧ + ⌘                | ⇧ + ⌘ + H / L             |     | *Custom action/Custom action*                                 |
-| ⌃ + ⌥                | ⌃ + ⌥ + H / L             |     | *Custom action/Custom action*                                 |
-| ⌃ + ⌘                | ⌃ + ⌘ + H / L             |     | *Custom action/Custom action*                                 |
-| ⌥ + ⌘                | ⌥ + ⌘ + H / L             |     | *Custom action/ReformatCode*                                  |
-| ⇧ + ⌃ + ⌥            | ⇧ + ⌃ + ⌥ + H / L         |     | *StretchSplitToLeft/StretchSplitToRight*                      |
-| ⇧ + ⌃ + ⌘            | ⇧ + ⌃ + ⌘ + H / L         |     | *Custom action/Custom action*                                 |
-| ⇧ + ⌥ + ⌘            | ⇧ + ⌥ + ⌘ + H / L         |     | *PopupHector/ShowReformatFileDialog*                          |
-| ⌃ + ⌥ + ⌘            | ⌃ + ⌥ + ⌘ + H / L         |     | *Custom action/Custom action*                                 |
-| ⇧ + ⌃ + ⌥ + ⌘        | ⇧ + ⌃ + ⌥ + ⌘ + H / L     |     | *Custom action*                                               |
-| ✱                    | ✱ + H / L                 |     | *Move left/right one character*                               |
-| ✱ + ⇧                | ✱ + ⇧ + H / L             |     | *Switcher/Switcher*                                           |
-| ✱ + ⌃                | ✱ + ⌃ + H / L             |     | *Custom action*                                               |
-| ✱ + ⌥                | ✱ + ⌥ + H / L             |     | *Custom action*                                               |
-| ✱ + ⌘                | ✱ + ⌘ + H / L             |     | *EditorLeftWithSelection/EditorRightWithSelection*            |
-| ✱ + ⇧ + ⌃            | ✱ + ⇧ + ⌃ + H / L         |     | *Custom action/Custom action*                                 |
-| ✱ + ⇧ + ⌥            | ✱ + ⇧ + ⌥ + H / L         |     | *Custom action*                                               |
-| ✱ + ⇧ + ⌘            | ✱ + ⇧ + ⌘ + H / L         |     | *Custom action*                                               |
-| ✱ + ⌃ + ⌥            | ✱ + ⌃ + ⌥ + H / L         |     | *Custom action*                                               |
-| ✱ + ⌃ + ⌘            | ✱ + ⌃ + ⌘ + H / L         |     | *Custom action*                                               |
-| ✱ + ⌥ + ⌘            | ✱ + ⌥ + ⌘ + H / L         |     | *Custom action*                                               |
-| ✱ + ⇧ + ⌃ + ⌥        | ✱ + ⇧ + ⌃ + ⌥ + H / L     |     | *Custom action*                                               |
-| ✱ + ⇧ + ⌃ + ⌘        | ✱ + ⇧ + ⌃ + ⌘ + H / L     |     | *Custom action*                                               |
-| ✱ + ⇧ + ⌥ + ⌘        | ✱ + ⇧ + ⌥ + ⌘ + H / L     |     | *Custom action*                                               |
-| ✱ + ⌃ + ⌥ + ⌘        | ✱ + ⌃ + ⌥ + ⌘ + H / L     |     | *Custom action*                                               |
-| ✱ + ⇧ + ⌃ + ⌥ + ⌘    | ✱ + ⇧ + ⌃ + ⌥ + ⌘ + H / L |     | *Custom action*                                               |
-| G                    | G -> H / L                | [x] | *" Move to the beginning/end of the line*                     |
+| Modifier Combination | Keystroke Notation        | Vim | Action                                                                                                      |
+|----------------------|---------------------------|-----|-------------------------------------------------------------------------------------------------------------|
+| None                 | H / L                     |     | *Default: Move left/right one character*                                                                    |
+| ⇧                    | ⇧ + H / L                 | [x] | *" Navigate to the previous/next bookmark*                                                                  |
+| ⌃                    | ⌃ + H / L                 | [x] | *EditorJoinLines/Custom action*                                                                             |
+| ⌥                    | ⌥ + H / L                 |     | *Move caret to Next/Previous word*                                                                          |
+| ⌘                    | ⌘ + H / L                 |     | *Custom action/EditorCompleteStatement*                                                                     |
+| ⇧ + ⌃                | ⇧ + ⌃ + H / L             |     | *Custom action/Custom action*                                                                               |
+| ⇧ + ⌥                | ⇧ + ⌥ + H / L             |     | *EditorPreviousWordWithSelection/EditorNextWordWithSelection*                                               |
+| ⇧ + ⌘                | ⇧ + ⌘ + H / L             |     | *Custom action/Custom action*                                                                               |
+| ⌃ + ⌥                | ⌃ + ⌥ + H / L             |     | *Custom action/Custom action*                                                                               |
+| ⌃ + ⌘                | ⌃ + ⌘ + H / L             |     | *Custom action/Custom action*                                                                               |
+| ⌥ + ⌘                | ⌥ + ⌘ + H / L             |     | *Custom action/ReformatCode*                                                                                |
+| ⇧ + ⌃ + ⌥            | ⇧ + ⌃ + ⌥ + H / L         |     | *StretchSplitToLeft/StretchSplitToRight*                                                                    |
+| ⇧ + ⌃ + ⌘            | ⇧ + ⌃ + ⌘ + H / L         |     | *Custom action/Custom action*                                                                               |
+| ⇧ + ⌥ + ⌘            | ⇧ + ⌥ + ⌘ + H / L         |     | *PopupHector/ShowReformatFileDialog*                                                                        |
+| ⌃ + ⌥ + ⌘            | ⌃ + ⌥ + ⌘ + H / L         |     | *Custom action/Custom action*                                                                               |
+| ⇧ + ⌃ + ⌥ + ⌘        | ⇧ + ⌃ + ⌥ + ⌘ + H / L     |     | *Custom action*                                                                                             |
+| ✱                    | ✱ + H / L                 |     | *Move left/right one character*                                                                             |
+| ✱ + ⇧                | ✱ + ⇧ + H / L             |     | *Switcher/Switcher*                                                                                         |
+| ✱ + ⌃                | ✱ + ⌃ + H / L             |     | *Custom action*                                                                                             |
+| ✱ + ⌥                | ✱ + ⌥ + H / L             |     | *Custom action*                                                                                             |
+| ✱ + ⌘                | ✱ + ⌘ + H / L             |     | *EditorLeftWithSelection/EditorRightWithSelection* [karabiner remap](./src/downloaded/README.md#navigation) |
+| ✱ + ⇧ + ⌃            | ✱ + ⇧ + ⌃ + H / L         |     | *Custom action/Custom action*                                                                               |
+| ✱ + ⇧ + ⌥            | ✱ + ⇧ + ⌥ + H / L         |     | *Custom action*                                                                                             |
+| ✱ + ⇧ + ⌘            | ✱ + ⇧ + ⌘ + H / L         |     | *Custom action*                                                                                             |
+| ✱ + ⌃ + ⌥            | ✱ + ⌃ + ⌥ + H / L         |     | *Custom action*                                                                                             |
+| ✱ + ⌃ + ⌘            | ✱ + ⌃ + ⌘ + H / L         |     | *Custom action*                                                                                             |
+| ✱ + ⌥ + ⌘            | ✱ + ⌥ + ⌘ + H / L         |     | *Custom action*                                                                                             |
+| ✱ + ⇧ + ⌃ + ⌥        | ✱ + ⇧ + ⌃ + ⌥ + H / L     |     | *Custom action*                                                                                             |
+| ✱ + ⇧ + ⌃ + ⌘        | ✱ + ⇧ + ⌃ + ⌘ + H / L     |     | *Custom action*                                                                                             |
+| ✱ + ⇧ + ⌥ + ⌘        | ✱ + ⇧ + ⌥ + ⌘ + H / L     |     | *Custom action*                                                                                             |
+| ✱ + ⌃ + ⌥ + ⌘        | ✱ + ⌃ + ⌥ + ⌘ + H / L     |     | *Custom action*                                                                                             |
+| ✱ + ⇧ + ⌃ + ⌥ + ⌘    | ✱ + ⇧ + ⌃ + ⌥ + ⌘ + H / L |     | *Custom action*                                                                                             |
+| G                    | G -> H / L                | [x] | *" Move to the beginning/end of the line*                                                                   |
 
 ## Vertical Navigation Key Bindings (J / K)
 
