@@ -53,7 +53,7 @@ Modifiers are represented as follows:
 | ⌘                    | ⌘ + H / L                 |     | *Custom action/EditorCompleteStatement*                                      |
 | ⇧ + ⌃                | ⇧ + ⌃ + H / L             |     | *Custom action/Custom action*                                                |
 | ⇧ + ⌥                | ⇧ + ⌥ + H / L             |     | *EditorPreviousWordWithSelection/EditorNextWordWithSelection*                |
-| ⇧ + ⌘                | ⇧ + ⌘ + H / L             |     | *Custom action/Custom action*                                                |
+| ⇧ + ⌘                | ⇧ + ⌘ + H / L             |     | *SelectPreviousTab/SelectNextTab*                                            |
 | ⌃ + ⌥                | ⌃ + ⌥ + H / L             |     | *Custom action/Custom action*                                                |
 | ⌃ + ⌘                | ⌃ + ⌘ + H / L             |     | *Custom action/Custom action*                                                |
 | ⌥ + ⌘                | ⌥ + ⌘ + H / L             |     | *Custom action/ReformatCode*                                                 |
