@@ -129,6 +129,7 @@ function generateMarkdown(data, filterKey) {
           if (matchingManipulators.length > 0) {
             md += `#### Rule ${ruleIndex + 1}: ${rule.description || 'No Description'}\n\n`;
             matchingManipulators.forEach((manipulator, manipIndex) => {
+              md += `________________________________________________________________\n`
               md += `##### ${manipIndex + 1}: `;
               if (manipulator.description) {
                 md += `description: ${manipulator.description}\n`;
@@ -210,10 +211,6 @@ function manipulatorMatchesFilter(manipulator, filterKey) {
 function formatKeyDefinition(keyDef) {
   let str = '';
 
-  // Use the separate function for key code substitution
-  if (keyDef.key_code) {
-    str += substituteKeyCode(keyDef.key_code);
-  }
   if (keyDef.modifiers) {
     // Process modifiers provided as an object with mandatory/optional
     if (typeof keyDef.modifiers === 'object' && !Array.isArray(keyDef.modifiers)) {
@@ -237,7 +234,7 @@ function formatKeyDefinition(keyDef) {
           }
           modStr += otherMods.map(m => `${substituteKeyCode(m)}`).join(', ');
         }
-        str += ` + [${modStr}]`;
+        str += ` ${modStr}`;
       }
       if (keyDef.modifiers.optional) {
         str += ` (optional: ${keyDef.modifiers.optional.join(', ')})`;
@@ -258,8 +255,14 @@ function formatKeyDefinition(keyDef) {
         }
         modStr += otherMods.map(m => `${substituteKeyCode(m)}`).join(', ');
       }
-      str += ` + [${modStr}]`;
+      str += `${modStr}`;
     }
   }
+
+  // Use the separate function for key code substitution
+  if (keyDef.key_code) {
+    str += ` + ${substituteKeyCode(keyDef.key_code)}`;
+  }
+
   return str;
 }
