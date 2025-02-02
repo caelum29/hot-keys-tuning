@@ -19,79 +19,77 @@ Modifiers are represented as follows:
 
 ## Horizontal Navigation Key Bindings (H / L)
 
-| Modifier Combination        | Keystroke Notation (H / L)          | Action                                   |
-|-----------------------------|-------------------------------------|------------------------------------------|
-| **None**                    | H / L                               | *Default: Move left/right one character* |
-| `⇧`                         | `⇧` + H / L                         | *Extend selection left/right*            |
-| `⌃`                         | `⌃` + H / L                         | *Move left/right by one word*            |
-| `⌥`                         | `⌥` + H / L                         | *Jump to beginning/end of line*          |
-| `⌘`                         | `⌘` + H / L                         | *Custom IDE action (if needed)*          |
-| `✱`                         | `✱` + H / L                         | *Move left/right one character*          |
-| `⇧` + `⌃`                   | `⇧` + `⌃` + H / L                   | *Custom action*                          |
-| `⇧` + `⌥`                   | `⇧` + `⌥` + H / L                   | *Custom action*                          |
-| `⇧` + `⌘`                   | `⇧` + `⌘` + H / L                   | *Custom action*                          |
-| `⇧` + `✱`                   | `⇧` + `✱` + H / L                   | *Custom action*                          |
-| `⌃` + `⌥`                   | `⌃` + `⌥` + H / L                   | *Custom action*                          |
-| `⌃` + `⌘`                   | `⌃` + `⌘` + H / L                   | *Custom action*                          |
-| `⌃` + `✱`                   | `⌃` + `✱` + H / L                   | *Custom action*                          |
-| `⌥` + `⌘`                   | `⌥` + `⌘` + H / L                   | *Custom action*                          |
-| `⌥` + `✱`                   | `⌥` + `✱` + H / L                   | *Custom action*                          |
-| `⌘` + `✱`                   | `⌘` + `✱` + H / L                   | *Custom action*                          |
-| `⇧` + `⌃` + `⌥`             | `⇧` + `⌃` + `⌥` + H / L             | *Custom action*                          |
-| `⇧` + `⌃` + `⌘`             | `⇧` + `⌃` + `⌘` + H / L             | *Custom action*                          |
-| `⇧` + `⌃` + `✱`             | `⇧` + `⌃` + `✱` + H / L             | *Custom action*                          |
-| `⇧` + `⌥` + `⌘`             | `⇧` + `⌥` + `⌘` + H / L             | *Custom action*                          |
-| `⇧` + `⌥` + `✱`             | `⇧` + `⌥` + `✱` + H / L             | *Custom action*                          |
-| `⇧` + `⌘` + `✱`             | `⇧` + `⌘` + `✱` + H / L             | *Custom action*                          |
-| `⌃` + `⌥` + `⌘`             | `⌃` + `⌥` + `⌘` + H / L             | *Custom action*                          |
-| `⌃` + `⌥` + `✱`             | `⌃` + `⌥` + `✱` + H / L             | *Custom action*                          |
-| `⌃` + `⌘` + `✱`             | `⌃` + `⌘` + `✱` + H / L             | *Custom action*                          |
-| `⌥` + `⌘` + `✱`             | `⌥` + `⌘` + `✱` + H / L             | *Custom action*                          |
-| `⇧` + `⌃` + `⌥` + `⌘`       | `⇧` + `⌃` + `⌥` + `⌘` + H / L       | *Custom action*                          |
-| `⇧` + `⌃` + `⌥` + `✱`       | `⇧` + `⌃` + `⌥` + `✱` + H / L       | *Custom action*                          |
-| `⇧` + `⌃` + `⌘` + `✱`       | `⇧` + `⌃` + `⌘` + `✱` + H / L       | *Custom action*                          |
-| `⇧` + `⌥` + `⌘` + `✱`       | `⇧` + `⌥` + `⌘` + `✱` + H / L       | *Custom action*                          |
-| `⌃` + `⌥` + `⌘` + `✱`       | `⌃` + `⌥` + `⌘` + `✱` + H / L       | *Custom action*                          |
-| `⇧` + `⌃` + `⌥` + `⌘` + `✱` | `⇧` + `⌃` + `⌥` + `⌘` + `✱` + H / L | *Custom action*                          |
-
+| Modifier Combination | Keystroke Notation        | Vim | Action                                   |
+|----------------------|---------------------------|-----|------------------------------------------|
+| None                 | H / L                     |     | *Default: Move left/right one character* |
+| ⇧                    | ⇧ + H / L                 |     | *Extend selection left/right*            |
+| ⌃                    | ⌃ + H / L                 |     | *Custom action*            |
+| ⌥                    | ⌥ + H / L                 |     | *Jump to beginning/end of line*          |
+| ⌘                    | ⌘ + H / L                 |     | *Custom IDE action (if needed)*          |
+| ⇧ + ⌃                | ⇧ + ⌃ + H / L             |     | *Custom action*                          |
+| ⇧ + ⌥                | ⇧ + ⌥ + H / L             |     | *Custom action*                          |
+| ⇧ + ⌘                | ⇧ + ⌘ + H / L             |     | *Custom action*                          |
+| ⌃ + ⌥                | ⌃ + ⌥ + H / L             |     | *Custom action*                          |
+| ⌃ + ⌘                | ⌃ + ⌘ + H / L             |     | *Custom action*                          |
+| ⌥ + ⌘                | ⌥ + ⌘ + H / L             |     | *Custom action*                          |
+| ⇧ + ⌃ + ⌥            | ⇧ + ⌃ + ⌥ + H / L         |     | *Custom action*                          |
+| ⇧ + ⌃ + ⌘            | ⇧ + ⌃ + ⌘ + H / L         |     | *Custom action*                          |
+| ⇧ + ⌥ + ⌘            | ⇧ + ⌥ + ⌘ + H / L         |     | *Custom action*                          |
+| ⌃ + ⌥ + ⌘            | ⌃ + ⌥ + ⌘ + H / L         |     | *Custom action*                          |
+| ⇧ + ⌃ + ⌥ + ⌘        | ⇧ + ⌃ + ⌥ + ⌘ + H / L     |     | *Custom action*                          |
+| ✱                    | ✱ + H / L                 |     | *Move left/right one character*          |
+| ✱ + ⇧                | ✱ + ⇧ + H / L             |     | *Custom action*                          |
+| ✱ + ⌃                | ✱ + ⌃ + H / L             |     | *Custom action*                          |
+| ✱ + ⌥                | ✱ + ⌥ + H / L             |     | *Custom action*                          |
+| ✱ + ⌘                | ✱ + ⌘ + H / L             |     | *Custom action*                          |
+| ✱ + ⇧ + ⌃            | ✱ + ⇧ + ⌃ + H / L         |     | *Custom action*                          |
+| ✱ + ⇧ + ⌥            | ✱ + ⇧ + ⌥ + H / L         |     | *Custom action*                          |
+| ✱ + ⇧ + ⌘            | ✱ + ⇧ + ⌘ + H / L         |     | *Custom action*                          |
+| ✱ + ⌃ + ⌥            | ✱ + ⌃ + ⌥ + H / L         |     | *Custom action*                          |
+| ✱ + ⌃ + ⌘            | ✱ + ⌃ + ⌘ + H / L         |     | *Custom action*                          |
+| ✱ + ⌥ + ⌘            | ✱ + ⌥ + ⌘ + H / L         |     | *Custom action*                          |
+| ✱ + ⇧ + ⌃ + ⌥        | ✱ + ⇧ + ⌃ + ⌥ + H / L     |     | *Custom action*                          |
+| ✱ + ⇧ + ⌃ + ⌘        | ✱ + ⇧ + ⌃ + ⌘ + H / L     |     | *Custom action*                          |
+| ✱ + ⇧ + ⌥ + ⌘        | ✱ + ⇧ + ⌥ + ⌘ + H / L     |     | *Custom action*                          |
+| ✱ + ⌃ + ⌥ + ⌘        | ✱ + ⌃ + ⌥ + ⌘ + H / L     |     | *Custom action*                          |
+| ✱ + ⇧ + ⌃ + ⌥ + ⌘    | ✱ + ⇧ + ⌃ + ⌥ + ⌘ + H / L |     | *Custom action*                          |
 
 ## Vertical Navigation Key Bindings (J / K)
 
-| Modifier Combination        | Keystroke Notation (J / K)          | Action                                         |
-|-----------------------------|-------------------------------------|------------------------------------------------|
-| **None**                    | J / K                               | *Default: Move down/up one line*               |
-| `⇧`                         | `⇧` + J / K                         | *Extend selection down/up*                     |
-| `⌃`                         | `⌃` + J / K                         | *Move down/up by one paragraph or custom step* |
-| `⌥`                         | `⌥` + J / K                         | *Jump to beginning/end of block*               |
-| `⌘`                         | `⌘` + J / K                         | *Custom IDE action (if needed)*                |
-| `✱`                         | `✱` + J / K                         | *Move down/up one line*                        |
-| `⇧` + `⌃`                   | `⇧` + `⌃` + J / K                   | *Custom action*                                |
-| `⇧` + `⌥`                   | `⇧` + `⌥` + J / K                   | *Custom action*                                |
-| `⇧` + `⌘`                   | `⇧` + `⌘` + J / K                   | *Custom action*                                |
-| `⇧` + `✱`                   | `⇧` + `✱` + J / K                   | *Custom action*                                |
-| `⌃` + `⌥`                   | `⌃` + `⌥` + J / K                   | *Custom action*                                |
-| `⌃` + `⌘`                   | `⌃` + `⌘` + J / K                   | *Custom action*                                |
-| `⌃` + `✱`                   | `⌃` + `✱` + J / K                   | *Custom action*                                |
-| `⌥` + `⌘`                   | `⌥` + `⌘` + J / K                   | *Custom action*                                |
-| `⌥` + `✱`                   | `⌥` + `✱` + J / K                   | *Custom action*                                |
-| `⌘` + `✱`                   | `⌘` + `✱` + J / K                   | *Custom action*                                |
-| `⇧` + `⌃` + `⌥`             | `⇧` + `⌃` + `⌥` + J / K             | *Custom action*                                |
-| `⇧` + `⌃` + `⌘`             | `⇧` + `⌃` + `⌘` + J / K             | *Custom action*                                |
-| `⇧` + `⌃` + `✱`             | `⇧` + `⌃` + `✱` + J / K             | *Custom action*                                |
-| `⇧` + `⌥` + `⌘`             | `⇧` + `⌥` + `⌘` + J / K             | *Custom action*                                |
-| `⇧` + `⌥` + `✱`             | `⇧` + `⌥` + `✱` + J / K             | *Custom action*                                |
-| `⇧` + `⌘` + `✱`             | `⇧` + `⌘` + `✱` + J / K             | *Custom action*                                |
-| `⌃` + `⌥` + `⌘`             | `⌃` + `⌥` + `⌘` + J / K             | *Custom action*                                |
-| `⌃` + `⌥` + `✱`             | `⌃` + `⌥` + `✱` + J / K             | *Custom action*                                |
-| `⌃` + `⌘` + `✱`             | `⌃` + `⌘` + `✱` + J / K             | *Custom action*                                |
-| `⌥` + `⌘` + `✱`             | `⌥` + `⌘` + `✱` + J / K             | *Custom action*                                |
-| `⇧` + `⌃` + `⌥` + `⌘`       | `⇧` + `⌃` + `⌥` + `⌘` + J / K       | *Custom action*                                |
-| `⇧` + `⌃` + `⌥` + `✱`       | `⇧` + `⌃` + `⌥` + `✱` + J / K       | *Custom action*                                |
-| `⇧` + `⌃` + `⌘` + `✱`       | `⇧` + `⌃` + `⌘` + `✱` + J / K       | *Custom action*                                |
-| `⇧` + `⌥` + `⌘` + `✱`       | `⇧` + `⌥` + `⌘` + `✱` + J / K       | *Custom action*                                |
-| `⌃` + `⌥` + `⌘` + `✱`       | `⌃` + `⌥` + `⌘` + `✱` + J / K       | *Custom action*                                |
-| `⇧` + `⌃` + `⌥` + `⌘` + `✱` | `⇧` + `⌃` + `⌥` + `⌘` + `✱` + J / K | *Custom action*                                |
-
+| Modifier Combination | Keystroke Notation        | Action                                         |
+|----------------------|---------------------------|------------------------------------------------|
+| None                 | J / K                     | *Default: Move down/up one line*               |
+| ⇧                    | ⇧ + J / K                 | *Extend selection down/up*                     |
+| ⌃                    | ⌃ + J / K                 | *Move down/up by one paragraph or custom step* |
+| ⌥                    | ⌥ + J / K                 | *Jump to beginning/end of block*               |
+| ⌘                    | ⌘ + J / K                 | *Custom IDE action (if needed)*                |
+| ⇧ + ⌃                | ⇧ + ⌃ + J / K             | *Custom action*                                |
+| ⇧ + ⌥                | ⇧ + ⌥ + J / K             | *Custom action*                                |
+| ⇧ + ⌘                | ⇧ + ⌘ + J / K             | *Custom action*                                |
+| ⌃ + ⌥                | ⌃ + ⌥ + J / K             | *Custom action*                                |
+| ⌃ + ⌘                | ⌃ + ⌘ + J / K             | *Custom action*                                |
+| ⌥ + ⌘                | ⌥ + ⌘ + J / K             | *Custom action*                                |
+| ⇧ + ⌃ + ⌥            | ⇧ + ⌃ + ⌥ + J / K         | *Custom action*                                |
+| ⇧ + ⌃ + ⌘            | ⇧ + ⌃ + ⌘ + J / K         | *Custom action*                                |
+| ⇧ + ⌥ + ⌘            | ⇧ + ⌥ + ⌘ + J / K         | *Custom action*                                |
+| ⌃ + ⌥ + ⌘            | ⌃ + ⌥ + ⌘ + J / K         | *Custom action*                                |
+| ⇧ + ⌃ + ⌥ + ⌘        | ⇧ + ⌃ + ⌥ + ⌘ + J / K     | *Custom action*                                |
+| ✱                    | ✱ + J / K                 | *Move down/up one line*                        |
+| ✱ + ⇧                | ✱ + ⇧ + J / K             | *Custom action*                                |
+| ✱ + ⌃                | ✱ + ⌃ + J / K             | *Custom action*                                |
+| ✱ + ⌥                | ✱ + ⌥ + J / K             | *Custom action*                                |
+| ✱ + ⌘                | ✱ + ⌘ + J / K             | *Custom action*                                |
+| ✱ + ⇧ + ⌃            | ✱ + ⇧ + ⌃ + J / K         | *Custom action*                                |
+| ✱ + ⇧ + ⌥            | ✱ + ⇧ + ⌥ + J / K         | *Custom action*                                |
+| ✱ + ⇧ + ⌘            | ✱ + ⇧ + ⌘ + J / K         | *Custom action*                                |
+| ✱ + ⌃ + ⌥            | ✱ + ⌃ + ⌥ + J / K         | *Custom action*                                |
+| ✱ + ⌃ + ⌘            | ✱ + ⌃ + ⌘ + J / K         | *Custom action*                                |
+| ✱ + ⌥ + ⌘            | ✱ + ⌥ + ⌘ + J / K         | *Custom action*                                |
+| ✱ + ⇧ + ⌃ + ⌥        | ✱ + ⇧ + ⌃ + ⌥ + J / K     | *Custom action*                                |
+| ✱ + ⇧ + ⌃ + ⌘        | ✱ + ⇧ + ⌃ + ⌘ + J / K     | *Custom action*                                |
+| ✱ + ⇧ + ⌥ + ⌘        | ✱ + ⇧ + ⌥ + ⌘ + J / K     | *Custom action*                                |
+| ✱ + ⌃ + ⌥ + ⌘        | ✱ + ⌃ + ⌥ + ⌘ + J / K     | *Custom action*                                |
+| ✱ + ⇧ + ⌃ + ⌥ + ⌘    | ✱ + ⇧ + ⌃ + ⌥ + ⌘ + J / K | *Custom action*                                |
 ---
 
 *Note:*
