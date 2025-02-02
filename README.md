@@ -63,10 +63,10 @@ Modifiers are represented as follows:
 | ⌃ + ⌥ + ⌘            | ⌃ + ⌥ + ⌘ + H / L         |     | *Custom action/Custom action*                                                |
 | ⇧ + ⌃ + ⌥ + ⌘        | ⇧ + ⌃ + ⌥ + ⌘ + H / L     |     | *Custom action*                                                              |
 | ✱                    | ✱ + H / L                 |     | *Move left/right one character* [Navigation](#Navigation)                    |
-| ✱ + ⇧                | ✱ + ⇧ + H / L             |     | *Switcher/Switcher*[Navigation](#Navigation)                                 |
+| ✱ + ⇧                | ✱ + ⇧ + H / L             |     |                                |
 | ✱ + ⌃                | ✱ + ⌃ + H / L             |     | *prev desk/next desk*[Navigation](#Navigation)                               |
 | ✱ + ⌥                | ✱ + ⌥ + H / L             |     | *need to remap*       [Navigation](#Navigation)                              |
-| ✱ + ⌘                | ✱ + ⌘ + H / L             |     | *EditorLeftWithSelection/EditorRightWithSelection* [Navigation](#Navigation) |
+| ✱ + ⌘                | ✱ + ⌘ + H / L             |     | *Switcher/Switcher*[Navigation](#Navigation)   |
 | ✱ + ⇧ + ⌃            | ✱ + ⇧ + ⌃ + H / L         |     | *Custom action/Custom action*   [Navigation](#Navigation)                    |
 | ✱ + ⇧ + ⌥            | ✱ + ⇧ + ⌥ + H / L         |     | *Custom action* [Navigation](#Navigation)                                    |
 | ✱ + ⇧ + ⌘            | ✱ + ⇧ + ⌘ + H / L         |     | *Custom action* [Navigation](#Navigation)                                    |
