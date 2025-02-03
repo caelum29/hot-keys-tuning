@@ -5,7 +5,7 @@
             "complex_modifications": {
                 "parameters": {
                     "basic.to_delayed_action_delay_milliseconds": 300,
-                    "basic.to_if_alone_timeout_milliseconds": 500,
+                    "basic.to_if_alone_timeout_milliseconds": 400,
                     "basic.to_if_held_down_threshold_milliseconds": 300
                 },
                 "rules": [
@@ -13,86 +13,68 @@
                         "description": "F tap = F, F hold = left_command; D tap = D, D hold = left_option; S tap = S, S hold = left_control",
                         "manipulators": [
                             {
-                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "name": "semi_layer",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": { "optional": ["any"] }
                                 },
+                                "parameters": {
+                                    "basic.to_delayed_action_delay_milliseconds": 400,
+                                    "basic.to_if_held_down_threshold_milliseconds": 400
+                                },
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "f" }] },
                                 "to_if_alone": [
                                     {
-                                        "key_code": "f",
-                                        "halt": true
+                                        "halt": true,
+                                        "key_code": "f"
                                     }
                                 ],
-                                "to_if_held_down": [
-                                    { "key_code": "left_command" }
-                                ],
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        { "key_code": "f" }
-                                    ]
-                                },
-                                "conditions": [
-                                    {
-                                        "type": "variable_if",
-                                        "name": "semi_layer",
-                                        "value": 1
-                                    }
-                                ],
-                                "parameters": {
-                                    "basic.to_if_held_down_threshold_milliseconds": 400,
-                                    "basic.to_delayed_action_delay_milliseconds": 400
-                                }
+                                "to_if_held_down": [{ "key_code": "left_command" }],
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": { "optional": ["any"] }
                                 },
+                                "parameters": {
+                                    "basic.to_delayed_action_delay_milliseconds": 400,
+                                    "basic.to_if_held_down_threshold_milliseconds": 400
+                                },
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "d" }] },
                                 "to_if_alone": [
                                     {
-                                        "key_code": "d",
-                                        "halt": true
+                                        "halt": true,
+                                        "key_code": "d"
                                     }
                                 ],
-                                "to_if_held_down": [
-                                    { "key_code": "left_option" }
-                                ],
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        { "key_code": "d" }
-                                    ]
-                                },
-                                "parameters": {
-                                    "basic.to_if_held_down_threshold_milliseconds": 400,
-                                    "basic.to_delayed_action_delay_milliseconds": 400
-                                }
+                                "to_if_held_down": [{ "key_code": "left_option" }],
+                                "type": "basic"
                             },
                             {
-                                "type": "basic",
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": { "optional": ["any"] }
                                 },
+                                "parameters": {
+                                    "basic.to_delayed_action_delay_milliseconds": 400,
+                                    "basic.to_if_held_down_threshold_milliseconds": 400
+                                },
+                                "to_delayed_action": { "to_if_canceled": [{ "key_code": "s" }] },
                                 "to_if_alone": [
                                     {
-                                        "key_code": "s",
-                                        "halt": true
+                                        "halt": true,
+                                        "key_code": "s"
                                     }
                                 ],
-                                "to_if_held_down": [
-                                    { "key_code": "left_control" }
-                                ],
-                                "to_delayed_action": {
-                                    "to_if_canceled": [
-                                        { "key_code": "s" }
-                                    ]
-                                },
-                                "parameters": {
-                                    "basic.to_if_held_down_threshold_milliseconds": 400,
-                                    "basic.to_delayed_action_delay_milliseconds": 400
-                                }
+                                "to_if_held_down": [{ "key_code": "left_control" }],
+                                "type": "basic"
                             }
                         ]
                     },
@@ -164,14 +146,15 @@
                     {
                         "description": "Hyper Navigation",
                         "manipulators": [
-                            { "conditions": [
-                                {
-                                    "bundle_identifiers": [
-                                        "com.jetbrains.WebStorm"
-                                    ],
-                                    "type": "frontmost_application_if"
-                                }
-                            ],
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com.jetbrains.WebStorm"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
                                 "description": "command + h = shift + left (webstorm)",
                                 "from": {
                                     "key_code": "h",
@@ -4049,6 +4032,20 @@
                                     {
                                         "key_code": "fn",
                                         "modifiers": ["right_command", "right_control", "right_option"]
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "semi_layer",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "semi_layer",
+                                            "value": 0
+                                        }
                                     }
                                 ],
                                 "to_if_alone": [{ "key_code": "semicolon" }],
@@ -4229,11 +4226,522 @@
                 ]
             },
             "name": "super",
-            "selected": true,
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "keyboard_type_v2": "ansi"
             }
+        },
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "When d and f are pressed simultaneously (≥200ms) and semicolon is not active, set df_modifiers variable",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "semicolon_modifier",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    }
+                                ],
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "d" },
+                                        { "key_code": "f" }
+                                    ]
+                                },
+                                "parameters": { "basic.simultaneous_threshold_milliseconds": 200 },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "df_modifiers",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "df_modifiers",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "When s and f are pressed simultaneously (≥200ms), set sf_modifiers variable",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "key_code": "s" },
+                                        { "key_code": "f" }
+                                    ]
+                                },
+                                "parameters": { "basic.simultaneous_threshold_milliseconds": 200 },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "sf_modifiers",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "sf_modifiers",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Make semicolon a modifier key: set variable when held",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "semicolon",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "semicolon_modifier",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "semicolon_modifier",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "semicolon" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "With semicolon held, F outputs ')' (Shift+0)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "semicolon_modifier",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "0",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "With semicolon held, D outputs '(' (Shift+9)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "semicolon_modifier",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "9",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "With semicolon held, E outputs '{' (Shift+Open Bracket)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "semicolon_modifier",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "open_bracket",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "With semicolon held, R outputs '}' (Shift+Close Bracket)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "semicolon_modifier",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "With semicolon held, C outputs '[' (Open Bracket)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "semicolon_modifier",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "open_bracket" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "With semicolon held, V outputs ']' (Close Bracket)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "semicolon_modifier",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "close_bracket" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Dual-role F: tap for 'f', hold for right_command (if semicolon not active)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "semicolon_modifier",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_if_alone": [{ "key_code": "f" }],
+                                "to_if_held_down": [{ "key_code": "right_command" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Dual-role D: tap for 'd', hold for right_option (if semicolon not active)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "semicolon_modifier",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_if_alone": [{ "key_code": "d" }],
+                                "to_if_held_down": [{ "key_code": "right_option" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Dual-role S: tap for 's', hold for right_option (if semicolon not active)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "semicolon_modifier",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to_if_alone": [{ "key_code": "s" }],
+                                "to_if_held_down": [{ "key_code": "right_control" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "While d+f held (df_modifiers active), modify the K key by adding right_option and right_command",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "df_modifiers",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "k",
+                                        "modifiers": ["right_option", "right_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "While d+f held (df_modifiers active), modify the H key by adding right_option and right_command",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "df_modifiers",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "h",
+                                        "modifiers": ["right_option", "right_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "While d+f held (df_modifiers active), modify the J key by adding right_option and right_command",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "df_modifiers",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "j",
+                                        "modifiers": ["right_option", "right_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "While d+f held (df_modifiers active), modify the L key by adding right_option and right_command",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "df_modifiers",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "l",
+                                        "modifiers": ["right_option", "right_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "While s+f held (sf_modifiers active), modify the H key by adding control and command",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "sf_modifiers",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "h",
+                                        "modifiers": ["control", "command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "While s+f held (sf_modifiers active), modify the J key by adding control and command",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "sf_modifiers",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "j",
+                                        "modifiers": ["control", "command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "While s+f held (sf_modifiers active), modify the K key by adding control and command",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "sf_modifiers",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "k",
+                                        "modifiers": ["control", "command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "While s+f held (sf_modifiers active), modify the L key by adding control and command",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "sf_modifiers",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "l",
+                                        "modifiers": ["control", "command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "name": "test",
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
     ]
 }
