@@ -13,34 +13,86 @@
                         "description": "F tap = F, F hold = left_command; D tap = D, D hold = left_option; S tap = S, S hold = left_control",
                         "manipulators": [
                             {
+                                "type": "basic",
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 300 },
-                                "to_if_alone": [{ "key_code": "f" }],
-                                "to_if_held_down": [{ "key_code": "left_command" }],
-                                "type": "basic"
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "f",
+                                        "halt": true
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    { "key_code": "left_command" }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        { "key_code": "f" }
+                                    ]
+                                },
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "semi_layer",
+                                        "value": 1
+                                    }
+                                ],
+                                "parameters": {
+                                    "basic.to_if_held_down_threshold_milliseconds": 400,
+                                    "basic.to_delayed_action_delay_milliseconds": 400
+                                }
                             },
                             {
+                                "type": "basic",
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 300 },
-                                "to_if_alone": [{ "key_code": "d" }],
-                                "to_if_held_down": [{ "key_code": "left_option" }],
-                                "type": "basic"
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "d",
+                                        "halt": true
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    { "key_code": "left_option" }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        { "key_code": "d" }
+                                    ]
+                                },
+                                "parameters": {
+                                    "basic.to_if_held_down_threshold_milliseconds": 400,
+                                    "basic.to_delayed_action_delay_milliseconds": 400
+                                }
                             },
                             {
+                                "type": "basic",
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 300 },
-                                "to_if_alone": [{ "key_code": "s" }],
-                                "to_if_held_down": [{ "key_code": "left_control" }],
-                                "type": "basic"
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "s",
+                                        "halt": true
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    { "key_code": "left_control" }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        { "key_code": "s" }
+                                    ]
+                                },
+                                "parameters": {
+                                    "basic.to_if_held_down_threshold_milliseconds": 400,
+                                    "basic.to_delayed_action_delay_milliseconds": 400
+                                }
                             }
                         ]
                     },
