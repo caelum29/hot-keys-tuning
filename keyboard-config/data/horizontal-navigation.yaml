@@ -2,7 +2,7 @@
 # Source data for keyboard productivity configuration system
 
 navigation_type: "horizontal"
-keys: ["H", "L"] 
+keys: ["H", "L"]
 description: "Left/right navigation and related actions"
 
 bindings:
@@ -11,36 +11,37 @@ bindings:
     system: "I"  # IdeaVim
     status: "implemented"
     category: "navigation"
-    action: "Previous/Next bookmark"
+
+    action: "Move left/right one character"
     details:
-      ide_action_id: "BookmarksAction"
+      ide_action_id: "EditorLeft/EditorRight"
       karabiner_code: "h/l"
-      ideavim_command: "]'/'["
-      config_reference: ".ideavimrc:L120"
+      ideavim_command: "h/l"
+      config_reference: ".ideavimrc:native_vim"
 
   shift:
     keystroke: "⇧H / ⇧L"
-    system: "W"  # WebStorm
-    status: "implemented" 
-    category: "selection"
-    action: "Navigate to prev/next bookmark"
+    system: "-"
+    status: "planned"
+    category: "navigation"
+    action: "No action (available for mapping)"
     details:
-      ide_action_id: "SelectPreviousTab/SelectNextTab"
+      ide_action_id: "-"
       karabiner_code: "shift+h/l"
-      ideavim_command: ":action SelectPreviousTab"
-      config_reference: "keymap.xml:L56"
+      ideavim_command: "-"
+      config_reference: "-"
 
   ctrl:
     keystroke: "⌃H / ⌃L"
-    system: "W+I"  # WebStorm + IdeaVim
+    system: "W"
     status: "implemented"
-    category: "text_edit"
-    action: "Editor join lines/Custom"
+    category: "navigation"
+    action: "Move left one character/No action"
     details:
-      ide_action_id: "EditorJoinLines"
+      ide_action_id: "EditorLeft/-"
       karabiner_code: "ctrl+h/l"
-      ideavim_command: "J"
-      config_reference: "keymap.xml:L33"
+      ideavim_command: "h/-"
+      config_reference: "keymap.xml"
 
   alt:
     keystroke: "⌥H / ⌥L"
@@ -59,21 +60,21 @@ bindings:
     system: "W"
     status: "implemented"
     category: "action"
-    action: "Custom action/Complete statement"
+    action: "No action/Complete statement"
     details:
-      ide_action_id: "EditorCompleteStatement"
+      ide_action_id: "-/EditorCompleteStatement"
       karabiner_code: "cmd+h/l"
       ideavim_command: "-"
-      config_reference: "keymap.xml:L24"
+      config_reference: "keymap.xml"
 
   shift_ctrl:
     keystroke: "⇧⌃H / ⇧⌃L"
     system: "-"
-    status: "planned"
-    category: "selection"
-    action: "Select to word start/end with hump mode"
+    status: "available"
+    category: "unmapped"
+    action: "No action (available for mapping)"
     details:
-      ide_action_id: "EditorPreviousWordInDifferentHumpsModeWithSelection/EditorNextWordInDifferentHumpsModeWithSelection"
+      ide_action_id: "-"
       karabiner_code: "shift+ctrl+h/l"
       ideavim_command: "-"
       config_reference: "-"
@@ -83,33 +84,33 @@ bindings:
     system: "W"
     status: "implemented"
     category: "selection"
-    action: "Prev/Next word with selection"
+    action: "Select previous/next word"
     details:
-      ide_action_id: "EditorPreviousWordWithSelection"
+      ide_action_id: "EditorPreviousWordWithSelection/EditorNextWordWithSelection"
       karabiner_code: "shift+alt+h/l"
       ideavim_command: "-"
-      config_reference: "keymap.xml:L55"
+      config_reference: "keymap.xml"
 
   shift_cmd:
     keystroke: "⇧⌘H / ⇧⌘L"
     system: "W"
     status: "implemented"
-    category: "window"
-    action: "Select prev/next tab"
+    category: "action"
+    action: "Previous tab (+ shelve)/Codeium send to cascade"
     details:
-      ide_action_id: "SelectPreviousTab/SelectNextTab"
+      ide_action_id: "PreviousTab|ChangesView.ShelveSilently/SendToCascade"
       karabiner_code: "shift+cmd+h/l"
-      ideavim_command: ":action SelectPreviousTab"
-      config_reference: "keymap.xml:L56"
+      ideavim_command: ":action PreviousTab"
+      config_reference: "keymap.xml"
 
   ctrl_alt:
     keystroke: "⌃⌥H / ⌃⌥L"
     system: "-"
-    status: "planned"
-    category: "navigation"
-    action: "Page navigation left/right"
+    status: "available"
+    category: "unmapped"
+    action: "No action (available for mapping)"
     details:
-      ide_action_id: "EditorPageUp/EditorPageDown"
+      ide_action_id: "-"
       karabiner_code: "ctrl+alt+h/l"
       ideavim_command: "-"
       config_reference: "-"
@@ -117,26 +118,26 @@ bindings:
   ctrl_cmd:
     keystroke: "⌃⌘H / ⌃⌘L"
     system: "-"
-    status: "planned"
-    category: "navigation"
-    action: "Move to page top/bottom"
+    status: "available"
+    category: "unmapped"
+    action: "No action (available for mapping)"
     details:
-      ide_action_id: "EditorMoveToPageTop/EditorMoveToPageBottom"
+      ide_action_id: "-"
       karabiner_code: "ctrl+cmd+h/l"
       ideavim_command: "-"
       config_reference: "-"
 
   alt_cmd:
     keystroke: "⌥⌘H / ⌥⌘L"
-    system: "W"
-    status: "implemented"
-    category: "action"
-    action: "Custom action/Reformat code"
+    system: "-"
+    status: "available"
+    category: "unmapped"
+    action: "No action (available for mapping)"
     details:
-      ide_action_id: "ReformatCode"
+      ide_action_id: "-"
       karabiner_code: "alt+cmd+h/l"
       ideavim_command: "-"
-      config_reference: "keymap.xml:L59"
+      config_reference: "-"
 
   shift_ctrl_alt:
     keystroke: "⇧⌃⌥H / ⇧⌃⌥L"
@@ -238,14 +239,14 @@ bindings:
   hyper_alt:
     keystroke: "✱⌥H / ✱⌥L"
     system: "K"
-    status: "needs_attention"
+    status: "implemented"
     category: "mouse"
-    action: "Need to remap"
+    action: "Move cursor left/right"
     details:
-      ide_action_id: "mouse_move"
-      karabiner_code: "-"
+      ide_action_id: "mouse_move_left/mouse_move_right"
+      karabiner_code: "right_shift+right_ctrl+right_alt+right_cmd+alt+h/l"
       ideavim_command: "-"
-      config_reference: "-"
+      config_reference: "karabiner.json"
 
   hyper_cmd:
     keystroke: "✱⌘H / ✱⌘L"
@@ -621,6 +622,7 @@ bindings:
     status: "planned"
     category: "leader"
     action: "Backslash leader horizontal"
+    planned_description: "Alternative leader key (\\) + H/L for plugin-specific horizontal actions"
     details:
       ide_action_id: "Custom"
       karabiner_code: "-"

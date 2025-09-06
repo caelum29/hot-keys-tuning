@@ -11,36 +11,36 @@ bindings:
     system: "I"  # IdeaVim
     status: "implemented"
     category: "navigation"
-    action: "Move down/up line by line"
+    action: "Move down/up one line"
     details:
       ide_action_id: "EditorDown/EditorUp"
       karabiner_code: "j/k"
-      ideavim_command: "J/<C-v>k"
-      config_reference: ".ideavimrc:L91"
+      ideavim_command: "j/k"
+      config_reference: ".ideavimrc:native_vim"
 
   shift:
     keystroke: "⇧J / ⇧K"
-    system: "W"  # WebStorm
+    system: "W"
     status: "implemented"
-    category: "selection"
-    action: "Extend selection down/up"
+    category: "navigation"
+    action: "Move down one line/Show documentation"
     details:
-      ide_action_id: "EditorDownWithSelection/EditorUpWithSelection"
+      ide_action_id: "EditorDown/QuickJavaDoc"
       karabiner_code: "shift+j/k"
-      ideavim_command: "vj/vk"
-      config_reference: "keymap.xml:L92"
+      ideavim_command: "j"
+      config_reference: "keymap.xml"
 
   ctrl:
     keystroke: "⌃J / ⌃K"
     system: "W"
     status: "implemented"
-    category: "navigation"
-    action: "Scroll down/up with cursor"
+    category: "text_edit"
+    action: "Join lines/Show navigation bar"
     details:
-      ide_action_id: "EditorMoveDownAndScroll/EditorMoveUpAndScroll"
+      ide_action_id: "EditorJoinLines/ShowNavBar"
       karabiner_code: "ctrl+j/k"
       ideavim_command: "-"
-      config_reference: "keymap.xml:L93"
+      config_reference: "keymap.xml"
 
   alt:
     keystroke: "⌥J / ⌥K"
@@ -59,21 +59,21 @@ bindings:
     system: "W"
     status: "implemented"
     category: "action"
-    action: "Insert live template/Custom"
+    action: "Insert live template/No action"
     details:
-      ide_action_id: "InsertLiveTemplate"
+      ide_action_id: "InsertLiveTemplate/-"
       karabiner_code: "cmd+j/k"
       ideavim_command: "-"
-      config_reference: "keymap.xml:L95"
+      config_reference: "keymap.xml"
 
   shift_ctrl:
     keystroke: "⇧⌃J / ⇧⌃K"
     system: "-"
-    status: "planned"
-    category: "selection"
-    action: "Select paragraph up/down"
+    status: "available"
+    category: "unmapped"
+    action: "No action (available for mapping)"
     details:
-      ide_action_id: "EditorBackwardParagraphWithSelection/EditorForwardParagraphWithSelection"
+      ide_action_id: "-"
       karabiner_code: "shift+ctrl+j/k"
       ideavim_command: "-"
       config_reference: "-"
@@ -81,11 +81,11 @@ bindings:
   shift_alt:
     keystroke: "⇧⌥J / ⇧⌥K"
     system: "-"
-    status: "planned"
-    category: "selection"
-    action: "Select with scroll up/down"
+    status: "available"
+    category: "unmapped"
+    action: "No action (available for mapping)"
     details:
-      ide_action_id: "EditorMoveUpAndScrollWithSelection/EditorMoveDownAndScrollWithSelection"
+      ide_action_id: "-"
       karabiner_code: "shift+alt+j/k"
       ideavim_command: "-"
       config_reference: "-"
@@ -95,12 +95,12 @@ bindings:
     system: "W"
     status: "implemented"
     category: "action"
-    action: "Editor join lines/VCS push"
+    action: "Switcher forward/backward"
     details:
-      ide_action_id: "EditorJoinLines/Vcs.Push"
+      ide_action_id: "SwitcherForward/SwitcherBackward"
       karabiner_code: "shift+cmd+j/k"
       ideavim_command: "-"
-      config_reference: "keymap.xml:L98"
+      config_reference: "keymap.xml"
 
   ctrl_alt:
     keystroke: "⌃⌥J / ⌃⌥K"
@@ -117,11 +117,11 @@ bindings:
   ctrl_cmd:
     keystroke: "⌃⌘J / ⌃⌘K"
     system: "-"
-    status: "planned"
-    category: "navigation"
-    action: "Document start/end navigation"
+    status: "available"
+    category: "unmapped"
+    action: "No action (available for mapping)"
     details:
-      ide_action_id: "EditorTextStart/EditorTextEnd"
+      ide_action_id: "-"
       karabiner_code: "ctrl+cmd+j/k"
       ideavim_command: "-"
       config_reference: "-"
@@ -130,13 +130,13 @@ bindings:
     keystroke: "⌥⌘J / ⌥⌘K"
     system: "W"
     status: "implemented"
-    category: "action"
-    action: "Surround with template/Custom"
+    category: "text_edit"
+    action: "Move line up/down"
     details:
-      ide_action_id: "SurroundWithLiveTemplate"
+      ide_action_id: "MoveLineUp/MoveLineDown"
       karabiner_code: "alt+cmd+j/k"
       ideavim_command: "-"
-      config_reference: "keymap.xml:L101"
+      config_reference: "keymap.xml"
 
   shift_ctrl_alt:
     keystroke: "⇧⌃⌥J / ⇧⌃⌥K"
@@ -226,26 +226,26 @@ bindings:
   hyper_ctrl:
     keystroke: "✱⌃J / ✱⌃K"
     system: "K"
-    status: "planned"
+    status: "implemented"
     category: "desktop"
-    action: "Focus/expose"
+    action: "Focus/Mission Control (expose all)"
     details:
-      ide_action_id: "MissionControl"
-      karabiner_code: "-"
+      ide_action_id: "Focus/MissionControl"
+      karabiner_code: "right_shift+right_ctrl+right_alt+right_cmd+j/k"
       ideavim_command: "-"
-      config_reference: "-"
+      config_reference: "karabiner.json"
 
   hyper_alt:
     keystroke: "✱⌥J / ✱⌥K"
     system: "K"
-    status: "planned"
+    status: "implemented"
     category: "mouse"
-    action: "Mouse move"
+    action: "Move cursor down/up"
     details:
-      ide_action_id: "mouse_move"
-      karabiner_code: "-"
+      ide_action_id: "mouse_move_down/mouse_move_up"
+      karabiner_code: "right_shift+right_ctrl+right_alt+right_cmd+alt+j/k"
       ideavim_command: "-"
-      config_reference: "-"
+      config_reference: "karabiner.json"
 
   hyper_cmd:
     keystroke: "✱⌘J / ✱⌘K"
@@ -573,6 +573,7 @@ bindings:
     status: "planned"
     category: "leader"
     action: "Backslash leader vertical"
+    planned_description: "Alternative leader key (\\) + J/K for plugin-specific vertical actions"
     details:
       ide_action_id: "Custom"
       karabiner_code: "-"
@@ -587,6 +588,7 @@ bindings:
     status: "planned"
     category: "sequence"
     action: "Previous bracket vertical"
+    planned_description: "Navigate to previous fold/method beginning down/up direction"
     details:
       ide_action_id: "Custom"
       karabiner_code: "-"
@@ -600,6 +602,7 @@ bindings:
     status: "planned"
     category: "sequence"
     action: "Next bracket vertical"
+    planned_description: "Navigate to next fold/method end down/up direction"
     details:
       ide_action_id: "Custom"
       karabiner_code: "-"
@@ -614,6 +617,7 @@ bindings:
     status: "planned"
     category: "navigation"
     action: "Scroll down/up multiple lines"
+    planned_description: "Scroll viewport down/up by several lines without moving cursor"
     details:
       ide_action_id: "ScrollAction"
       karabiner_code: "-"
