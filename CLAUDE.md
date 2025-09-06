@@ -28,23 +28,25 @@ This is a unified keyboard productivity configuration system that enhances devel
     - `CLAUDE-HOOKS-LEARNING.md` - Comprehensive guide for Claude Code hooks and subagents
     - `CLAUDE-CODE-GUIDE.md` - Complete Claude Code feature reference and tutorial
     - `TEST-HOOKS-DEMO.md` - Demonstration results of hooks and subagents implementation
-- `keyboard-config/` - **NEW: YAML-based configuration system**
+- `keyboard-config/` - **NEW: YAML-based configuration system with ActionID integration**
   - `data/` - Source YAML files (single source of truth for all bindings)
-    - `horizontal-navigation.yaml` - H/L key bindings with full technical details
-    - `vertical-navigation.yaml` - J/K key bindings with structured data
-    - `schemas/binding-schema.yaml` - Validation rules for data consistency
+    - `horizontal-navigation.yaml` - H/L key bindings with IntelliJ ActionIDs and technical details
+    - `vertical-navigation.yaml` - J/K key bindings with IntelliJ ActionIDs and structured data
+    - `schemas/binding-schema.yaml` - Validation rules for data consistency including ActionID support
   - `generated/` - Auto-generated documentation and exports
-    - `KEY-MAP.md` - Enhanced markdown tables with statistics
-    - `bindings.csv` - Full dataset for spreadsheet analysis
+    - `KEY-MAP.md` - Enhanced markdown tables with ActionIDs displayed prominently in bold
+    - `bindings.csv` - Full dataset with ActionID column for spreadsheet analysis
     - `bindings-summary.csv` - Statistics breakdown
-    - `bindings-pivot.csv` - Pivot table ready format
+    - `bindings-pivot.csv` - Pivot table ready format with ActionID integration
   - `scripts/` - Generation and export tools
-    - `generate-docs.py` - YAML → Markdown converter
-    - `export-csv.py` - YAML → Multiple CSV formats
+    - `generate-docs.py` - YAML → Markdown converter with ActionID display support
+    - `export-csv.py` - YAML → Multiple CSV formats including ActionID columns
   - `hooks/` - **NEW: Automation and validation scripts**
     - `validate-yaml.sh` - YAML syntax and schema validation with virtual environment
     - `backup-changes.sh` - Automated backup system with timestamped versions
     - `check-conflicts.py` - Multi-system conflict detection (Karabiner + IdeaVim + WebStorm)
+  - `hjkl-actionid-mapping.yaml` - **NEW: Comprehensive ActionID reference mapping for HJKL navigation**
+- `src/docs/List of ActionIDs.mhtml` - **NEW: IntelliJ 2024.2.3 official ActionID reference (6000+ entries)**
 
 ### Key Concepts
 
@@ -74,6 +76,13 @@ This is a unified keyboard productivity configuration system that enhances devel
 - 8+ multi-key sequences (text objects)
 - Additional chord, long press, and context-aware patterns
 - See `src/docs/KEY-BINDING-COMBINATIONS.md` for complete reference
+
+**ActionID Integration**: Production-ready IntelliJ/WebStorm integration:
+- **6000+ ActionIDs**: Official IntelliJ 2024.2.3 ActionID reference in `src/docs/List of ActionIDs.mhtml`
+- **Verified mappings**: All navigation ActionIDs validated against official list (e.g., `EditorLeft/EditorRight`, `EditorDownWithSelection`)
+- **Comprehensive coverage**: 95 bindings with specific ActionIDs for navigation, selection, text editing, window management
+- **Ready for automation**: ActionIDs enable automatic keymap.xml generation and IDE configuration
+- **HJKL reference**: `hjkl-actionid-mapping.yaml` provides complete mapping reference for horizontal/vertical navigation
 
 ## Development Workflow
 
@@ -224,7 +233,8 @@ tail -f ~/.claude/hooks/conflict-check.log
 tail -f ~/.claude/hooks/edit-log.txt
 ```
 
-**Current Statistics**: 48 total bindings (28 implemented, 19 planned, 1 needs attention), 5 real conflicts detected
+**Current Statistics**: 95 total bindings (28 implemented, 66 planned, 1 needs attention), ActionID integration complete
+**ActionID Status**: 6000+ official IntelliJ ActionIDs available, 95 bindings with verified ActionIDs, production-ready for IDE automation  
 **Automation Status**: 5 hooks active, 3 validation scripts, multi-system conflict detection functional, yarn scripts operational  
 **Package.json**: Updated with 8 convenient yarn scripts for project automation (validate, backup, conflict detection, documentation generation)
-**Testing Results**: All automation systems verified working (YAML validation, timestamped backups, conflict detection across 436 total bindings)
+**Testing Results**: All automation systems verified working (YAML validation, timestamped backups, ActionID integration, CSV exports functional)
