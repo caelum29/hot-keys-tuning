@@ -22,6 +22,26 @@ This is a unified keyboard productivity configuration system that enhances devel
 - `src/idea-vim/.ideavimrc` - IdeaVim configuration with 300+ lines of custom mappings
 - `src/webstorm-keymap/macOS copy.xml` - WebStorm keymap with HJKL navigation integration
 - `src/docs/` - Extensive documentation on keyboard productivity patterns
+- `keyboard-config/` - **NEW: YAML-based configuration system**
+  - `data/` - Source YAML files (single source of truth for all bindings)
+    - `horizontal-navigation.yaml` - H/L key bindings with full technical details
+    - `vertical-navigation.yaml` - J/K key bindings with structured data
+    - `schemas/binding-schema.yaml` - Validation rules for data consistency
+  - `generated/` - Auto-generated documentation and exports
+    - `KEY-MAP.md` - Enhanced markdown tables with statistics
+    - `bindings.csv` - Full dataset for spreadsheet analysis
+    - `bindings-summary.csv` - Statistics breakdown
+    - `bindings-pivot.csv` - Pivot table ready format
+  - `scripts/` - Generation and export tools
+    - `generate-docs.py` - YAML → Markdown converter
+    - `export-csv.py` - YAML → Multiple CSV formats
+  - `hooks/` - **NEW: Automation and validation scripts**
+    - `validate-yaml.sh` - YAML syntax and schema validation with virtual environment
+    - `backup-changes.sh` - Automated backup system with timestamped versions
+    - `check-conflicts.py` - Multi-system conflict detection (Karabiner + IdeaVim + WebStorm)
+- `claude-hooks-learning.md` - **NEW: Comprehensive guide for Claude Code hooks and subagents**
+- `claude-code-guide.md` - **NEW: Complete Claude Code feature reference and tutorial**
+- `test-hooks-demo.md` - **NEW: Demonstration results of hooks and subagents implementation**
 
 ### Key Concepts
 
@@ -65,6 +85,21 @@ This project doesn't have traditional build/test commands as it consists primari
 - Markdown files in `src/docs/` provide implementation guides
 - README.md contains the master navigation reference table
 
+### YAML Configuration System (NEW)
+- **Primary workflow**: Edit YAML files in `keyboard-config/data/`
+- **Generate docs**: `python scripts/generate-docs.py` (creates enhanced markdown)
+- **Export data**: `python scripts/export-csv.py` (creates CSV/TSV for analysis)
+- **Virtual environment**: `source keyboard-config/venv/bin/activate` before running scripts
+- **Validation**: Schema enforces data consistency across all bindings
+
+### Claude Code Automation & Hooks (NEW)
+- **Hook configuration**: `~/.claude/hooks/keyboard-config-hooks.json` - Automated workflows
+- **Validation workflow**: Automatic YAML validation on file edits
+- **Backup system**: Timestamped backups before modifications
+- **Conflict detection**: Multi-system keyboard binding conflict analysis
+- **Auto-documentation**: Regenerate docs when YAML files change
+- **Subagent analysis**: Complex keyboard binding analysis and optimization recommendations
+
 ## File Structure Notes
 
 - Configuration files use JSON (Karabiner) and XML (WebStorm keymap) formats
@@ -80,3 +115,78 @@ When working with this codebase:
 - Test changes across all three systems (macOS, WebStorm, IdeaVim) 
 - Document any new key combinations in README.md tables
 - Use descriptive names in Karabiner rule descriptions for maintainability
+
+## LLM-Friendly Workflow (Claude Code)
+
+**Preferred approach for AI assistance:**
+
+### For Keyboard Binding Changes:
+1. **Edit YAML files**: Modify `keyboard-config/data/*.yaml` (structured, easy to parse)
+2. **Auto-validation**: Hooks automatically validate YAML syntax and schema on edits
+3. **Auto-backup**: Timestamped backups created before any modifications
+4. **Auto-generate docs**: Run generation scripts to update all documentation  
+5. **Conflict checking**: Use subagents or scripts to detect binding conflicts
+6. **Avoid direct markdown editing**: Generated files will be overwritten
+
+### For Technical Implementation:
+- YAML provides clear structure for all binding details (action IDs, key codes, config references)
+- Schema validation prevents errors and ensures consistency
+- CSV exports enable data analysis and bulk operations
+- Single source of truth eliminates documentation drift
+
+### Data Structure Benefits:
+- **Parsing**: YAML is much easier for LLMs to understand than complex markdown tables
+- **Editing**: Structured format prevents column alignment and formatting errors  
+- **Validation**: Schema catches missing fields and invalid values
+- **Extensibility**: Can easily add new fields or binding types
+- **Integration**: Data can drive config file generation and validation tools
+
+### Claude Code Learning Resources (NEW)
+- **`claude-hooks-learning.md`**: Complete 350+ line guide covering hooks fundamentals, practical examples, subagent usage, security practices, and troubleshooting
+- **`claude-code-guide.md`**: Comprehensive feature reference with project-specific examples
+- **`test-hooks-demo.md`**: Results and demonstration of implemented automation systems
+
+## Testing & Validation Commands
+
+### Conflict Detection
+```bash
+# Run full conflict analysis across all systems
+CLAUDE_PROJECT_DIR=$PWD keyboard-config/hooks/check-conflicts.py
+
+# Check specific YAML file only  
+keyboard-config/hooks/check-conflicts.py --yaml-only
+```
+
+### YAML Validation
+```bash
+# Validate specific YAML file
+keyboard-config/hooks/validate-yaml.sh keyboard-config/data/horizontal-navigation.yaml
+
+# Check validation logs
+cat ~/.claude/hooks/yaml-validation.log
+```
+
+### Backup Management
+```bash
+# Create manual backup
+keyboard-config/hooks/backup-changes.sh keyboard-config/data/vertical-navigation.yaml
+
+# List all backups
+ls -la ~/.claude/hooks/backups/
+
+# Check backup logs
+cat ~/.claude/hooks/backup.log
+```
+
+### Hook System Status
+```bash
+# View hook configuration
+cat ~/.claude/hooks/keyboard-config-hooks.json
+
+# Check hook logs
+tail -f ~/.claude/hooks/conflict-check.log
+tail -f ~/.claude/hooks/edit-log.txt
+```
+
+**Current Statistics**: 48 total bindings (28 implemented, 19 planned, 1 needs attention)
+**Automation Status**: 5 hooks active, 3 validation scripts, multi-system conflict detection functional
