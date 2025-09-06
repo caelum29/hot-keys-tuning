@@ -1,8 +1,19 @@
 {
-  "name": "settings",
-  "version": "0.0.0",
-  "description": "''",
+  "name": "hot-keys-tuning",
+  "version": "1.0.0",
+  "description": "Unified keyboard productivity configuration system with Karabiner Elements, IdeaVim, and WebStorm integration",
   "main": "index.js",
+  "scripts": {
+    "validate:yaml": "keyboard-config/hooks/validate-yaml.sh keyboard-config/data/horizontal-navigation.yaml",
+    "validate:all-yaml": "find keyboard-config/data -name '*.yaml' -exec keyboard-config/hooks/validate-yaml.sh {} \\;",
+    "backup": "keyboard-config/hooks/backup-changes.sh",
+    "check:conflicts": "CLAUDE_PROJECT_DIR=$PWD keyboard-config/hooks/check-conflicts.py",
+    "generate:docs": "cd keyboard-config && source venv/bin/activate && python scripts/generate-docs.py",
+    "export:csv": "cd keyboard-config && source venv/bin/activate && python scripts/export-csv.py",
+    "hooks:status": "echo 'Project Hook Configuration:' && cat .claude/hooks/keyboard-config-hooks.json && echo '\\nHook Logs:' && ls -la .claude/hooks/logs/*.log 2>/dev/null || echo 'No logs yet' && echo '\\nBackups:' && ls -la .claude/hooks/backups/ 2>/dev/null || echo 'No backups yet'",
+    "setup": "cd keyboard-config && python -m venv venv && source venv/bin/activate && pip install PyYAML"
+  },
+  "keywords": ["keyboard", "productivity", "karabiner", "ideavim", "webstorm", "navigation", "vim"],
   "author": "Artem Sorochynskyi <caelum29@gmail.com>",
   "license": "MIT"
 }

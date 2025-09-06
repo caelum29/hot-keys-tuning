@@ -10,6 +10,7 @@ This is a unified keyboard productivity configuration system that enhances devel
 - **IdeaVim**: Vim emulation for JetBrains IDEs with custom keybindings  
 - **WebStorm**: Custom keymap configurations for IDE productivity
 - **Documentation**: Comprehensive guides for keyboard navigation and productivity patterns
+- **src/docs/PHILOSOPHY.md**: Core design principles and systematic approach to keyboard productivity integration
 
 ## Architecture
 
@@ -22,6 +23,10 @@ This is a unified keyboard productivity configuration system that enhances devel
 - `src/idea-vim/.ideavimrc` - IdeaVim configuration with 300+ lines of custom mappings
 - `src/webstorm-keymap/macOS copy.xml` - WebStorm keymap with HJKL navigation integration
 - `src/docs/` - Extensive documentation on keyboard productivity patterns
+  - `learning-claude-code/` - **NEW: Claude Code automation and learning materials**
+    - `CLAUDE-HOOKS-LEARNING.md` - Comprehensive guide for Claude Code hooks and subagents
+    - `CLAUDE-CODE-GUIDE.md` - Complete Claude Code feature reference and tutorial
+    - `TEST-HOOKS-DEMO.md` - Demonstration results of hooks and subagents implementation
 - `keyboard-config/` - **NEW: YAML-based configuration system**
   - `data/` - Source YAML files (single source of truth for all bindings)
     - `horizontal-navigation.yaml` - H/L key bindings with full technical details
@@ -39,9 +44,6 @@ This is a unified keyboard productivity configuration system that enhances devel
     - `validate-yaml.sh` - YAML syntax and schema validation with virtual environment
     - `backup-changes.sh` - Automated backup system with timestamped versions
     - `check-conflicts.py` - Multi-system conflict detection (Karabiner + IdeaVim + WebStorm)
-- `claude-hooks-learning.md` - **NEW: Comprehensive guide for Claude Code hooks and subagents**
-- `claude-code-guide.md` - **NEW: Complete Claude Code feature reference and tutorial**
-- `test-hooks-demo.md` - **NEW: Demonstration results of hooks and subagents implementation**
 
 ### Key Concepts
 
@@ -84,6 +86,7 @@ This project doesn't have traditional build/test commands as it consists primari
 ### Documentation
 - Markdown files in `src/docs/` provide implementation guides
 - README.md contains the master navigation reference table
+- **src/docs/PHILOSOPHY.md**: Core design principles, vim philosophy integration, and systematic keyboard productivity approach
 
 ### YAML Configuration System (NEW)
 - **Primary workflow**: Edit YAML files in `keyboard-config/data/`
@@ -116,6 +119,13 @@ When working with this codebase:
 - Document any new key combinations in README.md tables
 - Use descriptive names in Karabiner rule descriptions for maintainability
 
+## Documentation Standards
+
+**File Creation and Naming**:
+- All markdown documentation files created by Claude Code should be placed in `src/docs/`
+- Use ALL CAPS naming convention for all documents (e.g., `PHILOSOPHY.md`, `ARCHITECTURE.md`)
+- Reference documents with full path: `src/docs/PHILOSOPHY.md`
+
 ## LLM-Friendly Workflow (Claude Code)
 
 **Preferred approach for AI assistance:**
@@ -142,37 +152,53 @@ When working with this codebase:
 - **Integration**: Data can drive config file generation and validation tools
 
 ### Claude Code Learning Resources (NEW)
-- **`claude-hooks-learning.md`**: Complete 350+ line guide covering hooks fundamentals, practical examples, subagent usage, security practices, and troubleshooting
-- **`claude-code-guide.md`**: Comprehensive feature reference with project-specific examples
-- **`test-hooks-demo.md`**: Results and demonstration of implemented automation systems
+- **`src/docs/learning-claude-code/CLAUDE-HOOKS-LEARNING.md`**: Complete 350+ line guide covering hooks fundamentals, practical examples, subagent usage, security practices, and troubleshooting
+- **`src/docs/learning-claude-code/CLAUDE-CODE-GUIDE.md`**: Comprehensive feature reference with project-specific examples
+- **`src/docs/learning-claude-code/TEST-HOOKS-DEMO.md`**: Results and demonstration of implemented automation systems
 
 ## Testing & Validation Commands
 
-### Conflict Detection
+### Yarn Scripts (Recommended)
+The project now includes convenient yarn scripts in `package.json` for all common operations:
+
+```bash
+# YAML validation
+yarn validate:yaml                    # Validate horizontal-navigation.yaml
+yarn validate:all-yaml               # Validate all YAML files in data/
+
+# Backup system
+yarn backup <file_path>              # Create timestamped backup of any file
+
+# Conflict detection  
+yarn check:conflicts                 # Find binding conflicts across all systems
+
+# Documentation generation
+yarn generate:docs                   # Generate markdown from YAML files
+yarn export:csv                      # Export CSV/TSV for analysis
+
+# System status
+yarn hooks:status                    # Show hook logs and backup status
+
+# Setup
+yarn setup                          # Initialize Python venv and install dependencies
+```
+
+### Direct Commands (Alternative)
 ```bash
 # Run full conflict analysis across all systems
 CLAUDE_PROJECT_DIR=$PWD keyboard-config/hooks/check-conflicts.py
 
-# Check specific YAML file only  
-keyboard-config/hooks/check-conflicts.py --yaml-only
-```
-
-### YAML Validation
-```bash
 # Validate specific YAML file
 keyboard-config/hooks/validate-yaml.sh keyboard-config/data/horizontal-navigation.yaml
 
-# Check validation logs
-cat ~/.claude/hooks/yaml-validation.log
-```
-
-### Backup Management
-```bash
 # Create manual backup
 keyboard-config/hooks/backup-changes.sh keyboard-config/data/vertical-navigation.yaml
 
 # List all backups
 ls -la ~/.claude/hooks/backups/
+
+# Check validation logs
+cat ~/.claude/hooks/yaml-validation.log
 
 # Check backup logs
 cat ~/.claude/hooks/backup.log
@@ -188,5 +214,7 @@ tail -f ~/.claude/hooks/conflict-check.log
 tail -f ~/.claude/hooks/edit-log.txt
 ```
 
-**Current Statistics**: 48 total bindings (28 implemented, 19 planned, 1 needs attention)
-**Automation Status**: 5 hooks active, 3 validation scripts, multi-system conflict detection functional
+**Current Statistics**: 48 total bindings (28 implemented, 19 planned, 1 needs attention), 5 real conflicts detected
+**Automation Status**: 5 hooks active, 3 validation scripts, multi-system conflict detection functional, yarn scripts operational  
+**Package.json**: Updated with 8 convenient yarn scripts for project automation (validate, backup, conflict detection, documentation generation)
+**Testing Results**: All automation systems verified working (YAML validation, timestamped backups, conflict detection across 436 total bindings)

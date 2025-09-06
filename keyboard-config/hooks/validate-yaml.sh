@@ -10,7 +10,8 @@ YAML_FILE="$1"
 if [[ ! "$YAML_FILE" == /* ]]; then
     YAML_FILE="$(pwd)/$YAML_FILE"
 fi
-LOG_FILE="$HOME/.claude/hooks/yaml-validation.log"
+PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}"
+LOG_FILE="$PROJECT_DIR/.claude/hooks/logs/yaml-validation.log"
 
 if [[ -z "$YAML_FILE" ]]; then
     echo "Error: No YAML file provided" | tee -a "$LOG_FILE"

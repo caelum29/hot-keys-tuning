@@ -6,9 +6,10 @@
 set -e
 
 FILE_PATH="$1"
-BACKUP_DIR="${2:-$HOME/.claude/hooks/backups}"
+PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}"
+BACKUP_DIR="${2:-$PROJECT_DIR/.claude/hooks/backups}"
 TIMESTAMP=$(date '+%Y%m%d_%H%M%S')
-LOG_FILE="$HOME/.claude/hooks/backup.log"
+LOG_FILE="$PROJECT_DIR/.claude/hooks/logs/backup.log"
 
 # Create backup directory if it doesn't exist
 mkdir -p "$BACKUP_DIR"

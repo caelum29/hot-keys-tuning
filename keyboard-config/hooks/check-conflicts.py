@@ -21,7 +21,8 @@ from datetime import datetime
 
 def log_message(message):
     """Log message to hook log file"""
-    log_file = Path.home() / ".claude/hooks/conflict-check.log"
+    project_dir = Path(os.environ.get('CLAUDE_PROJECT_DIR', os.getcwd()))
+    log_file = project_dir / ".claude/hooks/logs/conflict-check.log"
     log_file.parent.mkdir(parents=True, exist_ok=True)
     
     with open(log_file, "a") as f:
