@@ -29,16 +29,14 @@
     <action id="EditorDown">
         <keyboard-shortcut first-keystroke="down" />
     </action>
-    <action id="EditorEnter">
-        <keyboard-shortcut first-keystroke="enter" />
-        <keyboard-shortcut first-keystroke="meta i" />
-    </action>
+    <action id="EditorDownWithSelection" />
     <action id="EditorJoinLines">
-        <keyboard-shortcut first-keystroke="shift meta j" />
+        <keyboard-shortcut first-keystroke="ctrl j" />
     </action>
     <action id="EditorLeft">
         <keyboard-shortcut first-keystroke="left" />
     </action>
+    <action id="EditorLeftWithSelection" />
     <action id="EditorLineEnd">
         <keyboard-shortcut first-keystroke="end" />
         <keyboard-shortcut first-keystroke="meta right" />
@@ -70,6 +68,7 @@
     <action id="EditorRight">
         <keyboard-shortcut first-keystroke="right" />
     </action>
+    <action id="EditorRightWithSelection" />
     <action id="EditorToggleShowBreadcrumbs">
         <keyboard-shortcut first-keystroke="alt w" />
     </action>
@@ -77,6 +76,7 @@
     <action id="EditorUp">
         <keyboard-shortcut first-keystroke="up" />
     </action>
+    <action id="EditorUpWithSelection" />
     <action id="EmmetNextEditPoint" />
     <action id="EmmetPreviousEditPoint" />
     <action id="FileChooser.TogglePathShowing" />
@@ -91,6 +91,7 @@
     <action id="List-selectPreviousColumn">
         <keyboard-shortcut first-keystroke="left" />
     </action>
+    <action id="MethodHierarchy" />
     <action id="MoveLineDown">
         <keyboard-shortcut first-keystroke="shift alt down" />
         <keyboard-shortcut first-keystroke="ctrl alt j" />
@@ -114,6 +115,10 @@
     <action id="PreviousTab">
         <keyboard-shortcut first-keystroke="ctrl left" />
         <keyboard-shortcut first-keystroke="shift meta h" />
+    </action>
+    <action id="QuickJavaDoc">
+        <keyboard-shortcut first-keystroke="f1" />
+        <mouse-shortcut keystroke="control button2" />
     </action>
     <action id="ShowNavBar">
         <keyboard-shortcut first-keystroke="meta up" />
@@ -140,11 +145,12 @@
     <action id="StretchSplitToTop">
         <keyboard-shortcut first-keystroke="shift ctrl alt k" />
     </action>
+    <action id="Switcher" />
     <action id="SwitcherBackward">
-        <keyboard-shortcut first-keystroke="shift right" />
+        <keyboard-shortcut first-keystroke="shift meta k" />
     </action>
     <action id="SwitcherForward">
-        <keyboard-shortcut first-keystroke="shift left" />
+        <keyboard-shortcut first-keystroke="shift meta j" />
     </action>
     <action id="Terminal.ClearBuffer">
         <keyboard-shortcut first-keystroke="meta k" />
@@ -153,6 +159,7 @@
         <keyboard-shortcut first-keystroke="left" />
     </action>
     <action id="Vcs.Log.FocusTextFilter" />
+    <action id="Vcs.Push" />
     <action id="copilot.disposeInlays" />
     <action id="org.intellij.plugins.markdown.ui.actions.styling.ToggleItalicAction" />
 </keymap>
