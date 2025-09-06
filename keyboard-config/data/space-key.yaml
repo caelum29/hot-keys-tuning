@@ -1,0 +1,185 @@
+# Spacesymotion-prefix) Key Bindings (Space)
+# Source data for keyboard productivity configuration system
+
+navigation_type: "individual"
+keys: ["Space"]
+description: "Space bar productivity bindings with modifier combinations for quick actions"
+
+bindings:
+  none:
+    keystroke: "Space"
+    system: "K"  # Karabiner
+    status: "implemented"
+    category: "action"
+    action: "Insert space character"
+    details:
+      ide_action_id: "EditorSpace"
+      karabiner_code: "spacebar"
+      ideavim_command: " "
+      config_reference: "karabiner.json:L500"
+
+  shift:
+    keystroke: "⇧Space"
+    system: "K"  # Karabiner
+    status: "implemented"
+    category: "action"
+    action: "Page up (reverse scroll)"
+    details:
+      ide_action_id: "EditorPageUp"
+      karabiner_code: "shift+spacebar"
+      ideavim_command: "⌃b"
+      config_reference: "karabiner.json:L510"
+
+  ctrl:
+    keystroke: "⌃Space"
+    system: "W"  # WebStorm
+    status: "implemented"
+    category: "action"
+    action: "Basic code completion"
+    details:
+      ide_action_id: "CodeCompletion"
+      karabiner_code: "ctrl+spacebar"
+      ideavim_command: ":action CodeCompletion"
+      config_reference: "keymap.xml:L300"
+
+  alt:
+    keystroke: "⌥Space"
+    system: "K"
+    status: "implemented"
+    category: "window"
+    action: "Spotlight search"
+    details:
+      ide_action_id: "System.Spotlight"
+      karabiner_code: "alt+spacebar"
+      ideavim_command: "-"
+      config_reference: "karabiner.json:L520"
+
+  cmd:
+    keystroke: "⌘Space"
+    system: "K"
+    status: "implemented"
+    category: "window"
+    action: "Spotlight search (system default)"
+    details:
+      ide_action_id: "System.Spotlight"
+      karabiner_code: "cmd+spacebar"
+      ideavim_command: "-"
+      config_reference: "system:default"
+
+  shift_ctrl:
+    keystroke: "⇧⌃Space"
+    system: "W"
+    status: "implemented"
+    category: "action"
+    action: "Smart code completion"
+    details:
+      ide_action_id: "SmartTypeCompletion"
+      karabiner_code: "shift+ctrl+spacebar"
+      ideavim_command: ":action SmartTypeCompletion"
+      config_reference: "keymap.xml:L310"
+
+  shift_alt:
+    keystroke: "⇧⌥Space"
+    system: "-"
+    status: "planned"
+    category: "window"
+    action: "Toggle window manager mode"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "shift+alt+spacebar"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  shift_cmd:
+    keystroke: "⇧⌘Space"
+    system: "-"
+    status: "planned"
+    category: "action"
+    action: "Character viewer"
+    details:
+      ide_action_id: "System.CharacterViewer"
+      karabiner_code: "shift+cmd+spacebar"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  ctrl_alt:
+    keystroke: "⌃⌥Space"
+    system: "-"
+    status: "planned"
+    category: "window"
+    action: "Application switcher"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "ctrl+alt+spacebar"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  ctrl_cmd:
+    keystroke: "⌃⌘Space"
+    system: "W"
+    status: "implemented"
+    category: "action"
+    action: "Emoji picker"
+    details:
+      ide_action_id: "System.EmojiPicker"
+      karabiner_code: "ctrl+cmd+spacebar"
+      ideavim_command: "-"
+      config_reference: "system:default"
+
+  alt_cmd:
+    keystroke: "⌥⌘Space"
+    system: "-"
+    status: "planned"
+    category: "window"
+    action: "Finder search"
+    details:
+      ide_action_id: "System.FinderSearch"
+      karabiner_code: "alt+cmd+spacebar"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  # Leader sequences with Space
+  leader_space:
+    keystroke: "<Leader>Space"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Clear search highlighting"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "<Leader><Space>"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  # Double tap space
+  double_tap:
+    keystroke: "Space Space"
+    system: "K"
+    status: "planned"
+    category: "timing"
+    action: "Quick action menu"
+    details:
+      ide_action_id: "GotoAction"
+      karabiner_code: "spacebar+spacebar"
+      ideavim_command: ":action GotoAction"
+      config_reference: "-"
+      sequence_type: "double_tap"
+      timing_ms: 300
+      press_type: "double"
+
+  # Long press space
+  long_press:
+    keystroke: "Space(hold)"
+    system: "K"
+    status: "planned"
+    category: "timing"
+    action: "Activate window management mode"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "spacebar_hold"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "long_press"
+      timing_ms: 500
+      press_type: "hold"

@@ -1,0 +1,179 @@
+# Bracket Navigation Key Bindings ([ / ])
+# Source data for keyboard productivity configuration system
+
+navigation_type: "bracket"
+keys: ["[", "]"] 
+description: "Previous/next item navigation using bracket keys for code blocks, errors, changes, and more"
+
+bindings:
+  none:
+    keystroke: "[ / ]"
+    system: "I"  # IdeaVim
+    status: "implemented"
+    category: "navigation"
+    action: "Previous/Next method or code block"
+    details:
+      ide_action_id: "MethodUp/MethodDown"
+      karabiner_code: "open_bracket/close_bracket"
+      ideavim_command: "[[/]]"
+      config_reference: ".ideavimrc:L200"
+
+  shift:
+    keystroke: "⇧[ / ⇧]"
+    system: "W"  # WebStorm
+    status: "implemented" 
+    category: "selection"
+    action: "Select to previous/next code block"
+    details:
+      ide_action_id: "EditorCodeBlockStartWithSelection/EditorCodeBlockEndWithSelection"
+      karabiner_code: "shift+open_bracket/shift+close_bracket"
+      ideavim_command: "v[[/v]]"
+      config_reference: "keymap.xml:L150"
+
+  ctrl:
+    keystroke: "⌃[ / ⌃]"
+    system: "W+I"  # WebStorm + IdeaVim
+    status: "implemented"
+    category: "navigation"
+    action: "Previous/Next error or issue"
+    details:
+      ide_action_id: "GotoPreviousError/GotoNextError"
+      karabiner_code: "ctrl+open_bracket/ctrl+close_bracket"
+      ideavim_command: "[e/]e"
+      config_reference: "keymap.xml:L160"
+
+  alt:
+    keystroke: "⌥[ / ⌥]"
+    system: "W"
+    status: "implemented"
+    category: "navigation"
+    action: "Navigate to previous/next change marker"
+    details:
+      ide_action_id: "VcsShowPrevChangeMarker/VcsShowNextChangeMarker"
+      karabiner_code: "alt+open_bracket/alt+close_bracket"
+      ideavim_command: "[c/]c"
+      config_reference: "keymap.xml:L170"
+
+  cmd:
+    keystroke: "⌘[ / ⌘]"
+    system: "W"
+    status: "implemented"
+    category: "navigation"
+    action: "Back/Forward in navigation history"
+    details:
+      ide_action_id: "Back/Forward"
+      karabiner_code: "cmd+open_bracket/cmd+close_bracket"
+      ideavim_command: ":action Back/:action Forward"
+      config_reference: "keymap.xml:L180"
+
+  shift_ctrl:
+    keystroke: "⇧⌃[ / ⇧⌃]"
+    system: "-"
+    status: "planned"
+    category: "selection"
+    action: "Select to previous/next paragraph"
+    details:
+      ide_action_id: "EditorBackwardParagraphWithSelection/EditorForwardParagraphWithSelection"
+      karabiner_code: "shift+ctrl+open_bracket/shift+ctrl+close_bracket"
+      ideavim_command: "v{/v}"
+      config_reference: "-"
+
+  shift_alt:
+    keystroke: "⇧⌥[ / ⇧⌥]"
+    system: "-"
+    status: "planned"
+    category: "selection"
+    action: "Select to previous/next fold"
+    details:
+      ide_action_id: "EditorMoveToPageTopWithSelection/EditorMoveToPageBottomWithSelection"
+      karabiner_code: "shift+alt+open_bracket/shift+alt+close_bracket"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  shift_cmd:
+    keystroke: "⇧⌘[ / ⇧⌘]"
+    system: "W"
+    status: "implemented"
+    category: "navigation"
+    action: "Navigate tabs left/right"
+    details:
+      ide_action_id: "PreviousTab/NextTab"
+      karabiner_code: "shift+cmd+open_bracket/shift+cmd+close_bracket"
+      ideavim_command: "gt/gT"
+      config_reference: "keymap.xml:L190"
+
+  ctrl_alt:
+    keystroke: "⌃⌥[ / ⌃⌥]"
+    system: "-"
+    status: "planned"
+    category: "navigation"
+    action: "Navigate between split panes"
+    details:
+      ide_action_id: "PrevSplitter/NextSplitter"
+      karabiner_code: "ctrl+alt+open_bracket/ctrl+alt+close_bracket"
+      ideavim_command: ":wincmd h/:wincmd l"
+      config_reference: "-"
+
+  ctrl_cmd:
+    keystroke: "⌃⌘[ / ⌃⌘]"
+    system: "-"
+    status: "planned"
+    category: "navigation"
+    action: "Previous/Next bookmark"
+    details:
+      ide_action_id: "GotoPreviousBookmark/GotoNextBookmark"
+      karabiner_code: "ctrl+cmd+open_bracket/ctrl+cmd+close_bracket"
+      ideavim_command: "[m/]m"
+      config_reference: "-"
+
+  alt_cmd:
+    keystroke: "⌥⌘[ / ⌥⌘]"
+    system: "-"
+    status: "planned"
+    category: "action"
+    action: "Fold/Unfold code block"
+    details:
+      ide_action_id: "CollapseBlock/ExpandBlock"
+      karabiner_code: "alt+cmd+open_bracket/alt+cmd+close_bracket"
+      ideavim_command: "zc/zo"
+      config_reference: "-"
+
+  # Vim-specific bracket sequences
+  double_bracket:
+    keystroke: "[[ / ]]"
+    system: "I"
+    status: "implemented"
+    category: "navigation"
+    action: "Jump to previous/next function"
+    details:
+      ide_action_id: "MethodUp/MethodDown"
+      karabiner_code: "-"
+      ideavim_command: "[[/]]"
+      config_reference: ".ideavimrc:L210"
+      sequence_type: "vim_prefix"
+
+  curly_bracket:
+    keystroke: "[{ / ]}"
+    system: "I"
+    status: "implemented"
+    category: "navigation"
+    action: "Jump to previous/next unmatched brace"
+    details:
+      ide_action_id: "EditorMatchBrace"
+      karabiner_code: "-"
+      ideavim_command: "[{/]}"
+      config_reference: ".ideavimrc:L220"
+      sequence_type: "vim_prefix"
+
+  paren_bracket:
+    keystroke: "[( / ])"
+    system: "I"
+    status: "implemented"
+    category: "navigation"
+    action: "Jump to previous/next unmatched parenthesis"
+    details:
+      ide_action_id: "EditorMatchBrace"
+      karabiner_code: "-"
+      ideavim_command: "[(/])"
+      config_reference: ".ideavimrc:L230"
+      sequence_type: "vim_prefix"

@@ -68,6 +68,15 @@ def generate_combined_csv(h_data: Dict[str, Any], v_data: Dict[str, Any]) -> Lis
     
     return combined_data
 
+def generate_multi_config_csv(all_data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Combine multiple configuration files into single CSV dataset."""
+    combined_data = []
+    
+    for data in all_data:
+        combined_data.extend(flatten_binding_data(data))
+    
+    return combined_data
+
 def write_csv(data: List[Dict[str, Any]], output_file: Path, delimiter: str = ','):
     """Write data to CSV file with proper formatting."""
     if not data:
@@ -236,14 +245,20 @@ def generate_pivot_ready_csv(data: List[Dict[str, Any]], output_file: Path):
         for row in pivot_data:
             writer.writerow(row)
 
+def discover_yaml_files(data_dir: Path) -> List[Path]:
+    """Discover all YAML configuration files in the data directory."""
+    yaml_files = []
+    for file_path in data_dir.glob('*.yaml'):
+        # Skip schema files
+        if 'schema' not in file_path.name.lower():
+            yaml_files.append(file_path)
+    return sorted(yaml_files)
+
 def main():
     """Main script execution."""
     script_dir = Path(__file__).parent
     project_root = script_dir.parent
-    
-    # Input files
-    h_file = project_root / 'data' / 'horizontal-navigation.yaml'
-    v_file = project_root / 'data' / 'vertical-navigation.yaml'
+    data_dir = project_root / 'data'
     
     # Output directory
     output_dir = project_root / 'generated'
@@ -255,25 +270,27 @@ def main():
     pivot_csv = output_dir / 'bindings-pivot.csv'
     tsv_file = output_dir / 'bindings.tsv'  # Tab-separated for different tools
     
-    # Ensure input files exist
-    if not h_file.exists():
-        print(f"Error: {h_file} not found", file=sys.stderr)
-        sys.exit(1)
-    if not v_file.exists():
-        print(f"Error: {v_file} not found", file=sys.stderr)
+    # Discover all YAML files
+    yaml_files = discover_yaml_files(data_dir)
+    
+    if not yaml_files:
+        print(f"Error: No YAML configuration files found in {data_dir}", file=sys.stderr)
         sys.exit(1)
     
     try:
-        # Load YAML data
-        print(f"Loading {h_file}...")
-        h_data = load_yaml_data(h_file)
+        # Load all YAML data
+        all_data = []
+        total_bindings = 0
         
-        print(f"Loading {v_file}...")
-        v_data = load_yaml_data(v_file)
+        for yaml_file in yaml_files:
+            print(f"Loading {yaml_file}...")
+            data = load_yaml_data(yaml_file)
+            all_data.append(data)
+            total_bindings += len(data['bindings'])
         
         # Generate combined dataset
         print("Processing binding data...")
-        combined_data = generate_combined_csv(h_data, v_data)
+        combined_data = generate_multi_config_csv(all_data)
         
         # Generate main CSV
         print(f"Generating {main_csv}...")

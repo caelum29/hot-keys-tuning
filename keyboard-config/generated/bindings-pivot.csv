@@ -1,4 +1,18 @@
 Navigation,Keys,Binding,System,Status,Category,HasIdeAction,HasKarabiner,HasIdeaVim,IsImplemented,ConfigFile
+Bracket,"[, ]",None,I,Implemented,Navigation,Yes,Yes,Yes,Yes,.ideavimrc
+Bracket,"[, ]",Shift,W,Implemented,Selection,Yes,Yes,Yes,Yes,keymap.xml
+Bracket,"[, ]",Ctrl,W+I,Implemented,Navigation,Yes,Yes,Yes,Yes,keymap.xml
+Bracket,"[, ]",Alt,W,Implemented,Navigation,Yes,Yes,Yes,Yes,keymap.xml
+Bracket,"[, ]",Cmd,W,Implemented,Navigation,Yes,Yes,Yes,Yes,keymap.xml
+Bracket,"[, ]",Shift Ctrl,-,Planned,Selection,Yes,Yes,Yes,No,-
+Bracket,"[, ]",Shift Alt,-,Planned,Selection,Yes,Yes,No,No,-
+Bracket,"[, ]",Shift Cmd,W,Implemented,Navigation,Yes,Yes,Yes,Yes,keymap.xml
+Bracket,"[, ]",Ctrl Alt,-,Planned,Navigation,Yes,Yes,Yes,No,-
+Bracket,"[, ]",Ctrl Cmd,-,Planned,Navigation,Yes,Yes,Yes,No,-
+Bracket,"[, ]",Alt Cmd,-,Planned,Action,Yes,Yes,Yes,No,-
+Bracket,"[, ]",Double Bracket,I,Implemented,Navigation,Yes,No,Yes,Yes,.ideavimrc
+Bracket,"[, ]",Curly Bracket,I,Implemented,Navigation,Yes,No,Yes,Yes,.ideavimrc
+Bracket,"[, ]",Paren Bracket,I,Implemented,Navigation,Yes,No,Yes,Yes,.ideavimrc
 Horizontal,"H, L",None,I,Implemented,Navigation,Yes,Yes,Yes,Yes,.ideavimrc
 Horizontal,"H, L",Shift,W,Implemented,Selection,Yes,Yes,Yes,Yes,keymap.xml
 Horizontal,"H, L",Ctrl,W+I,Implemented,Text_Edit,Yes,Yes,Yes,Yes,keymap.xml
@@ -47,6 +61,20 @@ Horizontal,"H, L",Mark Horizontal,I,Planned,Sequence,No,No,Yes,No,-
 Horizontal,"H, L",Jump Mark,I,Planned,Sequence,No,No,Yes,No,-
 Horizontal,"H, L",Register Horizontal,I,Planned,Sequence,No,No,Yes,No,-
 Horizontal,"H, L",Backslash Leader,I,Planned,Leader,No,No,Yes,No,-
+Individual,Space,None,K,Implemented,Action,Yes,Yes,Yes,Yes,karabiner.json
+Individual,Space,Shift,K,Implemented,Action,Yes,Yes,Yes,Yes,karabiner.json
+Individual,Space,Ctrl,W,Implemented,Action,Yes,Yes,Yes,Yes,keymap.xml
+Individual,Space,Alt,K,Implemented,Window,Yes,Yes,No,Yes,karabiner.json
+Individual,Space,Cmd,K,Implemented,Window,Yes,Yes,No,Yes,system
+Individual,Space,Shift Ctrl,W,Implemented,Action,Yes,Yes,Yes,Yes,keymap.xml
+Individual,Space,Shift Alt,-,Planned,Window,No,Yes,No,No,-
+Individual,Space,Shift Cmd,-,Planned,Action,Yes,Yes,No,No,-
+Individual,Space,Ctrl Alt,-,Planned,Window,No,Yes,No,No,-
+Individual,Space,Ctrl Cmd,W,Implemented,Action,Yes,Yes,No,Yes,system
+Individual,Space,Alt Cmd,-,Planned,Window,Yes,Yes,No,No,-
+Individual,Space,Leader Space,I,Planned,Leader,No,No,Yes,No,-
+Individual,Space,Double Tap,K,Planned,Timing,Yes,Yes,Yes,No,-
+Individual,Space,Long Press,K,Planned,Timing,No,Yes,No,No,-
 Vertical,"J, K",None,I,Implemented,Navigation,Yes,Yes,Yes,Yes,.ideavimrc
 Vertical,"J, K",Shift,W,Implemented,Selection,Yes,Yes,Yes,Yes,keymap.xml
 Vertical,"J, K",Ctrl,W,Implemented,Navigation,Yes,Yes,No,Yes,keymap.xml

@@ -15,17 +15,17 @@ required:
 properties:
   navigation_type:
     type: "string"
-    enum: ["horizontal", "vertical"]
-    description: "Type of navigation these bindings control"
+    enum: ["horizontal", "vertical", "bracket", "custom", "individual", "pair"]
+    description: "Type of navigation these bindings control (horizontal=H/L, vertical=J/K, bracket=[], custom=user-defined pairs, individual=single key, pair=any two-key combination)"
 
   keys:
     type: "array"
     items:
       type: "string"
-      pattern: "^[A-Z]$"
+      pattern: "^[A-Z\[\]\s\-=;',./`~!@#$%^&*()_+{}|:\"<>?]$"
     minItems: 1
     maxItems: 4
-    description: "Primary keys these bindings apply to (e.g., ['H', 'L'])"
+    description: "Primary keys these bindings apply to (e.g., ['H', 'L'], ['[', ']'], ['Space'], ['N', 'M'])"
 
   description:
     type: "string"
@@ -47,7 +47,7 @@ properties:
         keystroke:
           type: "string"
           description: "Human-readable keystroke representation"
-          pattern: "^[✱⇧⌃⌥⌘GHJKL/<>Leader()\\\\+\"'\\[\\]zyvcmdaiholdtapclick:scroll\\-\\s]+$"
+          pattern: "^[✱⇧⌃⌥⌘GHJKLNM\\[\\]/<>Leader()\\\\+\"'zyvcmdaiholdtapclickscroll\\-\\s=;',./`~!@#$%^&*()_+{}|:\\\"<>?Space]+$"
 
         system:
           type: "string"

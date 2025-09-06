@@ -1,4 +1,18 @@
 navigation_type	keys	binding_key	modifier	keystroke	system	status	category	action	ide_action_id	karabiner_code	ideavim_command	config_reference	notes	timing_ms	sequence_type	chord_keys	press_type
+bracket	[, ]	none	None	[ / ]	I	implemented	navigation	Previous/Next method or code block	MethodUp/MethodDown	open_bracket/close_bracket	[[/]]	.ideavimrc:L200					
+bracket	[, ]	shift	Shift	⇧[ / ⇧]	W	implemented	selection	Select to previous/next code block	EditorCodeBlockStartWithSelection/EditorCodeBlockEndWithSelection	shift+open_bracket/shift+close_bracket	v[[/v]]	keymap.xml:L150					
+bracket	[, ]	ctrl	Ctrl	⌃[ / ⌃]	W+I	implemented	navigation	Previous/Next error or issue	GotoPreviousError/GotoNextError	ctrl+open_bracket/ctrl+close_bracket	[e/]e	keymap.xml:L160					
+bracket	[, ]	alt	Alt	⌥[ / ⌥]	W	implemented	navigation	Navigate to previous/next change marker	VcsShowPrevChangeMarker/VcsShowNextChangeMarker	alt+open_bracket/alt+close_bracket	[c/]c	keymap.xml:L170					
+bracket	[, ]	cmd	Cmd	⌘[ / ⌘]	W	implemented	navigation	Back/Forward in navigation history	Back/Forward	cmd+open_bracket/cmd+close_bracket	:action Back/:action Forward	keymap.xml:L180					
+bracket	[, ]	shift_ctrl	Shift Ctrl	⇧⌃[ / ⇧⌃]	-	planned	selection	Select to previous/next paragraph	EditorBackwardParagraphWithSelection/EditorForwardParagraphWithSelection	shift+ctrl+open_bracket/shift+ctrl+close_bracket	v{/v}	-					
+bracket	[, ]	shift_alt	Shift Alt	⇧⌥[ / ⇧⌥]	-	planned	selection	Select to previous/next fold	EditorMoveToPageTopWithSelection/EditorMoveToPageBottomWithSelection	shift+alt+open_bracket/shift+alt+close_bracket	-	-					
+bracket	[, ]	shift_cmd	Shift Cmd	⇧⌘[ / ⇧⌘]	W	implemented	navigation	Navigate tabs left/right	PreviousTab/NextTab	shift+cmd+open_bracket/shift+cmd+close_bracket	gt/gT	keymap.xml:L190					
+bracket	[, ]	ctrl_alt	Ctrl Alt	⌃⌥[ / ⌃⌥]	-	planned	navigation	Navigate between split panes	PrevSplitter/NextSplitter	ctrl+alt+open_bracket/ctrl+alt+close_bracket	:wincmd h/:wincmd l	-					
+bracket	[, ]	ctrl_cmd	Ctrl Cmd	⌃⌘[ / ⌃⌘]	-	planned	navigation	Previous/Next bookmark	GotoPreviousBookmark/GotoNextBookmark	ctrl+cmd+open_bracket/ctrl+cmd+close_bracket	[m/]m	-					
+bracket	[, ]	alt_cmd	Alt Cmd	⌥⌘[ / ⌥⌘]	-	planned	action	Fold/Unfold code block	CollapseBlock/ExpandBlock	alt+cmd+open_bracket/alt+cmd+close_bracket	zc/zo	-					
+bracket	[, ]	double_bracket	Double Bracket	[[ / ]]	I	implemented	navigation	Jump to previous/next function	MethodUp/MethodDown	-	[[/]]	.ideavimrc:L210			vim_prefix		
+bracket	[, ]	curly_bracket	Curly Bracket	[{ / ]}	I	implemented	navigation	Jump to previous/next unmatched brace	EditorMatchBrace	-	[{/]}	.ideavimrc:L220			vim_prefix		
+bracket	[, ]	paren_bracket	Paren Bracket	[( / ])	I	implemented	navigation	Jump to previous/next unmatched parenthesis	EditorMatchBrace	-	[(/])	.ideavimrc:L230			vim_prefix		
 horizontal	H, L	none	None	H / L	I	implemented	navigation	Previous/Next bookmark	BookmarksAction	h/l	]'/'[	.ideavimrc:L120					
 horizontal	H, L	shift	Shift	⇧H / ⇧L	W	implemented	selection	Navigate to prev/next bookmark	SelectPreviousTab/SelectNextTab	shift+h/l	:action SelectPreviousTab	keymap.xml:L56					
 horizontal	H, L	ctrl	Ctrl	⌃H / ⌃L	W+I	implemented	text_edit	Editor join lines/Custom	EditorJoinLines	ctrl+h/l	J	keymap.xml:L33					
@@ -47,6 +61,20 @@ horizontal	H, L	mark_horizontal	Mark Horizontal	mH / mL	I	planned	sequence	Mark 
 horizontal	H, L	jump_mark	Jump Mark	'H / 'L	I	planned	sequence	Jump to horizontal mark	Custom	-	'h/'l	-			vim_prefix		
 horizontal	H, L	register_horizontal	Register Horizontal	"""H / ""L"	I	planned	sequence	Register horizontal action	Custom	-	"""h/""l"	-			vim_prefix		
 horizontal	H, L	backslash_leader	Backslash Leader	\H / \L	I	planned	leader	Backslash leader horizontal	Custom	-	\h/\l	-			leader		
+individual	Space	none	None	Space	K	implemented	action	Insert space character	EditorSpace	spacebar	 	karabiner.json:L500					
+individual	Space	shift	Shift	⇧Space	K	implemented	action	Page up (reverse scroll)	EditorPageUp	shift+spacebar	⌃b	karabiner.json:L510					
+individual	Space	ctrl	Ctrl	⌃Space	W	implemented	action	Basic code completion	CodeCompletion	ctrl+spacebar	:action CodeCompletion	keymap.xml:L300					
+individual	Space	alt	Alt	⌥Space	K	implemented	window	Spotlight search	System.Spotlight	alt+spacebar	-	karabiner.json:L520					
+individual	Space	cmd	Cmd	⌘Space	K	implemented	window	Spotlight search (system default)	System.Spotlight	cmd+spacebar	-	system:default					
+individual	Space	shift_ctrl	Shift Ctrl	⇧⌃Space	W	implemented	action	Smart code completion	SmartTypeCompletion	shift+ctrl+spacebar	:action SmartTypeCompletion	keymap.xml:L310					
+individual	Space	shift_alt	Shift Alt	⇧⌥Space	-	planned	window	Toggle window manager mode	Custom	shift+alt+spacebar	-	-					
+individual	Space	shift_cmd	Shift Cmd	⇧⌘Space	-	planned	action	Character viewer	System.CharacterViewer	shift+cmd+spacebar	-	-					
+individual	Space	ctrl_alt	Ctrl Alt	⌃⌥Space	-	planned	window	Application switcher	Custom	ctrl+alt+spacebar	-	-					
+individual	Space	ctrl_cmd	Ctrl Cmd	⌃⌘Space	W	implemented	action	Emoji picker	System.EmojiPicker	ctrl+cmd+spacebar	-	system:default					
+individual	Space	alt_cmd	Alt Cmd	⌥⌘Space	-	planned	window	Finder search	System.FinderSearch	alt+cmd+spacebar	-	-					
+individual	Space	leader_space	Leader Space	<Leader>Space	I	planned	leader	Clear search highlighting	Custom	-	<Leader><Space>	-			leader		
+individual	Space	double_tap	Double Tap	Space Space	K	planned	timing	Quick action menu	GotoAction	spacebar+spacebar	:action GotoAction	-		300	double_tap		double
+individual	Space	long_press	Long Press	Space(hold)	K	planned	timing	Activate window management mode	Custom	spacebar_hold	-	-		500	long_press		hold
 vertical	J, K	none	None	J / K	I	implemented	navigation	Move down/up line by line	EditorDown/EditorUp	j/k	J/<C-v>k	.ideavimrc:L91					
 vertical	J, K	shift	Shift	⇧J / ⇧K	W	implemented	selection	Extend selection down/up	EditorDownWithSelection/EditorUpWithSelection	shift+j/k	vj/vk	keymap.xml:L92					
 vertical	J, K	ctrl	Ctrl	⌃J / ⌃K	W	implemented	navigation	Scroll down/up with cursor	EditorMoveDownAndScroll/EditorMoveUpAndScroll	ctrl+j/k	-	keymap.xml:L93					

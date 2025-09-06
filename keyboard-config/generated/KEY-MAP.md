@@ -1,11 +1,8 @@
-# Keyboard Navigation Configuration
+# Keyboard Configuration System
 
 Generated from YAML configuration data. **DO NOT EDIT MANUALLY** - changes will be overwritten.
 
-This document provides comprehensive keyboard binding documentation for the unified productivity system.
-
-- For **horizontal navigation**, **H** corresponds to moving left and **L** corresponds to moving right.
-- For **vertical navigation**, **J** corresponds to moving down and **K** corresponds to moving up.
+This document provides comprehensive keyboard binding documentation for all configured keys in the unified productivity system.
 
 ## Legend
 
@@ -46,46 +43,64 @@ This document provides comprehensive keyboard binding documentation for the unif
 
 ## Implementation Summary
 
+### Configuration Overview
+| Navigation Type | Bindings | Description |
+|----------------|----------|-------------|
+| Bracket | 14 | Previous/next navigation with brackets |
+| Horizontal | 48 | Left/right navigation (H/L keys) |
+| Individual | 14 | Single key bindings |
+| Vertical | 47 | Up/down navigation (J/K keys) |
+
 ### Status Overview
 | Status | Count | Percentage |
 |--------|-------|------------|
-| ✅ Implemented | 28 | 29.5% |
-| ⚠️ Needs_Attention | 1 | 1.1% |
-| 📋 Planned | 66 | 69.5% |
+| ✅ Implemented | 44 | 35.8% |
+| ⚠️ Needs_Attention | 1 | 0.8% |
+| 📋 Planned | 78 | 63.4% |
 
 ### System Distribution
 | System | Count | Description |
 |--------|-------|-------------|
-| - | 35 | Not implemented |
-| I | 35 | IdeaVim only |
-| K | 8 | Karabiner only |
-| W | 16 | WebStorm only |
-| W+I | 1 | WebStorm + IdeaVim |
+| - | 44 | Not implemented |
+| I | 40 | IdeaVim only |
+| K | 14 | Karabiner only |
+| W | 23 | WebStorm only |
+| W+I | 2 | WebStorm + IdeaVim |
 
 ### Sequence Types
 | Type | Count | Description |
 |------|-------|-------------|
 | chord | 6 | Multiple keys pressed together |
-| double_tap | 10 | Double key press within timeout |
-| leader | 14 | Leader key prefix sequences |
-| long_press | 2 | Hold key for extended period |
+| double_tap | 11 | Double key press within timeout |
+| leader | 15 | Leader key prefix sequences |
+| long_press | 3 | Hold key for extended period |
 | tap_hold | 2 | Different actions for tap vs hold |
-| vim_prefix | 13 | Vim-style prefix commands |
+| vim_prefix | 16 | Vim-style prefix commands |
 
-### Timing-Based Bindings
-**14 bindings** use timing patterns:
-- 200ms timeout: 2 bindings
-- 500ms timeout: 10 bindings
-- 1000ms timeout: 2 bindings
+## Bracket Navigation Key Bindings ([, ])
 
-### Chord Combinations
-**6 bindings** use chord patterns:
-- H+L: 1 bindings
-- J+K: 1 bindings
-- click: 2 bindings
-- scroll: 2 bindings
+**Navigation Type**: Bracket  
+**Keys**: [, ]  
+**Description**: Previous/next item navigation using bracket keys for code blocks, errors, changes, and more
 
-## Horizontal Navigation Key Bindings (H / L)
+| Modifier | Keystroke | System | Status | Category | Action | **IDE Action ID** | Karabiner Code | IdeaVim Command | Config Reference |
+|----------|-----------|---------|---------|----------|---------|-------------------|----------------|-----------------|------------------|
+| None | [ / ] | I | ✅ | 🧭 Navigation | Previous/Next method or code block | `MethodUp/MethodDown` | `open_bracket/close_bracket` | `[[/]]` | .ideavimrc:L200 |
+| Shift | ⇧[ / ⇧] | W | ✅ | ✏️ Selection | Select to previous/next code block | `EditorCodeBlockStartWithSelection/EditorCodeBlockEndWithSelection` | `shift+open_bracket/shift+close_bracket` | `v[[/v]]` | keymap.xml:L150 |
+| Ctrl | ⌃[ / ⌃] | W+I | ✅ | 🧭 Navigation | Previous/Next error or issue | `GotoPreviousError/GotoNextError` | `ctrl+open_bracket/ctrl+close_bracket` | `[e/]e` | keymap.xml:L160 |
+| Alt | ⌥[ / ⌥] | W | ✅ | 🧭 Navigation | Navigate to previous/next change marker | `VcsShowPrevChangeMarker/VcsShowNextChangeMarker` | `alt+open_bracket/alt+close_bracket` | `[c/]c` | keymap.xml:L170 |
+| Cmd | ⌘[ / ⌘] | W | ✅ | 🧭 Navigation | Back/Forward in navigation history | `Back/Forward` | `cmd+open_bracket/cmd+close_bracket` | `:action Back/:action Forward` | keymap.xml:L180 |
+| Shift Ctrl | ⇧⌃[ / ⇧⌃] | - | 📋 | ✏️ Selection | Select to previous/next paragraph | `EditorBackwardParagraphWithSelection/EditorForwardParagraphWithSelection` | `shift+ctrl+open_bracket/shift+ctrl+close_bracket` | `v{/v}` | - |
+| Shift Alt | ⇧⌥[ / ⇧⌥] | - | 📋 | ✏️ Selection | Select to previous/next fold | `EditorMoveToPageTopWithSelection/EditorMoveToPageBottomWithSelection` | `shift+alt+open_bracket/shift+alt+close_bracket` | - | - |
+| Shift Cmd | ⇧⌘[ / ⇧⌘] | W | ✅ | 🧭 Navigation | Navigate tabs left/right | `PreviousTab/NextTab` | `shift+cmd+open_bracket/shift+cmd+close_bracket` | `gt/gT` | keymap.xml:L190 |
+| Ctrl Alt | ⌃⌥[ / ⌃⌥] | - | 📋 | 🧭 Navigation | Navigate between split panes | `PrevSplitter/NextSplitter` | `ctrl+alt+open_bracket/ctrl+alt+close_bracket` | `:wincmd h/:wincmd l` | - |
+| Ctrl Cmd | ⌃⌘[ / ⌃⌘] | - | 📋 | 🧭 Navigation | Previous/Next bookmark | `GotoPreviousBookmark/GotoNextBookmark` | `ctrl+cmd+open_bracket/ctrl+cmd+close_bracket` | `[m/]m` | - |
+| Alt Cmd | ⌥⌘[ / ⌥⌘] | - | 📋 | ⚙️ Action | Fold/Unfold code block | `CollapseBlock/ExpandBlock` | `alt+cmd+open_bracket/alt+cmd+close_bracket` | `zc/zo` | - |
+| Curly Bracket | [{ / ]} | I | ✅ | 🧭 Navigation | Jump to previous/next unmatched brace 🔗vim_prefix | `EditorMatchBrace` | `-` | `[{/]}` | .ideavimrc:L220 |
+| Double Bracket | [[ / ]] | I | ✅ | 🧭 Navigation | Jump to previous/next function 🔗vim_prefix | `MethodUp/MethodDown` | `-` | `[[/]]` | .ideavimrc:L210 |
+| Paren Bracket | [( / ]) | I | ✅ | 🧭 Navigation | Jump to previous/next unmatched parenthesis 🔗vim_prefix | `EditorMatchBrace` | `-` | `[(/])` | .ideavimrc:L230 |
+
+## Horizontal Navigation Key Bindings (H, L)
 
 **Navigation Type**: Horizontal  
 **Keys**: H, L  
@@ -142,7 +157,30 @@ This document provides comprehensive keyboard binding documentation for the unif
 | Register Horizontal | "H / "L | I | 📋 | 🔗 Sequence | Register horizontal action 🔗vim_prefix | `Custom` | `-` | `"h/"l` | - |
 | Backslash Leader | \H / \L | I | 📋 | 👑 Leader | Backslash leader horizontal 🔗leader | `Custom` | `-` | `\h/\l` | - |
 
-## Vertical Navigation Key Bindings (J / K)
+## Individual Key Bindings (Space)
+
+**Navigation Type**: Individual  
+**Keys**: Space  
+**Description**: Space bar productivity bindings with modifier combinations for quick actions
+
+| Modifier | Keystroke | System | Status | Category | Action | **IDE Action ID** | Karabiner Code | IdeaVim Command | Config Reference |
+|----------|-----------|---------|---------|----------|---------|-------------------|----------------|-----------------|------------------|
+| None | Space | K | ✅ | ⚙️ Action | Insert space character | `EditorSpace` | `spacebar` | ` ` | karabiner.json:L500 |
+| Shift | ⇧Space | K | ✅ | ⚙️ Action | Page up (reverse scroll) | `EditorPageUp` | `shift+spacebar` | `⌃b` | karabiner.json:L510 |
+| Ctrl | ⌃Space | W | ✅ | ⚙️ Action | Basic code completion | `CodeCompletion` | `ctrl+spacebar` | `:action CodeCompletion` | keymap.xml:L300 |
+| Alt | ⌥Space | K | ✅ | 🪟 Window | Spotlight search | `System.Spotlight` | `alt+spacebar` | - | karabiner.json:L520 |
+| Cmd | ⌘Space | K | ✅ | 🪟 Window | Spotlight search (system default) | `System.Spotlight` | `cmd+spacebar` | - | system:default |
+| Shift Ctrl | ⇧⌃Space | W | ✅ | ⚙️ Action | Smart code completion | `SmartTypeCompletion` | `shift+ctrl+spacebar` | `:action SmartTypeCompletion` | keymap.xml:L310 |
+| Shift Alt | ⇧⌥Space | - | 📋 | 🪟 Window | Toggle window manager mode | `Custom` | `shift+alt+spacebar` | - | - |
+| Shift Cmd | ⇧⌘Space | - | 📋 | ⚙️ Action | Character viewer | `System.CharacterViewer` | `shift+cmd+spacebar` | - | - |
+| Ctrl Alt | ⌃⌥Space | - | 📋 | 🪟 Window | Application switcher | `Custom` | `ctrl+alt+spacebar` | - | - |
+| Ctrl Cmd | ⌃⌘Space | W | ✅ | ⚙️ Action | Emoji picker | `System.EmojiPicker` | `ctrl+cmd+spacebar` | - | system:default |
+| Alt Cmd | ⌥⌘Space | - | 📋 | 🪟 Window | Finder search | `System.FinderSearch` | `alt+cmd+spacebar` | - | - |
+| Double Tap | Space Space | K | 📋 | ⏱️ Timing | Quick action menu ⏱️300ms 🔗double_tap 👆double | `GotoAction` | `spacebar+spacebar` | `:action GotoAction` | - |
+| Long Press | Space(hold) | K | 📋 | ⏱️ Timing | Activate window management mode ⏱️500ms 🔗long_press 👆hold | `Custom` | `spacebar_hold` | - | - |
+| Leader Space | <Leader>Space | I | 📋 | 👑 Leader | Clear search highlighting 🔗leader | `Custom` | `-` | `<Leader><Space>` | - |
+
+## Vertical Navigation Key Bindings (J, K)
 
 **Navigation Type**: Vertical  
 **Keys**: J, K  
@@ -201,4 +239,4 @@ This document provides comprehensive keyboard binding documentation for the unif
 ---
 
 *Generated automatically from YAML configuration data.*
-*Source files: `horizontal-navigation.yaml`, `vertical-navigation.yaml`*
+*Source files: `bracket-navigation.yaml`, `horizontal-navigation.yaml`, `individual-navigation.yaml`, `vertical-navigation.yaml`*

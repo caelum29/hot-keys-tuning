@@ -334,37 +334,264 @@ def generate_full_markdown(h_data: Dict[str, Any], v_data: Dict[str, Any]) -> st
     
     return '\n'.join(lines)
 
+def generate_multi_config_markdown(all_data: List[Dict[str, Any]]) -> str:
+    """Generate markdown document for multiple configuration files."""
+    lines = []
+    
+    # Header
+    lines.extend([
+        "# Keyboard Configuration System",
+        "",
+        "Generated from YAML configuration data. **DO NOT EDIT MANUALLY** - changes will be overwritten.",
+        "",
+        "This document provides comprehensive keyboard binding documentation for all configured keys in the unified productivity system.",
+        "",
+        "## Legend",
+        "",
+        "### Systems",
+        "- **I**: IdeaVim (editor-level vim emulation)",
+        "- **W**: WebStorm (IDE-level keymaps)", 
+        "- **K**: Karabiner Elements (system-wide key modifications)",
+        "- Combinations indicate multi-system bindings",
+        "",
+        "### Status Icons",
+        "- ✅ **Implemented**: Fully configured and working",
+        "- 📋 **Planned**: Identified for future implementation",
+        "- ⚠️ **Needs Attention**: Requires fixes or remapping",
+        "- ❌ **Disabled**: Intentionally disabled",
+        "- ⚡ **Conflict**: Conflicts with other bindings",
+        "",
+        "### Category Icons",
+        "- ⏱️ **Timing**: Double tap, long press, tap/hold patterns",
+        "- 🎹 **Chord**: Multiple keys pressed simultaneously",
+        "- 👑 **Leader**: Leader key prefix sequences",
+        "- 🔗 **Sequence**: Multi-step key sequences",
+        "- 🧭 **Navigation**: Movement and positioning",
+        "- ✏️ **Selection**: Text and object selection",
+        "- 📝 **Text Edit**: Text manipulation and editing",
+        "- 🪟 **Window**: Window and pane management",
+        "- 🖥️ **Desktop**: Desktop and workspace control",
+        "- ⚙️ **Action**: IDE actions and commands",
+        "- 🎛️ **Custom**: Custom or unspecified actions",
+        "- 🖱️ **Mouse**: Mouse-related operations",
+        "",
+        "### Field Indicators",
+        "- ⏱️500ms: Timing window (double tap/long press)",
+        "- 🔗double_tap: Sequence type",
+        "- 🎹H+J: Chord keys combination",
+        "- 👆hold: Press type requirement",
+        "",
+        "---",
+        ""
+    ])
+    
+    # Generate overall summary statistics
+    lines.extend(generate_multi_config_summary_stats(all_data))
+    
+    # Generate section for each configuration
+    source_files = []
+    for data in all_data:
+        nav_type = data['navigation_type']
+        keys_str = ', '.join(data['keys'])
+        
+        # Create friendly section title based on navigation type and keys
+        if nav_type == 'horizontal':
+            section_title = f"Horizontal Navigation Key Bindings ({keys_str})"
+        elif nav_type == 'vertical':
+            section_title = f"Vertical Navigation Key Bindings ({keys_str})"
+        elif nav_type == 'bracket':
+            section_title = f"Bracket Navigation Key Bindings ({keys_str})"
+        elif nav_type == 'individual':
+            section_title = f"Individual Key Bindings ({keys_str})"
+        else:
+            section_title = f"{nav_type.title()} Key Bindings ({keys_str})"
+        
+        lines.extend([
+            f"## {section_title}",
+            "",
+            f"**Navigation Type**: {nav_type.title()}  ",
+            f"**Keys**: {keys_str}  ",
+            f"**Description**: {data['description']}",
+            ""
+        ])
+        lines.extend(generate_navigation_table(data))
+        lines.append("")
+        
+        # Track source file names for footer
+        source_files.append(f"{nav_type}-navigation.yaml")
+    
+    lines.extend([
+        "---",
+        "",
+        "*Generated automatically from YAML configuration data.*",
+        f"*Source files: {', '.join(f'`{f}`' for f in source_files)}*"
+    ])
+    
+    return '\n'.join(lines)
+
+def generate_multi_config_summary_stats(all_data: List[Dict[str, Any]]) -> List[str]:
+    """Generate summary statistics for multiple configuration files."""
+    lines = []
+    
+    # Collect all bindings
+    all_bindings = []
+    config_counts = {}
+    navigation_type_counts = {}
+    
+    for data in all_data:
+        nav_type = data['navigation_type']
+        bindings = list(data['bindings'].values())
+        all_bindings.extend(bindings)
+        config_counts[nav_type] = len(bindings)
+        navigation_type_counts[nav_type] = navigation_type_counts.get(nav_type, 0) + 1
+    
+    # Count bindings by status, system, category
+    status_counts = {}
+    system_counts = {}
+    category_counts = {}
+    sequence_type_counts = {}
+    timing_bindings = []
+    chord_bindings = []
+    
+    for binding in all_bindings:
+        status = binding['status']
+        system = binding['system']
+        category = binding['category']
+        details = binding['details']
+        
+        status_counts[status] = status_counts.get(status, 0) + 1
+        system_counts[system] = system_counts.get(system, 0) + 1
+        category_counts[category] = category_counts.get(category, 0) + 1
+        
+        if 'sequence_type' in details:
+            seq_type = details['sequence_type']
+            sequence_type_counts[seq_type] = sequence_type_counts.get(seq_type, 0) + 1
+            
+        if 'timing_ms' in details:
+            timing_bindings.append(binding)
+            
+        if 'chord_keys' in details and details['chord_keys']:
+            chord_bindings.append(binding)
+    
+    lines.append("## Implementation Summary")
+    lines.append("")
+    
+    # Configuration overview
+    lines.append("### Configuration Overview")
+    lines.append("| Navigation Type | Bindings | Description |")
+    lines.append("|----------------|----------|-------------|")
+    
+    type_descriptions = {
+        'horizontal': 'Left/right navigation (H/L keys)',
+        'vertical': 'Up/down navigation (J/K keys)', 
+        'bracket': 'Previous/next navigation with brackets',
+        'individual': 'Single key bindings',
+        'custom': 'Custom key pair combinations',
+        'pair': 'Two-key combinations'
+    }
+    
+    for nav_type, count in sorted(config_counts.items()):
+        desc = type_descriptions.get(nav_type, 'Custom navigation type')
+        lines.append(f"| {nav_type.title()} | {count} | {desc} |")
+    
+    lines.append("")
+    
+    # Status breakdown
+    lines.append("### Status Overview")
+    lines.append("| Status | Count | Percentage |")
+    lines.append("|--------|-------|------------|")
+    
+    total = len(all_bindings)
+    for status, count in sorted(status_counts.items()):
+        emoji = status_to_emoji(status)
+        percentage = round(count / total * 100, 1)
+        lines.append(f"| {emoji} {status.title()} | {count} | {percentage}% |")
+    
+    lines.append("")
+    
+    # System breakdown
+    lines.append("### System Distribution")
+    lines.append("| System | Count | Description |")
+    lines.append("|--------|-------|-------------|")
+    
+    system_names = {
+        'I': 'IdeaVim only',
+        'W': 'WebStorm only', 
+        'K': 'Karabiner only',
+        'W+I': 'WebStorm + IdeaVim',
+        'K+W': 'Karabiner + WebStorm',
+        'K+I': 'Karabiner + IdeaVim',
+        'K+W+I': 'All systems',
+        '-': 'Not implemented'
+    }
+    
+    for system, count in sorted(system_counts.items()):
+        desc = system_names.get(system, 'Unknown')
+        lines.append(f"| {system} | {count} | {desc} |")
+    
+    # Additional statistics similar to the original function
+    if sequence_type_counts:
+        lines.append("")
+        lines.append("### Sequence Types")
+        lines.append("| Type | Count | Description |")
+        lines.append("|------|-------|-------------|")
+        
+        type_descriptions = {
+            'double_tap': 'Double key press within timeout',
+            'long_press': 'Hold key for extended period',
+            'tap_hold': 'Different actions for tap vs hold',
+            'leader': 'Leader key prefix sequences',
+            'vim_prefix': 'Vim-style prefix commands',
+            'text_object': 'Vim text object operations',
+            'chord': 'Multiple keys pressed together'
+        }
+        
+        for seq_type, count in sorted(sequence_type_counts.items()):
+            desc = type_descriptions.get(seq_type, 'Custom sequence type')
+            lines.append(f"| {seq_type} | {count} | {desc} |")
+
+    lines.append("")
+    return lines
+
+def discover_yaml_files(data_dir: Path) -> List[Path]:
+    """Discover all YAML configuration files in the data directory."""
+    yaml_files = []
+    for file_path in data_dir.glob('*.yaml'):
+        # Skip schema files
+        if 'schema' not in file_path.name.lower():
+            yaml_files.append(file_path)
+    return sorted(yaml_files)
+
 def main():
     """Main script execution."""
     script_dir = Path(__file__).parent
     project_root = script_dir.parent
-    
-    # Input files
-    h_file = project_root / 'data' / 'horizontal-navigation.yaml'
-    v_file = project_root / 'data' / 'vertical-navigation.yaml'
+    data_dir = project_root / 'data'
     
     # Output file
     output_file = project_root / 'generated' / 'KEY-MAP.md'
     
-    # Ensure input files exist
-    if not h_file.exists():
-        print(f"Error: {h_file} not found", file=sys.stderr)
-        sys.exit(1)
-    if not v_file.exists():
-        print(f"Error: {v_file} not found", file=sys.stderr)
+    # Discover all YAML files
+    yaml_files = discover_yaml_files(data_dir)
+    
+    if not yaml_files:
+        print(f"Error: No YAML configuration files found in {data_dir}", file=sys.stderr)
         sys.exit(1)
     
     try:
-        # Load YAML data
-        print(f"Loading {h_file}...")
-        h_data = load_yaml_data(h_file)
+        # Load all YAML data
+        all_data = []
+        total_bindings = 0
         
-        print(f"Loading {v_file}...")  
-        v_data = load_yaml_data(v_file)
+        for yaml_file in yaml_files:
+            print(f"Loading {yaml_file}...")
+            data = load_yaml_data(yaml_file)
+            all_data.append(data)
+            total_bindings += len(data['bindings'])
         
         # Generate markdown
         print("Generating markdown documentation...")
-        markdown = generate_full_markdown(h_data, v_data)
+        markdown = generate_multi_config_markdown(all_data)
         
         # Ensure output directory exists
         output_file.parent.mkdir(parents=True, exist_ok=True)
@@ -374,7 +601,8 @@ def main():
             f.write(markdown)
         
         print(f"Generated: {output_file}")
-        print(f"Total bindings processed: {len(h_data['bindings']) + len(v_data['bindings'])}")
+        print(f"Total configuration files processed: {len(all_data)}")
+        print(f"Total bindings processed: {total_bindings}")
         
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
