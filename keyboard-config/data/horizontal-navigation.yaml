@@ -70,10 +70,10 @@ bindings:
     keystroke: "⇧⌃H / ⇧⌃L"
     system: "-"
     status: "planned"
-    category: "custom"
-    action: "Custom action"
+    category: "selection"
+    action: "Select to word start/end with hump mode"
     details:
-      ide_action_id: "Custom"
+      ide_action_id: "EditorPreviousWordInDifferentHumpsModeWithSelection/EditorNextWordInDifferentHumpsModeWithSelection"
       karabiner_code: "shift+ctrl+h/l"
       ideavim_command: "-"
       config_reference: "-"
@@ -106,10 +106,10 @@ bindings:
     keystroke: "⌃⌥H / ⌃⌥L"
     system: "-"
     status: "planned"
-    category: "custom"
-    action: "Custom action"
+    category: "navigation"
+    action: "Page navigation left/right"
     details:
-      ide_action_id: "Custom"
+      ide_action_id: "EditorPageUp/EditorPageDown"
       karabiner_code: "ctrl+alt+h/l"
       ideavim_command: "-"
       config_reference: "-"
@@ -118,10 +118,10 @@ bindings:
     keystroke: "⌃⌘H / ⌃⌘L"
     system: "-"
     status: "planned"
-    category: "custom"
-    action: "Custom action"
+    category: "navigation"
+    action: "Move to page top/bottom"
     details:
-      ide_action_id: "Custom"
+      ide_action_id: "EditorMoveToPageTop/EditorMoveToPageBottom"
       karabiner_code: "ctrl+cmd+h/l"
       ideavim_command: "-"
       config_reference: "-"
@@ -319,3 +319,311 @@ bindings:
       karabiner_code: "-"
       ideavim_command: "zh/zl"
       config_reference: ".ideavimrc:L85"
+
+  # Double tap combinations
+  double_tap:
+    keystroke: "HH / LL"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Double tap action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "h+h/l+l"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "double_tap"
+      timing_ms: 500
+      press_type: "double"
+
+  shift_double_tap:
+    keystroke: "⇧HH / ⇧LL"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Shift + double tap"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "shift+h+h/l+l"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "double_tap"
+      timing_ms: 500
+      press_type: "double"
+
+  ctrl_double_tap:
+    keystroke: "⌃HH / ⌃LL"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Control + double tap"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "ctrl+h+h/l+l"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "double_tap"
+      timing_ms: 500
+      press_type: "double"
+
+  alt_double_tap:
+    keystroke: "⌥HH / ⌥LL"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Alt + double tap"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "alt+h+h/l+l"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "double_tap"
+      timing_ms: 500
+      press_type: "double"
+
+  cmd_double_tap:
+    keystroke: "⌘HH / ⌘LL"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Command + double tap"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "cmd+h+h/l+l"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "double_tap"
+      timing_ms: 500
+      press_type: "double"
+
+  # Leader key sequences
+  leader:
+    keystroke: "<Leader>H / <Leader>L"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Leader + horizontal nav"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "<Leader>h/<Leader>l"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  leader_shift:
+    keystroke: "<Leader>⇧H / <Leader>⇧L"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Leader + shift + horizontal"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "<Leader>H/<Leader>L"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  leader_ctrl:
+    keystroke: "<Leader>⌃H / <Leader>⌃L"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Leader + control + horizontal"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "<Leader><C-h>/<Leader><C-l>"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  leader_alt:
+    keystroke: "<Leader>⌥H / <Leader>⌥L"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Leader + alt + horizontal"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "<Leader><A-h>/<Leader><A-l>"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  leader_cmd:
+    keystroke: "<Leader>⌘H / <Leader>⌘L"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Leader + command + horizontal"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "<Leader><D-h>/<Leader><D-l>"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  double_leader:
+    keystroke: "<Leader><Leader>H / <Leader><Leader>L"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Double leader + horizontal"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "<Leader><Leader>h/<Leader><Leader>l"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  # Long press variations
+  long_press:
+    keystroke: "H(hold) / L(hold)"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Long press activation"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "h_hold/l_hold"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "long_press"
+      timing_ms: 1000
+      press_type: "hold"
+
+  tap_hold:
+    keystroke: "H(tap/hold) / L(tap/hold)"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Different actions for tap vs hold"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "h_tap_hold/l_tap_hold"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "tap_hold"
+      timing_ms: 200
+      press_type: "tap_or_hold"
+
+  # Chord combinations
+  chord_vertical:
+    keystroke: "H+J / L+K"
+    system: "-"
+    status: "planned"
+    category: "chord"
+    action: "Horizontal + vertical chord"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "h+j/l+k"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "chord"
+      chord_keys: ["J", "K"]
+
+  chord_mouse:
+    keystroke: "H+click / L+click"
+    system: "-"
+    status: "planned"
+    category: "chord"
+    action: "Key + mouse button"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "h+click/l+click"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "chord"
+      chord_keys: ["click"]
+
+  chord_scroll:
+    keystroke: "H+scroll / L+scroll"
+    system: "-"
+    status: "planned"
+    category: "chord"
+    action: "Key + scroll wheel"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "h+scroll/l+scroll"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "chord"
+      chord_keys: ["scroll"]
+
+  # Additional Vim sequences
+  yank_horizontal:
+    keystroke: "yH / yL"
+    system: "I"
+    status: "planned"
+    category: "sequence"
+    action: "Yank horizontal motion"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "yh/yl"
+      config_reference: "-"
+      sequence_type: "vim_prefix"
+
+  visual_horizontal:
+    keystroke: "vH / vL"
+    system: "I"
+    status: "planned"
+    category: "sequence"
+    action: "Visual horizontal motion"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "vh/vl"
+      config_reference: "-"
+      sequence_type: "vim_prefix"
+
+  mark_horizontal:
+    keystroke: "mH / mL"
+    system: "I"
+    status: "planned"
+    category: "sequence"
+    action: "Mark horizontal position"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "mh/ml"
+      config_reference: "-"
+      sequence_type: "vim_prefix"
+
+  jump_mark:
+    keystroke: "'H / 'L"
+    system: "I"
+    status: "planned"
+    category: "sequence"
+    action: "Jump to horizontal mark"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "'h/'l"
+      config_reference: "-"
+      sequence_type: "vim_prefix"
+
+  register_horizontal:
+    keystroke: '"H / "L'
+    system: "I"
+    status: "planned"
+    category: "sequence"
+    action: "Register horizontal action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: '"h/"l'
+      config_reference: "-"
+      sequence_type: "vim_prefix"
+
+  backslash_leader:
+    keystroke: "\\H / \\L"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Backslash leader horizontal"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "\\h/\\l"
+      config_reference: "-"
+      sequence_type: "leader"

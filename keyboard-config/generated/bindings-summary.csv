@@ -1,17 +1,33 @@
 metric,value,count,percentage
-Status,implemented,28,58.3
-Status,needs_attention,1,2.1
-Status,planned,19,39.6
-System,-,15,31.2
-System,I,8,16.7
-System,K,8,16.7
-System,W,16,33.3
-System,W+I,1,2.1
-Category,action,7,14.6
-Category,custom,15,31.2
-Category,desktop,2,4.2
-Category,mouse,2,4.2
-Category,navigation,8,16.7
-Category,selection,4,8.3
-Category,text_edit,7,14.6
-Category,window,3,6.2
+Status,implemented,28,29.5
+Status,needs_attention,1,1.1
+Status,planned,66,69.5
+System,-,35,36.8
+System,I,35,36.8
+System,K,8,8.4
+System,W,16,16.8
+System,W+I,1,1.1
+Category,action,6,6.3
+Category,chord,6,6.3
+Category,custom,8,8.4
+Category,desktop,2,2.1
+Category,leader,14,14.7
+Category,mouse,2,2.1
+Category,navigation,14,14.7
+Category,selection,8,8.4
+Category,sequence,12,12.6
+Category,text_edit,6,6.3
+Category,timing,14,14.7
+Category,window,3,3.2
+Sequence Type,chord,6,6.3
+Sequence Type,double_tap,10,10.5
+Sequence Type,leader,14,14.7
+Sequence Type,long_press,2,2.1
+Sequence Type,tap_hold,2,2.1
+Sequence Type,vim_prefix,13,13.7
+Timing (ms),200,2,2.1
+Timing (ms),500,10,10.5
+Timing (ms),1000,2,2.1
+Press Type,double,10,10.5
+Press Type,hold,2,2.1
+Press Type,tap_or_hold,2,2.1

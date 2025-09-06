@@ -10,10 +10,10 @@ bindings:
     keystroke: "J / K"
     system: "I"  # IdeaVim
     status: "implemented"
-    category: "text_edit"
-    action: "Join lines/Visual selection"
+    category: "navigation"
+    action: "Move down/up line by line"
     details:
-      ide_action_id: "EditorJoinLines"
+      ide_action_id: "EditorDown/EditorUp"
       karabiner_code: "j/k"
       ideavim_command: "J/<C-v>k"
       config_reference: ".ideavimrc:L91"
@@ -34,10 +34,10 @@ bindings:
     keystroke: "⌃J / ⌃K"
     system: "W"
     status: "implemented"
-    category: "action"
-    action: "Custom action/Show navbar"
+    category: "navigation"
+    action: "Scroll down/up with cursor"
     details:
-      ide_action_id: "ShowNavBar"
+      ide_action_id: "EditorMoveDownAndScroll/EditorMoveUpAndScroll"
       karabiner_code: "ctrl+j/k"
       ideavim_command: "-"
       config_reference: "keymap.xml:L93"
@@ -70,10 +70,10 @@ bindings:
     keystroke: "⇧⌃J / ⇧⌃K"
     system: "-"
     status: "planned"
-    category: "custom"
-    action: "Custom action"
+    category: "selection"
+    action: "Select paragraph up/down"
     details:
-      ide_action_id: "Custom"
+      ide_action_id: "EditorBackwardParagraphWithSelection/EditorForwardParagraphWithSelection"
       karabiner_code: "shift+ctrl+j/k"
       ideavim_command: "-"
       config_reference: "-"
@@ -82,10 +82,10 @@ bindings:
     keystroke: "⇧⌥J / ⇧⌥K"
     system: "-"
     status: "planned"
-    category: "custom"
-    action: "Special char"
+    category: "selection"
+    action: "Select with scroll up/down"
     details:
-      ide_action_id: "Special"
+      ide_action_id: "EditorMoveUpAndScrollWithSelection/EditorMoveDownAndScrollWithSelection"
       karabiner_code: "shift+alt+j/k"
       ideavim_command: "-"
       config_reference: "-"
@@ -118,10 +118,10 @@ bindings:
     keystroke: "⌃⌘J / ⌃⌘K"
     system: "-"
     status: "planned"
-    category: "custom"
-    action: "Custom action"
+    category: "navigation"
+    action: "Document start/end navigation"
     details:
-      ide_action_id: "Custom"
+      ide_action_id: "EditorTextStart/EditorTextEnd"
       karabiner_code: "ctrl+cmd+j/k"
       ideavim_command: "-"
       config_reference: "-"
@@ -142,10 +142,10 @@ bindings:
     keystroke: "⇧⌃⌥J / ⇧⌃⌥K"
     system: "-"
     status: "planned"
-    category: "custom"
-    action: "Custom action"
+    category: "selection"
+    action: "Select to document start/end"
     details:
-      ide_action_id: "Custom"
+      ide_action_id: "EditorTextStartWithSelection/EditorTextEndWithSelection"
       karabiner_code: "shift+ctrl+alt+j/k"
       ideavim_command: "-"
       config_reference: "-"
@@ -271,3 +271,352 @@ bindings:
       karabiner_code: "-"
       ideavim_command: "[m/]m"
       config_reference: ".ideavimrc:L123"
+
+  # Double tap combinations
+  double_tap:
+    keystroke: "JJ / KK"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Double tap vertical action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "j+j/k+k"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "double_tap"
+      timing_ms: 500
+      press_type: "double"
+
+  shift_double_tap:
+    keystroke: "⇧JJ / ⇧KK"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Shift + double tap vertical"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "shift+j+j/k+k"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "double_tap"
+      timing_ms: 500
+      press_type: "double"
+
+  ctrl_double_tap:
+    keystroke: "⌃JJ / ⌃KK"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Control + double tap vertical"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "ctrl+j+j/k+k"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "double_tap"
+      timing_ms: 500
+      press_type: "double"
+
+  alt_double_tap:
+    keystroke: "⌥JJ / ⌥KK"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Alt + double tap vertical"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "alt+j+j/k+k"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "double_tap"
+      timing_ms: 500
+      press_type: "double"
+
+  cmd_double_tap:
+    keystroke: "⌘JJ / ⌘KK"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Command + double tap vertical"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "cmd+j+j/k+k"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "double_tap"
+      timing_ms: 500
+      press_type: "double"
+
+  # Leader key sequences
+  leader:
+    keystroke: "<Leader>J / <Leader>K"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Leader + vertical nav"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "<Leader>j/<Leader>k"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  leader_shift:
+    keystroke: "<Leader>⇧J / <Leader>⇧K"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Leader + shift + vertical"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "<Leader>J/<Leader>K"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  leader_ctrl:
+    keystroke: "<Leader>⌃J / <Leader>⌃K"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Leader + control + vertical"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "<Leader><C-j>/<Leader><C-k>"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  leader_alt:
+    keystroke: "<Leader>⌥J / <Leader>⌥K"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Leader + alt + vertical"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "<Leader><A-j>/<Leader><A-k>"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  leader_cmd:
+    keystroke: "<Leader>⌘J / <Leader>⌘K"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Leader + command + vertical"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "<Leader><D-j>/<Leader><D-k>"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  double_leader:
+    keystroke: "<Leader><Leader>J / <Leader><Leader>K"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Double leader + vertical"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "<Leader><Leader>j/<Leader><Leader>k"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  # Long press variations
+  long_press:
+    keystroke: "J(hold) / K(hold)"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Long press vertical activation"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "j_hold/k_hold"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "long_press"
+      timing_ms: 1000
+      press_type: "hold"
+
+  tap_hold:
+    keystroke: "J(tap/hold) / K(tap/hold)"
+    system: "-"
+    status: "planned"
+    category: "timing"
+    action: "Different actions for tap vs hold vertical"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "j_tap_hold/k_tap_hold"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "tap_hold"
+      timing_ms: 200
+      press_type: "tap_or_hold"
+
+  # Chord combinations
+  chord_horizontal:
+    keystroke: "J+H / K+L"
+    system: "-"
+    status: "planned"
+    category: "chord"
+    action: "Vertical + horizontal chord"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "j+h/k+l"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "chord"
+      chord_keys: ["H", "L"]
+
+  chord_mouse:
+    keystroke: "J+click / K+click"
+    system: "-"
+    status: "planned"
+    category: "chord"
+    action: "Vertical + mouse button"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "j+click/k+click"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "chord"
+      chord_keys: ["click"]
+
+  chord_scroll:
+    keystroke: "J+scroll / K+scroll"
+    system: "-"
+    status: "planned"
+    category: "chord"
+    action: "Vertical + scroll wheel"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "j+scroll/k+scroll"
+      ideavim_command: "-"
+      config_reference: "-"
+      sequence_type: "chord"
+      chord_keys: ["scroll"]
+
+  # Additional Vim sequences
+  yank_vertical:
+    keystroke: "yJ / yK"
+    system: "I"
+    status: "planned"
+    category: "sequence"
+    action: "Yank vertical motion"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "yj/yk"
+      config_reference: "-"
+      sequence_type: "vim_prefix"
+
+  visual_vertical:
+    keystroke: "vJ / vK"
+    system: "I"
+    status: "planned"
+    category: "sequence"
+    action: "Visual vertical motion"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "vj/vk"
+      config_reference: "-"
+      sequence_type: "vim_prefix"
+
+  mark_vertical:
+    keystroke: "mJ / mK"
+    system: "I"
+    status: "planned"
+    category: "sequence"
+    action: "Mark vertical position"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "mj/mk"
+      config_reference: "-"
+      sequence_type: "vim_prefix"
+
+  jump_mark_vertical:
+    keystroke: "'J / 'K"
+    system: "I"
+    status: "planned"
+    category: "sequence"
+    action: "Jump to vertical mark"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "'j/'k"
+      config_reference: "-"
+      sequence_type: "vim_prefix"
+
+  register_vertical:
+    keystroke: '"J / "K'
+    system: "I"
+    status: "planned"
+    category: "sequence"
+    action: "Register vertical action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: '"j/"k'
+      config_reference: "-"
+      sequence_type: "vim_prefix"
+
+  backslash_leader_vertical:
+    keystroke: "\\J / \\K"
+    system: "I"
+    status: "planned"
+    category: "leader"
+    action: "Backslash leader vertical"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "\\j/\\k"
+      config_reference: "-"
+      sequence_type: "leader"
+
+  # Bracket navigation sequences
+  bracket_prev:
+    keystroke: "[J / [K"
+    system: "I"
+    status: "planned"
+    category: "sequence"
+    action: "Previous bracket vertical"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "[j/[k"
+      config_reference: "-"
+      sequence_type: "vim_prefix"
+
+  bracket_next:
+    keystroke: "]J / ]K"
+    system: "I"
+    status: "planned"
+    category: "sequence"
+    action: "Next bracket vertical"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "]j/]k"
+      config_reference: "-"
+      sequence_type: "vim_prefix"
+
+  # Scroll variations
+  scroll_vertical:
+    keystroke: "zJ / zK"
+    system: "I"
+    status: "planned"
+    category: "navigation"
+    action: "Scroll down/up multiple lines"
+    details:
+      ide_action_id: "ScrollAction"
+      karabiner_code: "-"
+      ideavim_command: "zj/zk"
+      config_reference: "-"
+      sequence_type: "vim_prefix"

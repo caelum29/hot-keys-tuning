@@ -47,7 +47,7 @@ properties:
         keystroke:
           type: "string"
           description: "Human-readable keystroke representation"
-          pattern: "^[✱⇧⌃⌥⌘GHJKL/\\s]+$"
+          pattern: "^[✱⇧⌃⌥⌘GHJKL/<>Leader()\\\\+\"'\\[\\]zyvcmdaiholdtapclick:scroll\\-\\s]+$"
 
         system:
           type: "string"
@@ -61,7 +61,7 @@ properties:
 
         category:
           type: "string"
-          enum: ["navigation", "selection", "text_edit", "window", "desktop", "action", "custom", "mouse"]
+          enum: ["navigation", "selection", "text_edit", "window", "desktop", "action", "custom", "mouse", "sequence", "timing", "chord", "leader"]
           description: "Functional category of the binding"
 
         action:
@@ -98,6 +98,29 @@ properties:
               type: "string"
               description: "Additional implementation notes or context"
 
+            timing_ms:
+              type: "integer"
+              minimum: 50
+              maximum: 5000
+              description: "Timeout window in milliseconds for timing-based bindings (double tap, long press)"
+
+            sequence_type:
+              type: "string"
+              enum: ["leader", "vim_prefix", "text_object", "chord", "double_tap", "long_press", "tap_hold"]
+              description: "Type of sequence or timing pattern for complex bindings"
+
+            chord_keys:
+              type: "array"
+              items:
+                type: "string"
+                pattern: "^[A-Z]$|^(click|scroll)$"
+              description: "Additional keys required for chord combinations"
+
+            press_type:
+              type: "string"
+              enum: ["tap", "hold", "double", "tap_or_hold"]
+              description: "Press pattern required for activation"
+
 # Additional validation rules
 additionalProperties: false
 
@@ -106,5 +129,5 @@ errorMessage:
   properties:
     system: "System must be one of: I, W, K, W+I, K+W, K+I, K+W+I, or - (none)"
     status: "Status must be: implemented, planned, needs_attention, disabled, or conflict"
-    category: "Category must be: navigation, selection, text_edit, window, desktop, action, custom, or mouse"
+    category: "Category must be: navigation, selection, text_edit, window, desktop, action, custom, mouse, sequence, timing, chord, or leader"
     config_reference: "Config reference must be in format 'file.ext:Lnnn' or '-'"

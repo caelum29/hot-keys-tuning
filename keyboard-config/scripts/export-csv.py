@@ -44,7 +44,12 @@ def flatten_binding_data(data: Dict[str, Any]) -> List[Dict[str, Any]]:
             'karabiner_code': details['karabiner_code'],
             'ideavim_command': details['ideavim_command'],
             'config_reference': details['config_reference'],
-            'notes': details.get('notes', '')  # Optional field
+            'notes': details.get('notes', ''),  # Optional field
+            # New optional fields
+            'timing_ms': details.get('timing_ms', ''),
+            'sequence_type': details.get('sequence_type', ''),
+            'chord_keys': ', '.join(details.get('chord_keys', [])) if details.get('chord_keys') else '',
+            'press_type': details.get('press_type', '')
         }
         
         flat_data.append(row)
@@ -83,7 +88,12 @@ def write_csv(data: List[Dict[str, Any]], output_file: Path, delimiter: str = ',
         'karabiner_code',
         'ideavim_command',
         'config_reference',
-        'notes'
+        'notes',
+        # New optional fields
+        'timing_ms',
+        'sequence_type',
+        'chord_keys',
+        'press_type'
     ]
     
     with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
@@ -104,15 +114,28 @@ def generate_summary_csv(data: List[Dict[str, Any]], output_file: Path):
     status_counts = {}
     system_counts = {}
     category_counts = {}
+    sequence_type_counts = {}
+    timing_counts = {}
+    press_type_counts = {}
     
     for row in data:
         status = row['status']
         system = row['system'] 
         category = row['category']
+        sequence_type = row['sequence_type']
+        timing_ms = row['timing_ms']
+        press_type = row['press_type']
         
         status_counts[status] = status_counts.get(status, 0) + 1
         system_counts[system] = system_counts.get(system, 0) + 1
         category_counts[category] = category_counts.get(category, 0) + 1
+        
+        if sequence_type:
+            sequence_type_counts[sequence_type] = sequence_type_counts.get(sequence_type, 0) + 1
+        if timing_ms:
+            timing_counts[timing_ms] = timing_counts.get(timing_ms, 0) + 1
+        if press_type:
+            press_type_counts[press_type] = press_type_counts.get(press_type, 0) + 1
     
     total = len(data)
     
@@ -142,6 +165,36 @@ def generate_summary_csv(data: List[Dict[str, Any]], output_file: Path):
             'count': count,
             'percentage': round(count / total * 100, 1)
         })
+    
+    # Sequence type summary
+    if sequence_type_counts:
+        for seq_type, count in sorted(sequence_type_counts.items()):
+            summary_data.append({
+                'metric': 'Sequence Type',
+                'value': seq_type,
+                'count': count,
+                'percentage': round(count / total * 100, 1)
+            })
+    
+    # Timing summary
+    if timing_counts:
+        for timing, count in sorted(timing_counts.items()):
+            summary_data.append({
+                'metric': 'Timing (ms)',
+                'value': str(timing),
+                'count': count,
+                'percentage': round(count / total * 100, 1)
+            })
+    
+    # Press type summary
+    if press_type_counts:
+        for press_type, count in sorted(press_type_counts.items()):
+            summary_data.append({
+                'metric': 'Press Type',
+                'value': press_type,
+                'count': count,
+                'percentage': round(count / total * 100, 1)
+            })
     
     # Write summary CSV
     with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:

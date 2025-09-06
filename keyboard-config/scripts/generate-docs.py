@@ -27,6 +27,24 @@ def status_to_emoji(status: str) -> str:
     }
     return status_map.get(status, '❓')
 
+def category_to_emoji(category: str) -> str:
+    """Convert category string to emoji representation."""
+    category_map = {
+        'timing': '⏱️',
+        'chord': '🎹',
+        'leader': '👑',
+        'sequence': '🔗',
+        'navigation': '🧭',
+        'selection': '✏️',
+        'text_edit': '📝',
+        'window': '🪟',
+        'desktop': '🖥️',
+        'action': '⚙️',
+        'custom': '🎛️',
+        'mouse': '🖱️'
+    }
+    return category_map.get(category, '📂')
+
 def format_table_row(binding_key: str, binding: Dict[str, Any]) -> str:
     """Format a single binding as a markdown table row."""
     details = binding['details']
@@ -37,30 +55,61 @@ def format_table_row(binding_key: str, binding: Dict[str, Any]) -> str:
     system = binding['system']
     status = status_to_emoji(binding['status'])
     category = binding['category'].replace('_', ' ').title()
+    category_icon = category_to_emoji(binding['category'])
     action = binding['action']
     ide_action = f"`{details['ide_action_id']}`"
     karabiner = f"`{details['karabiner_code']}`"
     ideavim = f"`{details['ideavim_command']}`" if details['ideavim_command'] != '-' else '-'
     config_ref = details['config_reference']
     
-    return f"| {modifier} | {keystroke} | {system} | {status} | {category} | {action} | {ide_action} | {karabiner} | {ideavim} | {config_ref} |"
+    # Add optional field indicators
+    optional_info = []
+    if 'timing_ms' in details:
+        optional_info.append(f"⏱️{details['timing_ms']}ms")
+    if 'sequence_type' in details:
+        optional_info.append(f"🔗{details['sequence_type']}")
+    if 'chord_keys' in details and details['chord_keys']:
+        chord_str = '+'.join(details['chord_keys'])
+        optional_info.append(f"🎹{chord_str}")
+    if 'press_type' in details:
+        optional_info.append(f"👆{details['press_type']}")
+    
+    optional_suffix = f" {' '.join(optional_info)}" if optional_info else ""
+    
+    return f"| {modifier} | {keystroke} | {system} | {status} | {category_icon} {category} | {action}{optional_suffix} | {ide_action} | {karabiner} | {ideavim} | {config_ref} |"
 
 def generate_navigation_table(data: Dict[str, Any]) -> List[str]:
     """Generate markdown table for navigation bindings."""
     lines = []
     
     # Table header
-    lines.append("| Modifier | Keystroke | System | Status | Category | Action | IDE Action ID | Karabiner Code | IdeaVim Command | Config Reference |")
-    lines.append("|----------|-----------|---------|---------|----------|---------|---------------|----------------|-----------------|------------------|")
+    lines.append("| Modifier | Keystroke | System | Status | Category | Action | **IDE Action ID** | Karabiner Code | IdeaVim Command | Config Reference |")
+    lines.append("|----------|-----------|---------|---------|----------|---------|-------------------|----------------|-----------------|------------------|")
     
     # Sort bindings for consistent output
     binding_order = [
+        # Standard modifier combinations
         'none', 'shift', 'ctrl', 'alt', 'cmd',
         'shift_ctrl', 'shift_alt', 'shift_cmd', 'ctrl_alt', 'ctrl_cmd', 'alt_cmd',
         'shift_ctrl_alt', 'shift_ctrl_cmd', 'shift_alt_cmd', 'ctrl_alt_cmd',
         'shift_ctrl_alt_cmd',
+        # Hyper key combinations
         'hyper', 'hyper_shift', 'hyper_ctrl', 'hyper_alt', 'hyper_cmd',
-        'g_prefix', 'change_camel', 'delete_camel', 'inner_camel', 'scroll_horizontal'
+        # Double tap combinations
+        'double_tap', 'shift_double_tap', 'ctrl_double_tap', 'alt_double_tap', 'cmd_double_tap',
+        # Leader key sequences
+        'leader', 'leader_shift', 'leader_ctrl', 'leader_alt', 'leader_cmd', 'double_leader',
+        # Long press variations
+        'long_press', 'tap_hold',
+        # Chord combinations
+        'chord_vertical', 'chord_horizontal', 'chord_mouse', 'chord_scroll',
+        # Vim-specific bindings
+        'g_prefix', 'change_camel', 'delete_camel', 'inner_camel', 'scroll_horizontal', 'scroll_vertical',
+        # Additional Vim sequences
+        'yank_horizontal', 'yank_vertical', 'visual_horizontal', 'visual_vertical',
+        'mark_horizontal', 'mark_vertical', 'jump_mark', 'jump_mark_vertical',
+        'register_horizontal', 'register_vertical', 'backslash_leader', 'backslash_leader_vertical',
+        'bracket_prev', 'bracket_next'
     ]
     
     # Add bindings in order, then any remaining ones
@@ -87,14 +136,30 @@ def generate_summary_stats(h_data: Dict[str, Any], v_data: Dict[str, Any]) -> Li
     system_counts = {}
     category_counts = {}
     
+    sequence_type_counts = {}
+    timing_bindings = []
+    chord_bindings = []
+    
     for binding in all_bindings:
         status = binding['status']
         system = binding['system']
         category = binding['category']
+        details = binding['details']
         
         status_counts[status] = status_counts.get(status, 0) + 1
         system_counts[system] = system_counts.get(system, 0) + 1
         category_counts[category] = category_counts.get(category, 0) + 1
+        
+        # Count new binding types
+        if 'sequence_type' in details:
+            seq_type = details['sequence_type']
+            sequence_type_counts[seq_type] = sequence_type_counts.get(seq_type, 0) + 1
+            
+        if 'timing_ms' in details:
+            timing_bindings.append(binding)
+            
+        if 'chord_keys' in details and details['chord_keys']:
+            chord_bindings.append(binding)
     
     lines.append("## Implementation Summary")
     lines.append("")
@@ -132,6 +197,51 @@ def generate_summary_stats(h_data: Dict[str, Any], v_data: Dict[str, Any]) -> Li
         desc = system_names.get(system, 'Unknown')
         lines.append(f"| {system} | {count} | {desc} |")
     
+    # Add new binding type statistics
+    if sequence_type_counts:
+        lines.append("")
+        lines.append("### Sequence Types")
+        lines.append("| Type | Count | Description |")
+        lines.append("|------|-------|-------------|")
+        
+        type_descriptions = {
+            'double_tap': 'Double key press within timeout',
+            'long_press': 'Hold key for extended period',
+            'tap_hold': 'Different actions for tap vs hold',
+            'leader': 'Leader key prefix sequences',
+            'vim_prefix': 'Vim-style prefix commands',
+            'text_object': 'Vim text object operations',
+            'chord': 'Multiple keys pressed together'
+        }
+        
+        for seq_type, count in sorted(sequence_type_counts.items()):
+            desc = type_descriptions.get(seq_type, 'Custom sequence type')
+            lines.append(f"| {seq_type} | {count} | {desc} |")
+    
+    if timing_bindings:
+        lines.append("")
+        lines.append("### Timing-Based Bindings")
+        lines.append(f"**{len(timing_bindings)} bindings** use timing patterns:")
+        timing_stats = {}
+        for binding in timing_bindings:
+            timing = binding['details']['timing_ms']
+            timing_stats[timing] = timing_stats.get(timing, 0) + 1
+        
+        for timing, count in sorted(timing_stats.items()):
+            lines.append(f"- {timing}ms timeout: {count} bindings")
+    
+    if chord_bindings:
+        lines.append("")
+        lines.append("### Chord Combinations")
+        lines.append(f"**{len(chord_bindings)} bindings** use chord patterns:")
+        chord_stats = {}
+        for binding in chord_bindings:
+            chord_keys = '+'.join(binding['details']['chord_keys'])
+            chord_stats[chord_keys] = chord_stats.get(chord_keys, 0) + 1
+        
+        for chord, count in sorted(chord_stats.items()):
+            lines.append(f"- {chord}: {count} bindings")
+
     lines.append("")
     return lines
 
@@ -164,6 +274,26 @@ def generate_full_markdown(h_data: Dict[str, Any], v_data: Dict[str, Any]) -> st
         "- ⚠️ **Needs Attention**: Requires fixes or remapping",
         "- ❌ **Disabled**: Intentionally disabled",
         "- ⚡ **Conflict**: Conflicts with other bindings",
+        "",
+        "### Category Icons",
+        "- ⏱️ **Timing**: Double tap, long press, tap/hold patterns",
+        "- 🎹 **Chord**: Multiple keys pressed simultaneously",
+        "- 👑 **Leader**: Leader key prefix sequences",
+        "- 🔗 **Sequence**: Multi-step key sequences",
+        "- 🧭 **Navigation**: Movement and positioning",
+        "- ✏️ **Selection**: Text and object selection",
+        "- 📝 **Text Edit**: Text manipulation and editing",
+        "- 🪟 **Window**: Window and pane management",
+        "- 🖥️ **Desktop**: Desktop and workspace control",
+        "- ⚙️ **Action**: IDE actions and commands",
+        "- 🎛️ **Custom**: Custom or unspecified actions",
+        "- 🖱️ **Mouse**: Mouse-related operations",
+        "",
+        "### Field Indicators",
+        "- ⏱️500ms: Timing window (double tap/long press)",
+        "- 🔗double_tap: Sequence type",
+        "- 🎹H+J: Chord keys combination",
+        "- 👆hold: Press type requirement",
         "",
         "---",
         ""

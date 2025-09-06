@@ -1,0 +1,114 @@
+# HJKL ActionID Mapping for IntelliJ/WebStorm
+# Maps keyboard bindings to specific IDE ActionIDs for implementation
+
+horizontal_navigation: # H/L keys
+  none:
+    description: "Character movement left/right"
+    actionid: "EditorLeft/EditorRight"
+    
+  shift:
+    description: "Select left/right character by character"
+    actionid: "EditorLeftWithSelection/EditorRightWithSelection"
+    
+  ctrl:
+    description: "Word movement left/right"
+    actionid: "EditorPreviousWord/EditorNextWord"
+    
+  alt:
+    description: "Word movement with different hump mode"
+    actionid: "EditorPreviousWordInDifferentHumpsMode/EditorNextWordInDifferentHumpsMode"
+    
+  cmd:
+    description: "Line start/end navigation"
+    actionid: "EditorLineStart/EditorLineEnd"
+    
+  shift_alt:
+    description: "Select word by word with hump mode"
+    actionid: "EditorPreviousWordInDifferentHumpsModeWithSelection/EditorNextWordInDifferentHumpsModeWithSelection"
+    
+  shift_cmd:
+    description: "Select to line start/end"
+    actionid: "EditorLineStartWithSelection/EditorLineEndWithSelection"
+    
+  ctrl_alt:
+    description: "Page navigation"
+    actionid: "EditorPageUp/EditorPageDown"
+    
+  alt_cmd:
+    description: "Move to page top/bottom"
+    actionid: "EditorMoveToPageTop/EditorMoveToPageBottom"
+    
+  shift_ctrl_alt:
+    description: "Select to page start/end with scroll"
+    actionid: "EditorMoveToPageTopWithSelection/EditorMoveToPageBottomWithSelection"
+
+vertical_navigation: # J/K keys  
+  none:
+    description: "Line movement up/down"
+    actionid: "EditorUp/EditorDown"
+    
+  shift:
+    description: "Select line by line"
+    actionid: "EditorUpWithSelection/EditorDownWithSelection"
+    
+  ctrl:
+    description: "Scroll up/down"
+    actionid: "EditorMoveUpAndScroll/EditorMoveDownAndScroll"
+    
+  alt:
+    description: "Paragraph movement"
+    actionid: "EditorBackwardParagraph/EditorForwardParagraph"
+    
+  cmd:
+    description: "Document start/end"
+    actionid: "EditorTextStart/EditorTextEnd"
+    
+  shift_alt:
+    description: "Select paragraph by paragraph"
+    actionid: "EditorBackwardParagraphWithSelection/EditorForwardParagraphWithSelection"
+    
+  shift_cmd:
+    description: "Select to document start/end"
+    actionid: "EditorTextStartWithSelection/EditorTextEndWithSelection"
+    
+  ctrl_alt:
+    description: "Page up/down"
+    actionid: "EditorPageUp/EditorPageDown"
+    
+  alt_cmd:
+    description: "Code block navigation" 
+    actionid: "EditorCodeBlockStart/EditorCodeBlockEnd"
+    
+  shift_ctrl_alt:
+    description: "Select page with scroll"
+    actionid: "EditorMoveUpAndScrollWithSelection/EditorMoveDownAndScrollWithSelection"
+
+window_management: # Common window actions for Cmd combinations
+  tab_navigation:
+    description: "Previous/Next tab"
+    actionid: "PreviousTab/NextTab"
+    
+  split_navigation:
+    description: "Navigate editor splits"
+    actionid: "PrevSplitter/NextSplitter"
+    
+  tool_windows:
+    description: "Navigate tool windows"
+    actionid: "HideActiveWindow/JumpToLastWindow"
+
+additional_actions: # Other common IDE actions
+  bookmarks:
+    description: "Bookmark navigation"
+    actionid: "GotoNextBookmark/GotoPreviousBookmark"
+    
+  search_results:
+    description: "Navigate search results"
+    actionid: "FindNext/FindPrevious"
+    
+  errors:
+    description: "Navigate errors"
+    actionid: "GotoNextError/GotoPreviousError"
+    
+  changes:
+    description: "Navigate changes"
+    actionid: "VcsShowNextChangeMarker/VcsShowPrevChangeMarker"

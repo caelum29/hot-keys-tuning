@@ -23,6 +23,7 @@ This is a unified keyboard productivity configuration system that enhances devel
 - `src/idea-vim/.ideavimrc` - IdeaVim configuration with 300+ lines of custom mappings
 - `src/webstorm-keymap/macOS copy.xml` - WebStorm keymap with HJKL navigation integration
 - `src/docs/` - Extensive documentation on keyboard productivity patterns
+  - `KEY-BINDING-COMBINATIONS.md` - **NEW: Complete reference of all 57+ possible key binding combinations for a single key**
   - `learning-claude-code/` - **NEW: Claude Code automation and learning materials**
     - `CLAUDE-HOOKS-LEARNING.md` - Comprehensive guide for Claude Code hooks and subagents
     - `CLAUDE-CODE-GUIDE.md` - Complete Claude Code feature reference and tutorial
@@ -64,6 +65,15 @@ This is a unified keyboard productivity configuration system that enhances devel
 - System level (Karabiner)
 - IDE level (WebStorm keymap)
 - Editor level (IdeaVim)
+
+**Combination Possibilities**: Each single key supports 57+ unique binding combinations:
+- 16 standard modifier combinations (⇧⌃⌥⌘)
+- 5 hyper key combinations (✱ with modifiers)
+- 18+ leader key sequences (Vim-style prefixes)
+- 5 double tap variations (timing-based)
+- 8+ multi-key sequences (text objects)
+- Additional chord, long press, and context-aware patterns
+- See `src/docs/KEY-BINDING-COMBINATIONS.md` for complete reference
 
 ## Development Workflow
 
