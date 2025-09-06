@@ -1,24 +1,25 @@
 metric,value,count,percentage
-Status,implemented,44,35.8
-Status,needs_attention,1,0.8
-Status,planned,78,63.4
-System,-,44,35.8
+Status,available,7,5.7
+Status,implemented,45,36.6
+Status,planned,71,57.7
+System,-,46,37.4
 System,I,40,32.5
 System,K,14,11.4
-System,W,23,18.7
-System,W+I,2,1.6
-Category,action,13,10.6
+System,W,22,17.9
+System,W+I,1,0.8
+Category,action,12,9.8
 Category,chord,6,4.9
 Category,custom,8,6.5
 Category,desktop,2,1.6
 Category,leader,15,12.2
 Category,mouse,2,1.6
-Category,navigation,24,19.5
-Category,selection,11,8.9
+Category,navigation,23,18.7
+Category,selection,6,4.9
 Category,sequence,12,9.8
-Category,text_edit,6,4.9
+Category,text_edit,7,5.7
 Category,timing,16,13.0
-Category,window,8,6.5
+Category,unmapped,7,5.7
+Category,window,7,5.7
 Sequence Type,chord,6,4.9
 Sequence Type,double_tap,11,8.9
 Sequence Type,leader,15,12.2

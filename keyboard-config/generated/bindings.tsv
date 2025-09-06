@@ -13,17 +13,17 @@ bracket	[, ]	alt_cmd	Alt Cmd	⌥⌘[ / ⌥⌘]	-	planned	action	Fold/Unfold code
 bracket	[, ]	double_bracket	Double Bracket	[[ / ]]	I	implemented	navigation	Jump to previous/next function	MethodUp/MethodDown	-	[[/]]	.ideavimrc:L210			vim_prefix		
 bracket	[, ]	curly_bracket	Curly Bracket	[{ / ]}	I	implemented	navigation	Jump to previous/next unmatched brace	EditorMatchBrace	-	[{/]}	.ideavimrc:L220			vim_prefix		
 bracket	[, ]	paren_bracket	Paren Bracket	[( / ])	I	implemented	navigation	Jump to previous/next unmatched parenthesis	EditorMatchBrace	-	[(/])	.ideavimrc:L230			vim_prefix		
-horizontal	H, L	none	None	H / L	I	implemented	navigation	Previous/Next bookmark	BookmarksAction	h/l	]'/'[	.ideavimrc:L120					
-horizontal	H, L	shift	Shift	⇧H / ⇧L	W	implemented	selection	Navigate to prev/next bookmark	SelectPreviousTab/SelectNextTab	shift+h/l	:action SelectPreviousTab	keymap.xml:L56					
-horizontal	H, L	ctrl	Ctrl	⌃H / ⌃L	W+I	implemented	text_edit	Editor join lines/Custom	EditorJoinLines	ctrl+h/l	J	keymap.xml:L33					
+horizontal	H, L	none	None	H / L	I	implemented	navigation	Move left/right one character	EditorLeft/EditorRight	h/l	h/l	.ideavimrc:native_vim					
+horizontal	H, L	shift	Shift	⇧H / ⇧L	-	planned	navigation	No action (available for mapping)	-	shift+h/l	-	-					
+horizontal	H, L	ctrl	Ctrl	⌃H / ⌃L	W	implemented	navigation	Move left one character/No action	EditorLeft/-	ctrl+h/l	h/-	keymap.xml					
 horizontal	H, L	alt	Alt	⌥H / ⌥L	W	implemented	navigation	Move caret to prev/next word	EditorPreviousWord/EditorNextWord	alt+h/l	nnoremap <A-h> b	keymap.xml:L48					
-horizontal	H, L	cmd	Cmd	⌘H / ⌘L	W	implemented	action	Custom action/Complete statement	EditorCompleteStatement	cmd+h/l	-	keymap.xml:L24					
-horizontal	H, L	shift_ctrl	Shift Ctrl	⇧⌃H / ⇧⌃L	-	planned	selection	Select to word start/end with hump mode	EditorPreviousWordInDifferentHumpsModeWithSelection/EditorNextWordInDifferentHumpsModeWithSelection	shift+ctrl+h/l	-	-					
-horizontal	H, L	shift_alt	Shift Alt	⇧⌥H / ⇧⌥L	W	implemented	selection	Prev/Next word with selection	EditorPreviousWordWithSelection	shift+alt+h/l	-	keymap.xml:L55					
-horizontal	H, L	shift_cmd	Shift Cmd	⇧⌘H / ⇧⌘L	W	implemented	window	Select prev/next tab	SelectPreviousTab/SelectNextTab	shift+cmd+h/l	:action SelectPreviousTab	keymap.xml:L56					
-horizontal	H, L	ctrl_alt	Ctrl Alt	⌃⌥H / ⌃⌥L	-	planned	navigation	Page navigation left/right	EditorPageUp/EditorPageDown	ctrl+alt+h/l	-	-					
-horizontal	H, L	ctrl_cmd	Ctrl Cmd	⌃⌘H / ⌃⌘L	-	planned	navigation	Move to page top/bottom	EditorMoveToPageTop/EditorMoveToPageBottom	ctrl+cmd+h/l	-	-					
-horizontal	H, L	alt_cmd	Alt Cmd	⌥⌘H / ⌥⌘L	W	implemented	action	Custom action/Reformat code	ReformatCode	alt+cmd+h/l	-	keymap.xml:L59					
+horizontal	H, L	cmd	Cmd	⌘H / ⌘L	W	implemented	action	No action/Complete statement	-/EditorCompleteStatement	cmd+h/l	-	keymap.xml					
+horizontal	H, L	shift_ctrl	Shift Ctrl	⇧⌃H / ⇧⌃L	-	available	unmapped	No action (available for mapping)	-	shift+ctrl+h/l	-	-					
+horizontal	H, L	shift_alt	Shift Alt	⇧⌥H / ⇧⌥L	W	implemented	selection	Select previous/next word	EditorPreviousWordWithSelection/EditorNextWordWithSelection	shift+alt+h/l	-	keymap.xml					
+horizontal	H, L	shift_cmd	Shift Cmd	⇧⌘H / ⇧⌘L	W	implemented	action	Previous tab (+ shelve)/Codeium send to cascade	PreviousTab|ChangesView.ShelveSilently/SendToCascade	shift+cmd+h/l	:action PreviousTab	keymap.xml					
+horizontal	H, L	ctrl_alt	Ctrl Alt	⌃⌥H / ⌃⌥L	-	available	unmapped	No action (available for mapping)	-	ctrl+alt+h/l	-	-					
+horizontal	H, L	ctrl_cmd	Ctrl Cmd	⌃⌘H / ⌃⌘L	-	available	unmapped	No action (available for mapping)	-	ctrl+cmd+h/l	-	-					
+horizontal	H, L	alt_cmd	Alt Cmd	⌥⌘H / ⌥⌘L	-	available	unmapped	No action (available for mapping)	-	alt+cmd+h/l	-	-					
 horizontal	H, L	shift_ctrl_alt	Shift Ctrl Alt	⇧⌃⌥H / ⇧⌃⌥L	W	implemented	window	Stretch split left/right	StretchSplitToLeft/StretchSplitToRight	shift+ctrl+alt+h/l	-	keymap.xml:L60					
 horizontal	H, L	shift_ctrl_cmd	Shift Ctrl Cmd	⇧⌃⌘H / ⇧⌃⌘L	-	planned	custom	Custom action	Custom	shift+ctrl+cmd+h/l	-	-					
 horizontal	H, L	shift_alt_cmd	Shift Alt Cmd	⇧⌥⌘H / ⇧⌥⌘L	W	implemented	action	Popup hector/Reformat dialog	PopupHector/ShowReformatFileDialog	shift+alt+cmd+h/l	-	keymap.xml:L62					
@@ -32,7 +32,7 @@ horizontal	H, L	shift_ctrl_alt_cmd	Shift Ctrl Alt Cmd	⇧⌃⌥⌘H / ⇧⌃⌥�
 horizontal	H, L	hyper	Hyper	✱H / ✱L	K	implemented	navigation	Move left/right one char	left_arrow/right_arrow	right_shift+right_ctrl+right_alt+right_cmd+h/l	-	karabiner.json:L65					
 horizontal	H, L	hyper_shift	Hyper Shift	✱⇧H / ✱⇧L	K	planned	selection	Tab switching	SelectPreviousTab	-	-	-					
 horizontal	H, L	hyper_ctrl	Hyper Ctrl	✱⌃H / ✱⌃L	K	implemented	desktop	Prev/next desktop	left_control+left_arrow	-	-	karabiner.json:L67					
-horizontal	H, L	hyper_alt	Hyper Alt	✱⌥H / ✱⌥L	K	needs_attention	mouse	Need to remap	mouse_move	-	-	-					
+horizontal	H, L	hyper_alt	Hyper Alt	✱⌥H / ✱⌥L	K	implemented	mouse	Move cursor left/right	mouse_move_left/mouse_move_right	right_shift+right_ctrl+right_alt+right_cmd+alt+h/l	-	karabiner.json					
 horizontal	H, L	hyper_cmd	Hyper Cmd	✱⌘H / ✱⌘L	W	implemented	window	App switcher	Switcher	-	-	keymap.xml:L69					
 horizontal	H, L	g_prefix	G Prefix	GH / GL	I	implemented	navigation	Move to line beginning/end	EditorLineStart/EditorLineEnd	-	0/$	.ideavimrc:L81					
 horizontal	H, L	change_camel	Change Camel	cH / cL	I	implemented	text_edit	Change camel hump back/forward	CamelHumpAction	-	cb/cw	.ideavimrc:L82					
@@ -75,17 +75,17 @@ individual	Space	alt_cmd	Alt Cmd	⌥⌘Space	-	planned	window	Finder search	Syst
 individual	Space	leader_space	Leader Space	<Leader>Space	I	planned	leader	Clear search highlighting	Custom	-	<Leader><Space>	-			leader		
 individual	Space	double_tap	Double Tap	Space Space	K	planned	timing	Quick action menu	GotoAction	spacebar+spacebar	:action GotoAction	-		300	double_tap		double
 individual	Space	long_press	Long Press	Space(hold)	K	planned	timing	Activate window management mode	Custom	spacebar_hold	-	-		500	long_press		hold
-vertical	J, K	none	None	J / K	I	implemented	navigation	Move down/up line by line	EditorDown/EditorUp	j/k	J/<C-v>k	.ideavimrc:L91					
-vertical	J, K	shift	Shift	⇧J / ⇧K	W	implemented	selection	Extend selection down/up	EditorDownWithSelection/EditorUpWithSelection	shift+j/k	vj/vk	keymap.xml:L92					
-vertical	J, K	ctrl	Ctrl	⌃J / ⌃K	W	implemented	navigation	Scroll down/up with cursor	EditorMoveDownAndScroll/EditorMoveUpAndScroll	ctrl+j/k	-	keymap.xml:L93					
+vertical	J, K	none	None	J / K	I	implemented	navigation	Move down/up one line	EditorDown/EditorUp	j/k	j/k	.ideavimrc:native_vim					
+vertical	J, K	shift	Shift	⇧J / ⇧K	W	implemented	navigation	Move down one line/Show documentation	EditorDown/QuickJavaDoc	shift+j/k	j	keymap.xml					
+vertical	J, K	ctrl	Ctrl	⌃J / ⌃K	W	implemented	text_edit	Join lines/Show navigation bar	EditorJoinLines/ShowNavBar	ctrl+j/k	-	keymap.xml					
 vertical	J, K	alt	Alt	⌥J / ⌥K	W	implemented	text_edit	Clone caret below/above	EditorCloneCaretBelow/EditorCloneCaretAbove	alt+j/k	-	keymap.xml:L18					
-vertical	J, K	cmd	Cmd	⌘J / ⌘K	W	implemented	action	Insert live template/Custom	InsertLiveTemplate	cmd+j/k	-	keymap.xml:L95					
-vertical	J, K	shift_ctrl	Shift Ctrl	⇧⌃J / ⇧⌃K	-	planned	selection	Select paragraph up/down	EditorBackwardParagraphWithSelection/EditorForwardParagraphWithSelection	shift+ctrl+j/k	-	-					
-vertical	J, K	shift_alt	Shift Alt	⇧⌥J / ⇧⌥K	-	planned	selection	Select with scroll up/down	EditorMoveUpAndScrollWithSelection/EditorMoveDownAndScrollWithSelection	shift+alt+j/k	-	-					
-vertical	J, K	shift_cmd	Shift Cmd	⇧⌘J / ⇧⌘K	W	implemented	action	Editor join lines/VCS push	EditorJoinLines/Vcs.Push	shift+cmd+j/k	-	keymap.xml:L98					
+vertical	J, K	cmd	Cmd	⌘J / ⌘K	W	implemented	action	Insert live template/No action	InsertLiveTemplate/-	cmd+j/k	-	keymap.xml					
+vertical	J, K	shift_ctrl	Shift Ctrl	⇧⌃J / ⇧⌃K	-	available	unmapped	No action (available for mapping)	-	shift+ctrl+j/k	-	-					
+vertical	J, K	shift_alt	Shift Alt	⇧⌥J / ⇧⌥K	-	available	unmapped	No action (available for mapping)	-	shift+alt+j/k	-	-					
+vertical	J, K	shift_cmd	Shift Cmd	⇧⌘J / ⇧⌘K	W	implemented	action	Switcher forward/backward	SwitcherForward/SwitcherBackward	shift+cmd+j/k	-	keymap.xml					
 vertical	J, K	ctrl_alt	Ctrl Alt	⌃⌥J / ⌃⌥K	W	implemented	text_edit	Move line down/up	MoveLineDown/MoveLineUp	ctrl+alt+j/k	-	keymap.xml:L99					
-vertical	J, K	ctrl_cmd	Ctrl Cmd	⌃⌘J / ⌃⌘K	-	planned	navigation	Document start/end navigation	EditorTextStart/EditorTextEnd	ctrl+cmd+j/k	-	-					
-vertical	J, K	alt_cmd	Alt Cmd	⌥⌘J / ⌥⌘K	W	implemented	action	Surround with template/Custom	SurroundWithLiveTemplate	alt+cmd+j/k	-	keymap.xml:L101					
+vertical	J, K	ctrl_cmd	Ctrl Cmd	⌃⌘J / ⌃⌘K	-	available	unmapped	No action (available for mapping)	-	ctrl+cmd+j/k	-	-					
+vertical	J, K	alt_cmd	Alt Cmd	⌥⌘J / ⌥⌘K	W	implemented	text_edit	Move line up/down	MoveLineUp/MoveLineDown	alt+cmd+j/k	-	keymap.xml					
 vertical	J, K	shift_ctrl_alt	Shift Ctrl Alt	⇧⌃⌥J / ⇧⌃⌥K	-	planned	selection	Select to document start/end	EditorTextStartWithSelection/EditorTextEndWithSelection	shift+ctrl+alt+j/k	-	-					
 vertical	J, K	shift_ctrl_cmd	Shift Ctrl Cmd	⇧⌃⌘J / ⇧⌃⌘K	-	planned	custom	Custom action	Custom	shift+ctrl+cmd+j/k	-	-					
 vertical	J, K	shift_alt_cmd	Shift Alt Cmd	⇧⌥⌘J / ⇧⌥⌘K	-	planned	custom	Custom action	Custom	shift+alt+cmd+j/k	-	-					
@@ -93,8 +93,8 @@ vertical	J, K	ctrl_alt_cmd	Ctrl Alt Cmd	⌃⌥⌘J / ⌃⌥⌘K	-	planned	custom
 vertical	J, K	shift_ctrl_alt_cmd	Shift Ctrl Alt Cmd	⇧⌃⌥⌘J / ⇧⌃⌥⌘K	-	planned	custom	Custom action	Custom	shift+ctrl+alt+cmd+j/k	-	-					
 vertical	J, K	hyper	Hyper	✱J / ✱K	K	implemented	navigation	Move down/up one line	down_arrow/up_arrow	right_shift+right_ctrl+right_alt+right_cmd+j/k	-	karabiner.json:L107					
 vertical	J, K	hyper_shift	Hyper Shift	✱⇧J / ✱⇧K	K	planned	navigation	App switching	AppSwitcher	-	-	-					
-vertical	J, K	hyper_ctrl	Hyper Ctrl	✱⌃J / ✱⌃K	K	planned	desktop	Focus/expose	MissionControl	-	-	-					
-vertical	J, K	hyper_alt	Hyper Alt	✱⌥J / ✱⌥K	K	planned	mouse	Mouse move	mouse_move	-	-	-					
+vertical	J, K	hyper_ctrl	Hyper Ctrl	✱⌃J / ✱⌃K	K	implemented	desktop	Focus/Mission Control (expose all)	Focus/MissionControl	right_shift+right_ctrl+right_alt+right_cmd+j/k	-	karabiner.json					
+vertical	J, K	hyper_alt	Hyper Alt	✱⌥J / ✱⌥K	K	implemented	mouse	Move cursor down/up	mouse_move_down/mouse_move_up	right_shift+right_ctrl+right_alt+right_cmd+alt+j/k	-	karabiner.json					
 vertical	J, K	hyper_cmd	Hyper Cmd	✱⌘J / ✱⌘K	-	planned	custom	Custom action	Custom	-	-	-					
 vertical	J, K	g_prefix	G Prefix	GJ / GK	I	implemented	navigation	Navigate prev/next method	MethodUp/MethodDown	-	[m/]m	.ideavimrc:L123					
 vertical	J, K	double_tap	Double Tap	JJ / KK	-	planned	timing	Double tap vertical action	Custom	j+j/k+k	-	-		500	double_tap		double
