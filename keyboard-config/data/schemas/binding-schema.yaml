@@ -1,0 +1,110 @@
+# JSON Schema for keyboard binding validation
+# Ensures consistent structure across all binding YAML files
+
+$schema: "http://json-schema.org/draft-07/schema#"
+type: "object"
+title: "Keyboard Binding Configuration Schema"
+description: "Schema for validating keyboard navigation binding files"
+
+required:
+  - navigation_type
+  - keys
+  - description
+  - bindings
+
+properties:
+  navigation_type:
+    type: "string"
+    enum: ["horizontal", "vertical"]
+    description: "Type of navigation these bindings control"
+
+  keys:
+    type: "array"
+    items:
+      type: "string"
+      pattern: "^[A-Z]$"
+    minItems: 1
+    maxItems: 4
+    description: "Primary keys these bindings apply to (e.g., ['H', 'L'])"
+
+  description:
+    type: "string"
+    minLength: 10
+    description: "Human-readable description of binding purpose"
+
+  bindings:
+    type: "object"
+    additionalProperties:
+      type: "object"
+      required:
+        - keystroke
+        - system
+        - status
+        - category
+        - action
+        - details
+      properties:
+        keystroke:
+          type: "string"
+          description: "Human-readable keystroke representation"
+          pattern: "^[✱⇧⌃⌥⌘GHJKL/\\s]+$"
+
+        system:
+          type: "string"
+          enum: ["I", "W", "K", "W+I", "K+W", "K+I", "K+W+I", "-"]
+          description: "System handling binding (I=IdeaVim, W=WebStorm, K=Karabiner, combinations, -=none)"
+
+        status:
+          type: "string"
+          enum: ["implemented", "planned", "needs_attention", "disabled", "conflict"]
+          description: "Current implementation status"
+
+        category:
+          type: "string"
+          enum: ["navigation", "selection", "text_edit", "window", "desktop", "action", "custom", "mouse"]
+          description: "Functional category of the binding"
+
+        action:
+          type: "string"
+          minLength: 5
+          description: "Human-readable description of what the binding does"
+
+        details:
+          type: "object"
+          required:
+            - ide_action_id
+            - karabiner_code
+            - ideavim_command
+            - config_reference
+          properties:
+            ide_action_id:
+              type: "string"
+              description: "WebStorm/IntelliJ action identifier or key code"
+
+            karabiner_code:
+              type: "string"
+              description: "Karabiner Elements key code or modifier combination"
+
+            ideavim_command:
+              type: "string"
+              description: "IdeaVim command or mapping (use '-' if not applicable)"
+
+            config_reference:
+              type: "string"
+              pattern: "^(\\w+\\.\\w+:L\\d+|-)$"
+              description: "Configuration file reference (file:line) or '-' if not applicable"
+
+            notes:
+              type: "string"
+              description: "Additional implementation notes or context"
+
+# Additional validation rules
+additionalProperties: false
+
+# Custom validation messages
+errorMessage:
+  properties:
+    system: "System must be one of: I, W, K, W+I, K+W, K+I, K+W+I, or - (none)"
+    status: "Status must be: implemented, planned, needs_attention, disabled, or conflict"
+    category: "Category must be: navigation, selection, text_edit, window, desktop, action, custom, or mouse"
+    config_reference: "Config reference must be in format 'file.ext:Lnnn' or '-'"

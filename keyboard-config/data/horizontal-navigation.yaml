@@ -1,0 +1,321 @@
+# Horizontal Navigation Key Bindings (H / L)
+# Source data for keyboard productivity configuration system
+
+navigation_type: "horizontal"
+keys: ["H", "L"] 
+description: "Left/right navigation and related actions"
+
+bindings:
+  none:
+    keystroke: "H / L"
+    system: "I"  # IdeaVim
+    status: "implemented"
+    category: "navigation"
+    action: "Previous/Next bookmark"
+    details:
+      ide_action_id: "BookmarksAction"
+      karabiner_code: "h/l"
+      ideavim_command: "]'/'["
+      config_reference: ".ideavimrc:L120"
+
+  shift:
+    keystroke: "⇧H / ⇧L"
+    system: "W"  # WebStorm
+    status: "implemented" 
+    category: "selection"
+    action: "Navigate to prev/next bookmark"
+    details:
+      ide_action_id: "SelectPreviousTab/SelectNextTab"
+      karabiner_code: "shift+h/l"
+      ideavim_command: ":action SelectPreviousTab"
+      config_reference: "keymap.xml:L56"
+
+  ctrl:
+    keystroke: "⌃H / ⌃L"
+    system: "W+I"  # WebStorm + IdeaVim
+    status: "implemented"
+    category: "text_edit"
+    action: "Editor join lines/Custom"
+    details:
+      ide_action_id: "EditorJoinLines"
+      karabiner_code: "ctrl+h/l"
+      ideavim_command: "J"
+      config_reference: "keymap.xml:L33"
+
+  alt:
+    keystroke: "⌥H / ⌥L"
+    system: "W"
+    status: "implemented"
+    category: "navigation"
+    action: "Move caret to prev/next word"
+    details:
+      ide_action_id: "EditorPreviousWord/EditorNextWord"
+      karabiner_code: "alt+h/l"
+      ideavim_command: "nnoremap <A-h> b"
+      config_reference: "keymap.xml:L48"
+
+  cmd:
+    keystroke: "⌘H / ⌘L"
+    system: "W"
+    status: "implemented"
+    category: "action"
+    action: "Custom action/Complete statement"
+    details:
+      ide_action_id: "EditorCompleteStatement"
+      karabiner_code: "cmd+h/l"
+      ideavim_command: "-"
+      config_reference: "keymap.xml:L24"
+
+  shift_ctrl:
+    keystroke: "⇧⌃H / ⇧⌃L"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "shift+ctrl+h/l"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  shift_alt:
+    keystroke: "⇧⌥H / ⇧⌥L"
+    system: "W"
+    status: "implemented"
+    category: "selection"
+    action: "Prev/Next word with selection"
+    details:
+      ide_action_id: "EditorPreviousWordWithSelection"
+      karabiner_code: "shift+alt+h/l"
+      ideavim_command: "-"
+      config_reference: "keymap.xml:L55"
+
+  shift_cmd:
+    keystroke: "⇧⌘H / ⇧⌘L"
+    system: "W"
+    status: "implemented"
+    category: "window"
+    action: "Select prev/next tab"
+    details:
+      ide_action_id: "SelectPreviousTab/SelectNextTab"
+      karabiner_code: "shift+cmd+h/l"
+      ideavim_command: ":action SelectPreviousTab"
+      config_reference: "keymap.xml:L56"
+
+  ctrl_alt:
+    keystroke: "⌃⌥H / ⌃⌥L"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "ctrl+alt+h/l"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  ctrl_cmd:
+    keystroke: "⌃⌘H / ⌃⌘L"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "ctrl+cmd+h/l"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  alt_cmd:
+    keystroke: "⌥⌘H / ⌥⌘L"
+    system: "W"
+    status: "implemented"
+    category: "action"
+    action: "Custom action/Reformat code"
+    details:
+      ide_action_id: "ReformatCode"
+      karabiner_code: "alt+cmd+h/l"
+      ideavim_command: "-"
+      config_reference: "keymap.xml:L59"
+
+  shift_ctrl_alt:
+    keystroke: "⇧⌃⌥H / ⇧⌃⌥L"
+    system: "W"
+    status: "implemented"
+    category: "window"
+    action: "Stretch split left/right"
+    details:
+      ide_action_id: "StretchSplitToLeft/StretchSplitToRight"
+      karabiner_code: "shift+ctrl+alt+h/l"
+      ideavim_command: "-"
+      config_reference: "keymap.xml:L60"
+
+  shift_ctrl_cmd:
+    keystroke: "⇧⌃⌘H / ⇧⌃⌘L"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "shift+ctrl+cmd+h/l"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  shift_alt_cmd:
+    keystroke: "⇧⌥⌘H / ⇧⌥⌘L"
+    system: "W"
+    status: "implemented"
+    category: "action"
+    action: "Popup hector/Reformat dialog"
+    details:
+      ide_action_id: "PopupHector/ShowReformatFileDialog"
+      karabiner_code: "shift+alt+cmd+h/l"
+      ideavim_command: "-"
+      config_reference: "keymap.xml:L62"
+
+  ctrl_alt_cmd:
+    keystroke: "⌃⌥⌘H / ⌃⌥⌘L"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "ctrl+alt+cmd+h/l"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  shift_ctrl_alt_cmd:
+    keystroke: "⇧⌃⌥⌘H / ⇧⌃⌥⌘L"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "shift+ctrl+alt+cmd+h/l"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  # Hyper key combinations (✱ = right_shift+right_ctrl+right_alt+right_cmd)
+  hyper:
+    keystroke: "✱H / ✱L"
+    system: "K"  # Karabiner
+    status: "implemented"
+    category: "navigation"
+    action: "Move left/right one char"
+    details:
+      ide_action_id: "left_arrow/right_arrow"
+      karabiner_code: "right_shift+right_ctrl+right_alt+right_cmd+h/l"
+      ideavim_command: "-"
+      config_reference: "karabiner.json:L65"
+
+  hyper_shift:
+    keystroke: "✱⇧H / ✱⇧L"
+    system: "K"
+    status: "planned"
+    category: "selection"
+    action: "Tab switching"
+    details:
+      ide_action_id: "SelectPreviousTab"
+      karabiner_code: "-"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  hyper_ctrl:
+    keystroke: "✱⌃H / ✱⌃L"
+    system: "K"
+    status: "implemented"
+    category: "desktop"
+    action: "Prev/next desktop"
+    details:
+      ide_action_id: "left_control+left_arrow"
+      karabiner_code: "-"
+      ideavim_command: "-"
+      config_reference: "karabiner.json:L67"
+
+  hyper_alt:
+    keystroke: "✱⌥H / ✱⌥L"
+    system: "K"
+    status: "needs_attention"
+    category: "mouse"
+    action: "Need to remap"
+    details:
+      ide_action_id: "mouse_move"
+      karabiner_code: "-"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  hyper_cmd:
+    keystroke: "✱⌘H / ✱⌘L"
+    system: "W"
+    status: "implemented"
+    category: "window"
+    action: "App switcher"
+    details:
+      ide_action_id: "Switcher"
+      karabiner_code: "-"
+      ideavim_command: "-"
+      config_reference: "keymap.xml:L69"
+
+  # Vim-specific bindings
+  g_prefix:
+    keystroke: "GH / GL"
+    system: "I"
+    status: "implemented"
+    category: "navigation"
+    action: "Move to line beginning/end"
+    details:
+      ide_action_id: "EditorLineStart/EditorLineEnd"
+      karabiner_code: "-"
+      ideavim_command: "0/$"
+      config_reference: ".ideavimrc:L81"
+
+  change_camel:
+    keystroke: "cH / cL"
+    system: "I"
+    status: "implemented"
+    category: "text_edit"
+    action: "Change camel hump back/forward"
+    details:
+      ide_action_id: "CamelHumpAction"
+      karabiner_code: "-"
+      ideavim_command: "cb/cw"
+      config_reference: ".ideavimrc:L82"
+
+  delete_camel:
+    keystroke: "dH / dL"
+    system: "I"
+    status: "implemented"
+    category: "text_edit"
+    action: "Delete camel hump back/forward"
+    details:
+      ide_action_id: "CamelHumpAction"
+      karabiner_code: "-"
+      ideavim_command: "db/dw"
+      config_reference: ".ideavimrc:L83"
+
+  inner_camel:
+    keystroke: "cih / dih"
+    system: "I"
+    status: "implemented"
+    category: "text_edit"
+    action: "Change/delete inner camel hump"
+    details:
+      ide_action_id: "CamelHumpAction"
+      karabiner_code: "-"
+      ideavim_command: "ciw/diw"
+      config_reference: ".ideavimrc:L84"
+
+  scroll_horizontal:
+    keystroke: "zH / zL"
+    system: "I"
+    status: "implemented"
+    category: "navigation"
+    action: "Scroll left/right 50 chars"
+    details:
+      ide_action_id: "ScrollAction"
+      karabiner_code: "-"
+      ideavim_command: "zh/zl"
+      config_reference: ".ideavimrc:L85"

@@ -1,0 +1,17 @@
+metric,value,count,percentage
+Status,implemented,28,58.3
+Status,needs_attention,1,2.1
+Status,planned,19,39.6
+System,-,15,31.2
+System,I,8,16.7
+System,K,8,16.7
+System,W,16,33.3
+System,W+I,1,2.1
+Category,action,7,14.6
+Category,custom,15,31.2
+Category,desktop,2,4.2
+Category,mouse,2,4.2
+Category,navigation,8,16.7
+Category,selection,4,8.3
+Category,text_edit,7,14.6
+Category,window,3,6.2

@@ -1,0 +1,273 @@
+# Vertical Navigation Key Bindings (J / K)
+# Source data for keyboard productivity configuration system
+
+navigation_type: "vertical"
+keys: ["J", "K"]
+description: "Up/down navigation and related actions"
+
+bindings:
+  none:
+    keystroke: "J / K"
+    system: "I"  # IdeaVim
+    status: "implemented"
+    category: "text_edit"
+    action: "Join lines/Visual selection"
+    details:
+      ide_action_id: "EditorJoinLines"
+      karabiner_code: "j/k"
+      ideavim_command: "J/<C-v>k"
+      config_reference: ".ideavimrc:L91"
+
+  shift:
+    keystroke: "⇧J / ⇧K"
+    system: "W"  # WebStorm
+    status: "implemented"
+    category: "selection"
+    action: "Extend selection down/up"
+    details:
+      ide_action_id: "EditorDownWithSelection/EditorUpWithSelection"
+      karabiner_code: "shift+j/k"
+      ideavim_command: "vj/vk"
+      config_reference: "keymap.xml:L92"
+
+  ctrl:
+    keystroke: "⌃J / ⌃K"
+    system: "W"
+    status: "implemented"
+    category: "action"
+    action: "Custom action/Show navbar"
+    details:
+      ide_action_id: "ShowNavBar"
+      karabiner_code: "ctrl+j/k"
+      ideavim_command: "-"
+      config_reference: "keymap.xml:L93"
+
+  alt:
+    keystroke: "⌥J / ⌥K"
+    system: "W"
+    status: "implemented"
+    category: "text_edit"
+    action: "Clone caret below/above"
+    details:
+      ide_action_id: "EditorCloneCaretBelow/EditorCloneCaretAbove"
+      karabiner_code: "alt+j/k"
+      ideavim_command: "-"
+      config_reference: "keymap.xml:L18"
+
+  cmd:
+    keystroke: "⌘J / ⌘K"
+    system: "W"
+    status: "implemented"
+    category: "action"
+    action: "Insert live template/Custom"
+    details:
+      ide_action_id: "InsertLiveTemplate"
+      karabiner_code: "cmd+j/k"
+      ideavim_command: "-"
+      config_reference: "keymap.xml:L95"
+
+  shift_ctrl:
+    keystroke: "⇧⌃J / ⇧⌃K"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "shift+ctrl+j/k"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  shift_alt:
+    keystroke: "⇧⌥J / ⇧⌥K"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Special char"
+    details:
+      ide_action_id: "Special"
+      karabiner_code: "shift+alt+j/k"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  shift_cmd:
+    keystroke: "⇧⌘J / ⇧⌘K"
+    system: "W"
+    status: "implemented"
+    category: "action"
+    action: "Editor join lines/VCS push"
+    details:
+      ide_action_id: "EditorJoinLines/Vcs.Push"
+      karabiner_code: "shift+cmd+j/k"
+      ideavim_command: "-"
+      config_reference: "keymap.xml:L98"
+
+  ctrl_alt:
+    keystroke: "⌃⌥J / ⌃⌥K"
+    system: "W"
+    status: "implemented"
+    category: "text_edit"
+    action: "Move line down/up"
+    details:
+      ide_action_id: "MoveLineDown/MoveLineUp"
+      karabiner_code: "ctrl+alt+j/k"
+      ideavim_command: "-"
+      config_reference: "keymap.xml:L99"
+
+  ctrl_cmd:
+    keystroke: "⌃⌘J / ⌃⌘K"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "ctrl+cmd+j/k"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  alt_cmd:
+    keystroke: "⌥⌘J / ⌥⌘K"
+    system: "W"
+    status: "implemented"
+    category: "action"
+    action: "Surround with template/Custom"
+    details:
+      ide_action_id: "SurroundWithLiveTemplate"
+      karabiner_code: "alt+cmd+j/k"
+      ideavim_command: "-"
+      config_reference: "keymap.xml:L101"
+
+  shift_ctrl_alt:
+    keystroke: "⇧⌃⌥J / ⇧⌃⌥K"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "shift+ctrl+alt+j/k"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  shift_ctrl_cmd:
+    keystroke: "⇧⌃⌘J / ⇧⌃⌘K"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "shift+ctrl+cmd+j/k"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  shift_alt_cmd:
+    keystroke: "⇧⌥⌘J / ⇧⌥⌘K"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "shift+alt+cmd+j/k"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  ctrl_alt_cmd:
+    keystroke: "⌃⌥⌘J / ⌃⌥⌘K"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "ctrl+alt+cmd+j/k"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  shift_ctrl_alt_cmd:
+    keystroke: "⇧⌃⌥⌘J / ⇧⌃⌥⌘K"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "shift+ctrl+alt+cmd+j/k"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  # Hyper key combinations (✱ = right_shift+right_ctrl+right_alt+right_cmd)
+  hyper:
+    keystroke: "✱J / ✱K"
+    system: "K"  # Karabiner
+    status: "implemented"
+    category: "navigation"
+    action: "Move down/up one line"
+    details:
+      ide_action_id: "down_arrow/up_arrow"
+      karabiner_code: "right_shift+right_ctrl+right_alt+right_cmd+j/k"
+      ideavim_command: "-"
+      config_reference: "karabiner.json:L107"
+
+  hyper_shift:
+    keystroke: "✱⇧J / ✱⇧K"
+    system: "K"
+    status: "planned"
+    category: "navigation"
+    action: "App switching"
+    details:
+      ide_action_id: "AppSwitcher"
+      karabiner_code: "-"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  hyper_ctrl:
+    keystroke: "✱⌃J / ✱⌃K"
+    system: "K"
+    status: "planned"
+    category: "desktop"
+    action: "Focus/expose"
+    details:
+      ide_action_id: "MissionControl"
+      karabiner_code: "-"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  hyper_alt:
+    keystroke: "✱⌥J / ✱⌥K"
+    system: "K"
+    status: "planned"
+    category: "mouse"
+    action: "Mouse move"
+    details:
+      ide_action_id: "mouse_move"
+      karabiner_code: "-"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  hyper_cmd:
+    keystroke: "✱⌘J / ✱⌘K"
+    system: "-"
+    status: "planned"
+    category: "custom"
+    action: "Custom action"
+    details:
+      ide_action_id: "Custom"
+      karabiner_code: "-"
+      ideavim_command: "-"
+      config_reference: "-"
+
+  # Vim-specific bindings
+  g_prefix:
+    keystroke: "GJ / GK"
+    system: "I"
+    status: "implemented"
+    category: "navigation"
+    action: "Navigate prev/next method"
+    details:
+      ide_action_id: "MethodUp/MethodDown"
+      karabiner_code: "-"
+      ideavim_command: "[m/]m"
+      config_reference: ".ideavimrc:L123"

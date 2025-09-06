@@ -1,0 +1,49 @@
+Navigation,Keys,Binding,System,Status,Category,HasIdeAction,HasKarabiner,HasIdeaVim,IsImplemented,ConfigFile
+Horizontal,"H, L",None,I,Implemented,Navigation,Yes,Yes,Yes,Yes,.ideavimrc
+Horizontal,"H, L",Shift,W,Implemented,Selection,Yes,Yes,Yes,Yes,keymap.xml
+Horizontal,"H, L",Ctrl,W+I,Implemented,Text_Edit,Yes,Yes,Yes,Yes,keymap.xml
+Horizontal,"H, L",Alt,W,Implemented,Navigation,Yes,Yes,Yes,Yes,keymap.xml
+Horizontal,"H, L",Cmd,W,Implemented,Action,Yes,Yes,No,Yes,keymap.xml
+Horizontal,"H, L",Shift Ctrl,-,Planned,Custom,No,Yes,No,No,-
+Horizontal,"H, L",Shift Alt,W,Implemented,Selection,Yes,Yes,No,Yes,keymap.xml
+Horizontal,"H, L",Shift Cmd,W,Implemented,Window,Yes,Yes,Yes,Yes,keymap.xml
+Horizontal,"H, L",Ctrl Alt,-,Planned,Custom,No,Yes,No,No,-
+Horizontal,"H, L",Ctrl Cmd,-,Planned,Custom,No,Yes,No,No,-
+Horizontal,"H, L",Alt Cmd,W,Implemented,Action,Yes,Yes,No,Yes,keymap.xml
+Horizontal,"H, L",Shift Ctrl Alt,W,Implemented,Window,Yes,Yes,No,Yes,keymap.xml
+Horizontal,"H, L",Shift Ctrl Cmd,-,Planned,Custom,No,Yes,No,No,-
+Horizontal,"H, L",Shift Alt Cmd,W,Implemented,Action,Yes,Yes,No,Yes,keymap.xml
+Horizontal,"H, L",Ctrl Alt Cmd,-,Planned,Custom,No,Yes,No,No,-
+Horizontal,"H, L",Shift Ctrl Alt Cmd,-,Planned,Custom,No,Yes,No,No,-
+Horizontal,"H, L",Hyper,K,Implemented,Navigation,Yes,Yes,No,Yes,karabiner.json
+Horizontal,"H, L",Hyper Shift,K,Planned,Selection,Yes,No,No,No,-
+Horizontal,"H, L",Hyper Ctrl,K,Implemented,Desktop,Yes,No,No,Yes,karabiner.json
+Horizontal,"H, L",Hyper Alt,K,Needs_Attention,Mouse,Yes,No,No,No,-
+Horizontal,"H, L",Hyper Cmd,W,Implemented,Window,Yes,No,No,Yes,keymap.xml
+Horizontal,"H, L",G Prefix,I,Implemented,Navigation,Yes,No,Yes,Yes,.ideavimrc
+Horizontal,"H, L",Change Camel,I,Implemented,Text_Edit,Yes,No,Yes,Yes,.ideavimrc
+Horizontal,"H, L",Delete Camel,I,Implemented,Text_Edit,Yes,No,Yes,Yes,.ideavimrc
+Horizontal,"H, L",Inner Camel,I,Implemented,Text_Edit,Yes,No,Yes,Yes,.ideavimrc
+Horizontal,"H, L",Scroll Horizontal,I,Implemented,Navigation,Yes,No,Yes,Yes,.ideavimrc
+Vertical,"J, K",None,I,Implemented,Text_Edit,Yes,Yes,Yes,Yes,.ideavimrc
+Vertical,"J, K",Shift,W,Implemented,Selection,Yes,Yes,Yes,Yes,keymap.xml
+Vertical,"J, K",Ctrl,W,Implemented,Action,Yes,Yes,No,Yes,keymap.xml
+Vertical,"J, K",Alt,W,Implemented,Text_Edit,Yes,Yes,No,Yes,keymap.xml
+Vertical,"J, K",Cmd,W,Implemented,Action,Yes,Yes,No,Yes,keymap.xml
+Vertical,"J, K",Shift Ctrl,-,Planned,Custom,No,Yes,No,No,-
+Vertical,"J, K",Shift Alt,-,Planned,Custom,Yes,Yes,No,No,-
+Vertical,"J, K",Shift Cmd,W,Implemented,Action,Yes,Yes,No,Yes,keymap.xml
+Vertical,"J, K",Ctrl Alt,W,Implemented,Text_Edit,Yes,Yes,No,Yes,keymap.xml
+Vertical,"J, K",Ctrl Cmd,-,Planned,Custom,No,Yes,No,No,-
+Vertical,"J, K",Alt Cmd,W,Implemented,Action,Yes,Yes,No,Yes,keymap.xml
+Vertical,"J, K",Shift Ctrl Alt,-,Planned,Custom,No,Yes,No,No,-
+Vertical,"J, K",Shift Ctrl Cmd,-,Planned,Custom,No,Yes,No,No,-
+Vertical,"J, K",Shift Alt Cmd,-,Planned,Custom,No,Yes,No,No,-
+Vertical,"J, K",Ctrl Alt Cmd,-,Planned,Custom,No,Yes,No,No,-
+Vertical,"J, K",Shift Ctrl Alt Cmd,-,Planned,Custom,No,Yes,No,No,-
+Vertical,"J, K",Hyper,K,Implemented,Navigation,Yes,Yes,No,Yes,karabiner.json
+Vertical,"J, K",Hyper Shift,K,Planned,Navigation,Yes,No,No,No,-
+Vertical,"J, K",Hyper Ctrl,K,Planned,Desktop,Yes,No,No,No,-
+Vertical,"J, K",Hyper Alt,K,Planned,Mouse,Yes,No,No,No,-
+Vertical,"J, K",Hyper Cmd,-,Planned,Custom,No,No,No,No,-
+Vertical,"J, K",G Prefix,I,Implemented,Navigation,Yes,No,Yes,Yes,.ideavimrc
