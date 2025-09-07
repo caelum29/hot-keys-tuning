@@ -30,8 +30,8 @@ This is a unified keyboard productivity configuration system that enhances devel
     - `TEST-HOOKS-DEMO.md` - Demonstration results of hooks and subagents implementation
 - `keyboard-config/` - **NEW: YAML-based configuration system with ActionID integration**
   - `data/` - Source YAML files (single source of truth for all bindings)
-    - `horizontal-navigation.yaml` - H/L key bindings with IntelliJ ActionIDs and technical details
-    - `vertical-navigation.yaml` - J/K key bindings with IntelliJ ActionIDs and structured data
+    - `horizontal-navigation.yaml` - H/L key bindings with IntelliJ ActionIDs, technical details, and planned action descriptions
+    - `vertical-navigation.yaml` - J/K key bindings with IntelliJ ActionIDs, structured data, and planned action descriptions
     - `schemas/binding-schema.yaml` - Validation rules for data consistency including ActionID support
   - `generated/` - Auto-generated documentation and exports
     - `KEY-MAP.md` - Enhanced markdown tables with ActionIDs displayed prominently in bold
@@ -158,10 +158,11 @@ When working with this codebase:
 6. **Avoid direct markdown editing**: Generated files will be overwritten
 
 ### For Technical Implementation:
-- YAML provides clear structure for all binding details (action IDs, key codes, config references)
+- YAML provides clear structure for all binding details (action IDs, key codes, config references, planned descriptions)
 - Schema validation prevents errors and ensures consistency
 - CSV exports enable data analysis and bulk operations
 - Single source of truth eliminates documentation drift
+- **Planned descriptions**: All planned bindings include `planned_description` field explaining intended functionality
 
 ### Data Structure Benefits:
 - **Parsing**: YAML is much easier for LLMs to understand than complex markdown tables
@@ -233,7 +234,7 @@ tail -f ~/.claude/hooks/conflict-check.log
 tail -f ~/.claude/hooks/edit-log.txt
 ```
 
-**Current Statistics**: 95 total bindings (28 implemented, 66 planned, 1 needs attention), ActionID integration complete
+**Current Statistics**: 124 total bindings (45 implemented, 71 planned, 7 available, 1 needs attention), ActionID integration complete, planned action descriptions complete
 **ActionID Status**: 6000+ official IntelliJ ActionIDs available, 95 bindings with verified ActionIDs, production-ready for IDE automation  
 **Automation Status**: 5 hooks active, 3 validation scripts, multi-system conflict detection functional, yarn scripts operational  
 **Package.json**: Updated with 8 convenient yarn scripts for project automation (validate, backup, conflict detection, documentation generation)
