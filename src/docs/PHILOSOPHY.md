@@ -59,14 +59,14 @@ The system treats the keyboard as a **modal instrument** where different modifie
 
 Each modifier combination has **semantic meaning** and **consistent behavior**:
 
-| Modifier | Semantic Context | Example Actions |
-|----------|------------------|-----------------|
-| **None** | Basic vim-style operations | Bookmarks, text editing, navigation |
-| **⇧ (Shift)** | Selection and window management | Text selection, tab switching |
-| **⌃ (Control)** | Desktop and system management | Desktop switching, system controls |
-| **⌥ (Option)** | Word-level and mouse operations | Word movement, mouse control |
-| **⌘ (Command)** | Application-specific actions | IDE commands, app shortcuts |
-| **✱ (Hyper)** | System-wide navigation layer | Global navigation, cross-app movement |
+| Modifier        | Semantic Context                | Example Actions                       |
+|-----------------|---------------------------------|---------------------------------------|
+| **None**        | Basic vim-style operations      | Bookmarks, text editing, navigation   |
+| **⇧ (Shift)**   | Selection and window management | Text selection, tab switching         |
+| **⌃ (Control)** | Desktop and system management   | Desktop switching, system controls    |
+| **⌥ (Option)**  | Word-level and mouse operations | Word movement, mouse control          |
+| **⌘ (Command)** | Application-specific actions    | IDE commands, app shortcuts           |
+| **✱ (Hyper)**   | System-wide navigation layer    | Global navigation, cross-app movement |
 
 ### 4. Dual-Role Key Architecture
 
