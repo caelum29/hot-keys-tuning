@@ -1,2 +1,25 @@
 .idea/
 .claude/
+obsidian-vault/.obsidian/
+node_modules/
+temp/
+
+# Configuration files with sensitive data
+claude.json
+/.mcp.json
+
+# OS files
+.DS_Store
+**/.DS_Store
+
+# Python virtual environment
+keyboard-config/venv/
+__pycache__/
+*.pyc
+
+
+
+
+# Ignore Smart Environment folder
+.smart-env
+.env

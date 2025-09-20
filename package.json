@@ -11,9 +11,23 @@
     "generate:docs": "cd keyboard-config && source venv/bin/activate && python scripts/generate-docs.py",
     "export:csv": "cd keyboard-config && source venv/bin/activate && python scripts/export-csv.py",
     "hooks:status": "echo 'Project Hook Configuration:' && cat .claude/hooks/keyboard-config-hooks.json && echo '\\nHook Logs:' && ls -la .claude/hooks/logs/*.log 2>/dev/null || echo 'No logs yet' && echo '\\nBackups:' && ls -la .claude/hooks/backups/ 2>/dev/null || echo 'No backups yet'",
-    "setup": "cd keyboard-config && python -m venv venv && source venv/bin/activate && pip install PyYAML"
+    "setup": "cd keyboard-config && python -m venv venv && source venv/bin/activate && pip install PyYAML",
+    "mcp:test": "npx -y @upstash/context7-mcp",
+    "mcp:obsidian": "OBSIDIAN_VAULT_PATH=/Users/artem/WebstormProjects/MISC/hot-keys-tuning npx -y @kazuph/mcp-obsidian",
+    "mcp:config": "cat claude.json"
   },
-  "keywords": ["keyboard", "productivity", "karabiner", "ideavim", "webstorm", "navigation", "vim"],
+  "keywords": [
+    "keyboard",
+    "productivity",
+    "karabiner",
+    "ideavim",
+    "webstorm",
+    "navigation",
+    "vim"
+  ],
   "author": "Artem Sorochynskyi <caelum29@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@kazuph/mcp-obsidian": "^1.0.2"
+  }
 }
