@@ -1,0 +1,342 @@
+" Set the leader key to space for custom keybindings
+let mapleader = ' '
+
+" Keep 7 lines of context above and below the cursor when scrolling
+set scrolloff=7
+
+" Enable Sneak plugin for efficient motion
+"Sneak----------------------------------------------------------------
+set sneak
+
+" Make search case-insensitive unless uppercase letters are used
+set smartcase
+
+" Enable EasyMotion plugin for quick navigation
+"easy motion----------------------------------------------------------
+set easymotion
+
+" Map <leader><leader>l to trigger AceJump for line marks
+map <leader><leader>l <Plug>(acejump-linemarks)<CR>
+
+" Copy text to the system clipboard when using Vim commands like y (yank)
+" Copy to system clipboard as well------------------------------------
+set clipboard+=unnamed
+
+" Preserve the current mode during refactoring (commented out)
+" refactor mode-------------------------------------------------------
+"set idearefactormode=keep
+
+" Highlight matches as you type during incremental search
+" Do incremental searching
+set incsearch
+
+" Use IntelliJ IDEA's smart line-joining logic
+" Use Idea to join lines smartly---------------------------------------
+set ideajoin
+
+" Configure save behavior for :wa (Save All) and :w (Save) (commented out)
+" Save on :wa(Save All) and :w (Save)----------------------------------
+"set ideawrite
+
+" Enable relative line numbering (commented out)
+set relativenumber
+
+" Enable Surround plugin for manipulating surrounding characters (e.g., quotes, brackets)
+set surround
+
+" Display the current mode (e.g., Insert, Visual) on the status line
+" message on the status line to show current mode----------------------
+set showmode
+
+" Replace beeping with a visual flash
+" use visual bell instead of beeping-----------------------------------
+set visualbell
+
+" Show partially typed commands in the status bar
+" show (partial) command in the status bar
+set showcmd
+
+" Enable Which-Key plugin for displaying keybindings
+" Which-key settings
+set which-key
+
+" Disable timeout for keybindings
+set notimeout
+
+" Set font size for Which-Key popups
+let g:WhichKey_FontSize = 14
+
+" Set color for prefix keys in Which-Key
+let g:WhichKey_PrefixColor = "C792EA"
+
+" Set color for command descriptions in Which-Key
+let g:WhichKey_CommandColor = "82AAFF"
+
+" Make prefix keys bold in Which-Key
+let g:WhichKey_PrefixStyle = "bold"
+
+" Sort keybindings by key prefix first
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+
+" Hide the typed sequence in Which-Key popups
+let g:WhichKey_ShowTypedSequence = "false"
+
+" Set delay before Which-Key popups appear
+let g:WhichKey_DefaultDelay = 600
+
+" Add description for the gg keybinding
+let g:WhichKeyDesc_goto_top = "gg goto first line"
+
+" Highlight yanked text temporarily (commented out)
+" highlight selection--------------------------------------------------
+"set highlightedyank
+
+" Enable IntelliJ IDEA-style marks for navigation
+set ideamarks
+
+" Enable multiple cursors functionality
+" Multiple cursors support
+set multiple-cursors
+
+" Create a new line below and stay in Normal mode
+" These create newlines like o and O but stay in normal mode
+nmap zj o<Esc>k
+
+" Create a new line above and stay in Normal mode
+nmap zk O<Esc>j
+
+" Map Q to format the current paragraph or selection
+" Use Q for formatting the current paragraph (or visual selection)
+map Q gq
+
+" Format the entire paragraph under the cursor
+nmap Q gqap
+
+" Navigate to the next error
+" actions
+nnoremap ge :action GotoNextError<CR>
+
+" Navigate to the previous error
+nnoremap gE :action GotoPreviousError<CR>
+
+" Show the description of the current error
+noremap <Space>ed :action ShowErrorDescription<CR>
+
+" Paste multiple items from the clipboard
+"Multiple pasted
+nnoremap <leader>v :action PasteMultiple <CR>
+
+" Move to the next splitter
+map gz :action NextSplitter<CR>
+
+" Move to the previous splitter
+map gZ :action PrevSplitter<CR>
+
+" Close all split windows
+map zsU :action UnsplitAll<CR>
+
+" Open the most recently used project
+" Open recent project
+nnoremap <leader>or :action $LRU<CR>
+
+" Open the action menu
+" Open action
+nnoremap <leader>a :action GotoAction<CR>
+
+" Close the current tab
+nnoremap <leader>q :action CloseContent<cr>
+
+" Reopen the last closed tab
+nnoremap <leader>Q :action ReopenClosedTab<cr>
+
+" Trigger AceJump for general navigation
+" AceJump actions
+map <leader>jj :action AceAction<CR>
+
+" Trigger AceJump for line navigation
+map <leader>jl :action AceLineAction<CR>
+
+" Trigger AceJump for target navigation
+map <leader>y :action AceTargetAction<CR>
+
+" Jump to the navigation bar (commented out)
+" Jump to nav bar
+"map <leader>jn :action NavbarPopupMenu<CR>
+
+" Open the string manipulation popup menu
+" String manipulation actions
+nnoremap <leader>sm :action StringManipulation.EditorPopupMenu<CR>
+
+" Delete a method
+" Delete method
+nnoremap dm V/{<CR>%d
+
+" Start debugging
+map <leader>d <Action>(Debug)
+
+" Toggle Zen Mode
+nnoremap <Leader>z :action ToggleZenMode<CR>
+
+" Open the file structure popup
+noremap <Space>fs mm`m:action FileStructurePopup<CR>
+
+" Rename the current file
+noremap <Space>RF :action RenameFile<CR>
+
+" Rename the current element
+noremap <Space>re :action RenameElement<CR>
+
+" Move the current element
+noremap <Space>mv :action Move<CR>
+
+" Hide all windows
+noremap <Space>ha :action HideAllWindows<CR>
+
+" Close all editors except the active one
+noremap <Space>co :action CloseAllEditorsButActive<CR>
+
+" Activate the terminal tool window
+noremap <Space>t :action ActivateTerminalToolWindow<CR>
+
+" Show recently opened files
+noremap <Space>rf :action RecentFiles<CR>
+
+" Show recently changed files
+noremap <Space>rF :action RecentChangedFiles<CR>
+
+" Close all unmodified editors
+noremap <Space>cu :action CloseAllUnmodifiedEditors<CR>
+
+" Move to the beginning of the line
+map gh ^
+
+" Move to the end of the line
+map gl $
+
+" Move to the matching parenthesis
+map go %
+
+" Navigate to the next method
+nnoremap gj :action MethodDown <CR>
+
+" Navigate to the previous method
+nnoremap gk :action MethodUp <CR>
+
+" Expand the current selection to the word
+vmap K :action EditorSelectWord<CR>
+
+" Shrink the current selection from the word
+vmap J :action EditorUnSelectWord<CR>
+
+" Navigate camel humps
+"nnoremap L [w
+"vnoremap L [w
+"nnoremap H [b
+"vnoremap H [b
+
+" Edit camel humps
+nnoremap cL c[w
+nnoremap cH c[b
+nnoremap cih [bc[w
+nnoremap dL d[w
+nmap dH d[b
+nnoremap dih [bd[w
+
+" Edit from cursor to start/end of parenthesized block
+nnoremap c) c])
+nnoremap d) d])
+nnoremap c( c[((
+nnoremap d( c[((<ESC>l
+
+" Scroll left and right
+nnoremap zH 50zh
+nnoremap zL 50zl
+
+" Reselect pasted text
+nnoremap gp `[v`]
+
+" Redo the last undone change
+nnoremap U <C-R>
+
+" Opposite action for E
+nnoremap E ge
+
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+nmap <C-x> <Plug>SkipOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+nmap <C-p> <Plug>RemoveOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+nmap <S-C-n> <Plug>AllWholeOccurrences
+xmap <S-C-n> <Plug>AllWholeOccurrences
+xmap g<S-C-n> <Plug>AllOccurrences
+
+" Surround the current selection with a specified character
+map <Leader>sw :action SurroundWith<CR>
+
+" Delete a method and clean up empty lines
+nnoremap dam vi{:g/^$/d<CR>dap
+
+" Join lines smartly
+nmap <C-j> <Action>(EditorJoinLines)
+nnoremap J <C-J>
+
+" Move the editor to the opposite tab group
+map <Leader>mo <Action>(MoveEditorToOppositeTabGroup)
+
+" Maximize the editor in the current split
+map <Leader>ms <Action>(MaximizeEditorInSplit)
+
+" Map IDE actions to IdeaVim
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+" Map \r to the Reformat Code action (commented out)
+"map \r <Action>(ReformatCode)
+
+" Map <leader>d to start debugging
+map <leader>d <Action>(Debug)
+
+" Map \b to toggle the breakpoint on the current line
+map <leader>b <Action>(ToggleLineBreakpoint)
+
+" Go to the last editing place
+nnoremap gi :action JumpToLastChange<Enter>
+nnoremap gI :action JumpToNextChange<Enter>
+
+" Toggle bookmarks
+nnoremap mm :action ToggleBookmark<Enter>
+nnoremap mp :action PinActiveTabToggle<Enter>
+nnoremap gb :action ShowBookmarks<Enter>
+nnoremap <Leader>mm :action ToggleBookmarkWithMnemonic<Enter>
+
+" Navigate to the next/previous bookmark
+nnoremap L :action GotoNextBookmark<CR>
+nnoremap H :action GotoPreviousBookmark<CR>
+
+" Switch tabs
+nnoremap <Tab> :action NextTab<CR>
+nnoremap <S-Tab> :action PreviousTab<CR>
+
+" Close all editors except the active one
+nmap <leader>gx :action CloseAllEditorsButActive<CR>
+
+" Make v and V consistent with other commands
+nnoremap vv V
+
+" Highlight yanked text temporarily
+set highlightedyank
+
+" Enable QuickScope plugin for highlighting targets
+set quickscope
+
+" Highlight targets for f, F, t, T motions
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" Set primary color for QuickScope highlights
+let g:qs_primary_color = 'F8E71C'
+
+
+"custom plugin
+nmap <silent> tt :action ToggleEditorPreviewOnly<CR>

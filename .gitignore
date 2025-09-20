@@ -1,6 +1,7 @@
 .idea/
 .claude/
 obsidian-vault/.obsidian/
+.obsidian/
 node_modules/
 temp/
 

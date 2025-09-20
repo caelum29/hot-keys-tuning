@@ -1,0 +1,28 @@
+{
+    /* Vim-style hjkl navigation (no modifiers) */
+    "h" = "moveBackward:";             /* h → left */
+    "l" = "moveForward:";              /* l → right */
+    "j" = "moveDown:";                 /* j → down */
+    "k" = "moveUp:";                   /* k → up */
+
+    /* Word navigation */
+    "w" = "moveWordForward:";          /* w → forward by word */
+    "b" = "moveWordBackward:";         /* b → back by word */
+    "e" = "moveWordForwardAndModifySelection:"; /* e → word end (select) */
+
+    /* Line navigation */
+    "0" = "moveToBeginningOfLine:";    /* 0 → start of line */
+    "$" = "moveToEndOfLine:";          /* $ → end of line */
+
+    /* Delete operations */
+    "x" = "deleteForward:";            /* x → delete char forward */
+    "X" = "deleteBackward:";           /* X → delete char backward */
+    "d" = "deleteToEndOfParagraph:";   /* d → delete to paragraph end */
+    "D" = "deleteToBeginningOfParagraph:"; /* D → delete to paragraph start */
+
+    /* Other useful motions */
+    "u" = "deleteToBeginningOfLine:";  /* u → delete to line start */
+    "U" = "deleteToEndOfLine:";        /* U → delete to line end */
+    "gg" = "moveToBeginningOfDocument:"; /* gg → top of document */
+    "G" = "moveToEndOfDocument:";      /* G → bottom of document */
+}

@@ -1,0 +1,76 @@
+{
+  "title": "Dual-role mapping: F, D, S as dual-role keys",
+  "rules": [
+    {
+      "description": "F tap = F, F hold = left_command; D tap = D, D hold = left_option; S tap = S, S hold = left_control",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "f"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_command"
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 500
+          }
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "d"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_option"
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 500
+          }
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "s",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "s"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_control"
+            }
+          ],
+          "parameters": {
+            "basic.to_if_held_down_threshold_milliseconds": 500
+          }
+        }
+      ]
+    }
+  ]
+}
