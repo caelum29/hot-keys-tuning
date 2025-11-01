@@ -55,6 +55,8 @@ See [[WEBSTORM-QUICK-LISTS]] for detailed quick list usage
 - `vim_settings.xml` (4,067 bytes) - IdeaVim main configuration
 - `vim_settings_local.xml` (913,722 bytes) - IdeaVim local state and history
 - `keymapFlags.xml` - Keymap feature flags
+- `abbrevs.xml` (2KB) - Action abbreviations for Search Everywhere (double-shift search)
+- `macros.xml` (650 bytes) - Recorded macro sequences with custom names
 
 **Editor Settings:**
 - `editor.xml` - Editor behavior (camel words, breadcrumbs, trailing spaces)
@@ -153,6 +155,161 @@ From `vim_settings.xml`:
 
 See [[IDEAVIM-CONFIG]] for complete IdeaVim configuration
 
+## Action Abbreviations & Macros
+
+### Action Abbreviations (`abbrevs.xml`)
+
+**Purpose**: Custom shortcuts for finding actions in Search Everywhere (double-shift) and Find Action (⌘⇧A)
+
+**Location**:
+- IDE: `~/Library/Application Support/JetBrains/WebStorm2025.2/options/abbrevs.xml`
+- Repo: `configs/webstorm/options/abbrevs.xml`
+
+**Current Abbreviations** (63 total):
+
+| Abbreviation | Action | Description |
+|--------------|--------|-------------|
+| `md` | QuickList.Markdown | Markdown quick list |
+| `npm` | QuickList.JavaScript/Node.js Development | Node.js development quick list |
+| `co`, `copy` | QuickList.Copy | Copy operations quick list |
+| `rt` | Terminal.RenameSession | Rename terminal session |
+| `git` | VcsGroups | Version control actions |
+| `task` | tasks.and.contexts | Tasks and contexts menu |
+| `mep` | ManageRecentProjects | Manage recent projects |
+| `string` | ActivateStringManipulationToolWindow | String manipulation tool |
+| `ed` | TextEditorWithPreview.Layout.EditorOnly | Editor only view |
+| `ep` | TextEditorWithPreview.Layout.EditorAndPreview | Editor + preview view |
+| `edp` | TextEditorWithPreview.Layout.PreviewOnly | Preview only view |
+| `op` | RecentProjectListGroup | Open project list |
+| `va` | VimActions | Vim action menu |
+| `spr` | MoveTabRight | Split right |
+| `file` | FileMenu | File menu |
+
+**XML Format**:
+```xml
+<application>
+  <component name="AbbreviationManager">
+    <abbreviations>
+      <action id="QuickList.Markdown">
+        <abbreviation name="md" />
+      </action>
+      <action id="Terminal.RenameSession">
+        <abbreviation name="rt" />
+      </action>
+    </abbreviations>
+  </component>
+</application>
+```
+
+**Usage Workflow**:
+1. Press ⇧⇧ (double-shift) to open Search Everywhere
+2. Type abbreviation (e.g., `md` or `npm`)
+3. Hit Enter to execute the action
+
+**Benefits**:
+- Faster action discovery than memorizing full action names
+- Customizable aliases for frequently used actions
+- Works across all search contexts (files, actions, symbols)
+- Especially useful for Quick Lists and complex action groups
+
+### Macros (`macros.xml`)
+
+**Purpose**: Recorded action sequences for automating repetitive tasks
+
+**Location**:
+- IDE: `~/Library/Application Support/JetBrains/WebStorm2025.2/options/macros.xml`
+- Repo: `configs/webstorm/options/macros.xml`
+
+**Current Macros** (1 macro):
+
+**"create controller"** - 14-step sequence:
+1. Create directory (`NewDir`)
+2. Type "user"
+3. Press Enter
+4. Create new file (`NewFile`)
+5. Type "fuelMetric.controller.js"
+6. Press Enter
+
+**XML Format**:
+```xml
+<application>
+  <component name="ActionMacroManager">
+    <macro name="create controller">
+      <action id="NewDir" />
+      <typing text-keycode="85:0;83:0;69:0;82:0">user</typing>
+      <shortuct text="ENTER" />
+      <action id="NewElement" />
+      <action id="NewFile" />
+      <shortuct text="ENTER" />
+      <typing text-keycode="...">fuelMetric.controller.js</typing>
+      <shortuct text="ENTER" />
+    </macro>
+  </component>
+</application>
+```
+
+**How to Record Macros**:
+1. Go to Edit → Macros → Start Macro Recording
+2. Perform actions (type, navigate, invoke commands)
+3. Edit → Macros → Stop Macro Recording
+4. Name your macro
+5. Assign keyboard shortcut in Settings → Keymap
+
+**Macro Types**:
+- **Typing sequences**: Automated text entry
+- **Action invocations**: Executing IDE commands
+- **Shortcuts**: Keyboard combinations
+- **Navigation**: Cursor movements and selections
+
+**Use Cases**:
+- Project-specific file creation patterns
+- Boilerplate code generation
+- Repetitive refactoring sequences
+- Complex search/replace workflows
+- Multi-step configuration changes
+
+### Integration with Quick Lists
+
+Abbreviations work seamlessly with Quick Lists:
+
+**Example Flow**:
+1. Type `npm` in Search Everywhere
+2. Opens "JavaScript/Node.js Development" quick list
+3. Select action (e.g., "Run npm install")
+4. Execute immediately
+
+**Abbreviation Strategies**:
+- **Mnemonic**: `md` for Markdown, `git` for VCS
+- **Short codes**: `co` for copy, `op` for open project
+- **Action hints**: `rt` for rename terminal, `spr` for split right
+- **Multi-char**: Avoid single-letter abbreviations to prevent conflicts
+
+### Sync and Backup
+
+**Manual Sync** (from IDE to project):
+```bash
+cp "/Users/artem/Library/Application Support/JetBrains/WebStorm2025.2/options/abbrevs.xml" \
+   configs/webstorm/options/
+
+cp "/Users/artem/Library/Application Support/JetBrains/WebStorm2025.2/options/macros.xml" \
+   configs/webstorm/options/
+```
+
+**Restore** (from project to IDE):
+```bash
+cp configs/webstorm/options/abbrevs.xml \
+   "/Users/artem/Library/Application Support/JetBrains/WebStorm2025.2/options/"
+
+cp configs/webstorm/options/macros.xml \
+   "/Users/artem/Library/Application Support/JetBrains/WebStorm2025.2/options/"
+```
+
+**Backup**:
+```bash
+yarn backup configs/webstorm/options/abbrevs.xml
+yarn backup configs/webstorm/options/macros.xml
+```
+
 ## Integration with Five-Layer Architecture
 
 This WebStorm configuration integrates into the [[FIVE-LAYER-ARCHITECTURE]]:
@@ -205,7 +362,9 @@ quicklists/
 
 options/
 ├── vim_settings.xml
-└── vim_settings_local.xml
+├── vim_settings_local.xml
+├── abbrevs.xml
+└── macros.xml
 ```
 
 **NOT Tracked:**

@@ -1,0 +1,66 @@
+<application>
+  <component name="AbbreviationManager">
+    <abbreviations>
+      <action id="Terminal.RenameSession">
+        <abbreviation name="rt" />
+      </action>
+      <action id="ManageRecentProjects">
+        <abbreviation name="mep" />
+      </action>
+      <action id="ActivateStringManipulationToolWindow">
+        <abbreviation name="string" />
+      </action>
+      <action id="QuickList.Markdown">
+        <abbreviation name="md" />
+      </action>
+      <action id="FileMenu">
+        <abbreviation name="file" />
+      </action>
+      <action id="EditorActions" />
+      <action id="TextEditorWithPreview.Layout.PreviewOnly">
+        <abbreviation name="edp" />
+      </action>
+      <action id="QuickList.JavaScript/Node.js Development">
+        <abbreviation name="npm" />
+      </action>
+      <action id="CutCopyPasteGroup" />
+      <action id="QuickList.copy">
+        <abbreviation name="co" />
+        <abbreviation name="copy" />
+      </action>
+      <action id="ActivateTerminalToolWindow" />
+      <action id="CopyReferencePopupGroup">
+        <abbreviation name="copy" />
+      </action>
+      <action id="TextEditorWithPreview.Layout.EditorOnly">
+        <abbreviation name="ed" />
+      </action>
+      <action id="TextEditorWithPreview.Layout.EditorAndPreview">
+        <abbreviation name="ep" />
+      </action>
+      <action id="RecentProjectListGroup">
+        <abbreviation name="op" />
+      </action>
+      <action id="BigDataTools.CopyPresignedPathAction">
+        <abbreviation name="pre" />
+      </action>
+      <action id="VimActions">
+        <abbreviation name="va" />
+      </action>
+      <action id="MoveTabRight">
+        <abbreviation name="spr" />
+      </action>
+      <action id="QuickList.Copy">
+        <abbreviation name="co" />
+        <abbreviation name="copy" />
+        <abbreviation name="cop" />
+      </action>
+      <action id="VcsGroups">
+        <abbreviation name="git" />
+      </action>
+      <action id="tasks.and.contexts">
+        <abbreviation name="task" />
+      </action>
+    </abbreviations>
+  </component>
+</application>

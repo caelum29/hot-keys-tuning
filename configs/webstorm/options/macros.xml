@@ -1,0 +1,16 @@
+<application>
+  <component name="ActionMacroManager">
+    <macro name="create controller">
+      <action id="NewDir" />
+      <typing text-keycode="85:0;83:0;69:0;82:0">user</typing>
+      <shortuct text="ENTER" />
+      <action id="NewElement" />
+      <action id="NewFile" />
+      <shortuct text="ENTER" />
+      <typing text-keycode="70:0;85:0;69:0;76:0;77:1;69:0;84:0;82:0;73:0;67:0;46:0;67:0;79:0;78:0;78:0">fuelMetric.conn</typing>
+      <action id="EditorBackSpace" />
+      <typing text-keycode="84:0;82:0;79:0;76:0;76:0;69:0;82:0;46:0;74:0;83:0">troller.js</typing>
+      <shortuct text="ENTER" />
+    </macro>
+  </component>
+</application>
