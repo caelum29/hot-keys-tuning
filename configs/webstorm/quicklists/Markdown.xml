@@ -1,0 +1,9 @@
+<list display="Markdown" description="Toggle markdown editor">
+  <action id="TextEditorWithPreview.Layout.EditorOnly" />
+  <action id="TextEditorWithPreview.Layout.EditorAndPreview" />
+  <action id="TextEditorWithPreview.Layout.PreviewOnly" />
+  <action id="QuickList.$Separator$" />
+  <action id="org.intellij.plugins.markdown.ui.actions.styling.ToggleBoldAction" />
+  <action id="org.intellij.plugins.markdown.ui.actions.styling.ToggleItalicAction" />
+  <action id="QuickList.$Separator$" />
+</list>

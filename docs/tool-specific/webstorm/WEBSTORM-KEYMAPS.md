@@ -223,6 +223,34 @@ The following actions have been disabled (no shortcuts assigned):
 - `J` - Smart join lines (Ctrl+J)
 - `tt` - Toggle editor preview only
 
+## Quick Lists
+
+Quick Lists are custom action groups that create popup menus accessible via keyboard shortcuts or Search Everywhere. See [[WEBSTORM-QUICK-LISTS]] for complete guide.
+
+### Recommended Quick Lists
+
+#### Dev Tools (`Ctrl + Shift + D`)
+- Terminal, Run/Debug, Stop, Reformat, Structure, Breakpoints, Tests
+
+#### Git Actions (`Ctrl + Shift + G`)
+- Pull, Push, Commit, Log, Compare, Revert, Blame, Diff
+
+#### Terminal Tools (`Ctrl + Shift + T`)
+- Terminal, npm/yarn commands, Clear Buffer, Split Terminal
+
+#### Window Management (`Ctrl + Shift + W`)
+- Hide/Maximize, Recent Files, Close Tabs, Pin/Unpin
+
+### How to Use Quick Lists
+
+1. **Create:** Settings → Quick Lists → Add new list
+2. **Assign shortcut:** Keymap → Quick Lists → Right-click → Add Keyboard Shortcut
+3. **Access:**
+   - Via shortcut → Press number (0-9)
+   - Via Search Everywhere → Double-shift → Type list name
+
+See [[WEBSTORM-QUICK-LISTS]] for detailed setup instructions and examples.
+
 ### Notes
 - This keymap combines vim-inspired navigation (`H/J/K/L`) with standard macOS shortcuts
 - Many actions have both original and custom shortcuts for flexibility
@@ -231,3 +259,4 @@ The following actions have been disabled (no shortcuts assigned):
 - Vim plugins enhance navigation and text manipulation capabilities
 - QuickScope highlights make f/F/t/T motions more efficient
 - Which-Key shows available shortcuts after pressing leader or prefix keys
+- Quick Lists provide custom command panels accessible via double-shift or shortcuts

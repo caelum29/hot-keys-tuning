@@ -1,0 +1,8 @@
+<list display="Terminal Actions">
+  <action id="Terminal.MoveToolWindowTabLeft" />
+  <action id="Terminal.MoveToolWindowTabRight" />
+  <action id="QuickList.$Separator$" />
+  <action id="Terminal.MoveToEditor" />
+  <action id="Terminal.RenameSession" />
+  <action id="Terminal.SplitVertically" />
+</list>

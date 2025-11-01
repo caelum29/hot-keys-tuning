@@ -43,7 +43,7 @@ hot-keys-tuning/
 │   └── archive/                    # Historical content
 │
 ├── 📁 resources/                   # External resources
-└── 📁 temp/                        # Temporary files
+└── 📁 temp/   ![img.png](img.png)                     # Temporary files
 ```
 
 ## ⚡ Quick Start

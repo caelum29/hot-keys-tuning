@@ -140,15 +140,15 @@ bindings:
 
   shift_ctrl_alt:
     keystroke: "⇧⌃⌥J / ⇧⌃⌥K"
-    system: "-"
-    status: "planned"
-    category: "selection"
-    action: "Select to document start/end"
+    system: "W"
+    status: "implemented"
+    category: "window"
+    action: "Stretch split to bottom/top"
     details:
-      ide_action_id: "EditorTextStartWithSelection/EditorTextEndWithSelection"
+      ide_action_id: "StretchSplitToBottom/StretchSplitToTop"
       karabiner_code: "shift+ctrl+alt+j/k"
       ideavim_command: "-"
-      config_reference: "-"
+      config_reference: "keymap.xml:macOS_copy2"
 
   shift_ctrl_cmd:
     keystroke: "⇧⌃⌘J / ⇧⌃⌘K"

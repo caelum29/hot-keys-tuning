@@ -1,0 +1,10 @@
+<list display="Copy" description="all copy actions">
+  <action id="CopyFileName" />
+  <action id="Tool_External Tools_Copy @Filename" />
+  <action id="CopyReference" />
+  <action id="CopyPathWithLineNumber" />
+  <action id="BigDataTools.CopyAbsolutePathAction" />
+  <action id="QuickList.$Separator$" />
+  <action id="Vcs.CopyCurrentBranchName" />
+  <action id="Tool_External Tools_Copy as Markdown Link" />
+</list>

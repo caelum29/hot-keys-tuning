@@ -179,6 +179,16 @@ When working with this codebase:
 - All new markdown files should integrate into the Obsidian knowledge graph
 - **ENFORCE**: All wikilinks must use CAPS_LOCK naming with hyphens, no CamelCase allowed
 
+**Wikilink Search Strategy (IMPORTANT)**:
+- **USE WIKILINKS AS SEARCH TERMS**: When you need documentation/instructions, search using wikilink names (without brackets)
+- **Examples of effective searches**:
+  - `obsidian_search_notes` with "HJKL-NAVIGATION" → finds all navigation pattern docs
+  - `obsidian_search_notes` with "MODIFIER-COMBINATIONS" → finds modifier key references
+  - `obsidian_search_notes` with "KARABINER-CONFIG" → finds Karabiner setup instructions
+  - `obsidian_search_notes` with "IDEAVIM-CONFIG" → finds IdeaVim configuration docs
+- **Why this works**: Wikilinks are semantic anchors used throughout the vault, making them perfect search keywords
+- **Workflow**: See wikilink in text → Search by that term → Find all related documentation → Read with `obsidian_read_notes`
+
 ## LLM-Friendly Workflow (Claude Code)
 
 **Preferred approach for AI assistance:**
@@ -399,4 +409,4 @@ This vault serves as both a configuration repository and knowledge management sy
 - Connect keyboard configurations with usage documentation
 - Track learning progress and binding effectiveness over time
 - Document conflict resolutions and optimization decisions
-- Maintain wiki-style connections between related concepts
+- Maintain wiki-style connections BETWEEN_RELATED_CONCEPTS

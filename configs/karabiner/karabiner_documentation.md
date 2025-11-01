@@ -12,9 +12,9 @@
 
 ________________________________________________________________
 ##### 1: description: command + h = shift + left
-| From | To  | 
-| --- | --- |
-| <kbd>✱</kbd>, <kbd>⌘</kbd> + <kbd>h</kbd> |<kbd>  ⇧ </kbd> + <kbd><-</kbd>
+| From                                      | To                              |     |
+| ----------------------------------------- | ------------------------------- | --- |
+| <kbd>✱</kbd>, <kbd>⌘</kbd> + <kbd>h</kbd> | <kbd>  ⇧ </kbd> + <kbd><-</kbd> |     |
 
 ________________________________________________________________
 ##### 2: description: option + command + h = option + shift + left (select word ahead)
@@ -26,7 +26,7 @@ ________________________________________________________________
 ##### 3: description: shift + h = ctrl + shift + tab (prev tab)
 | From | To  | 
 | --- | --- |
-| <kbd>✱</kbd>, <kbd>  ⇧ </kbd> + <kbd>h</kbd> |<kbd>⌃</kbd>, <kbd>  ⇧ </kbd> + <kbd>tab</kbd>
+| <kbd>✱</kbd>, <kbd> ⇧</kbd> + <kbd>h</kbd> |<kbd>⌃</kbd>, <kbd>  ⇧ </kbd> + <kbd>tab</kbd>
 
 ________________________________________________________________
 ##### 4: description: control + h = ctrl + left (prev desktop)

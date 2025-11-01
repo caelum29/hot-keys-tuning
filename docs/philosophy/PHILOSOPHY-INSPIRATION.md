@@ -13,24 +13,6 @@ Three pillars support this philosophy:
 
 ## The Home Row Foundation
 
-### Dual-Role Architecture
-
-Transform home row keys into a powerful command center through [[Dual Role Keys]] functionality:
-
-```
-Left Hand (Implemented):
-A = A (tap) | ⇧ Shift (hold)
-S = S (tap) | ⌃ Control (hold)  
-D = D (tap) | ⌥ Option (hold)
-F = F (tap) | ⌘ Command (hold)
-
-Right Hand (Proposed):
-J = J (tap) | ⌘ Command (hold)
-K = K (tap) | ⌥ Option (hold)
-L = L (tap) | ⌃ Control (hold)
-; = ; (tap) | ⇧ Shift (hold)
-```
-
 ### The HJKL Diamond
 
 The cornerstone of spatial navigation, scaling from characters to windows:
@@ -54,7 +36,10 @@ Each modifier carries consistent semantic meaning, creating an intuitive mental 
 ⌃ (Control) = SYSTEM/DESKTOP - OS-level operations
 ⌥ (Option)  = PRECISION/WORD - Refined movements
 ⌘ (Command) = APPLICATION - App-specific commands
-✱ (Hyper)   = UNIVERSAL - Cross-application navigation
+✱ (Hyper)   = UNIVERSAL - Cross-application navigation (Note that ✱ is implemented as the combination of ALL RIGHT MODIFIERS: ⌘⌥⌃⇧.
+Hold ✱ Hyper to enable hyper functionalities. We will assume and omit that in subsequent document.)
+
+
 ```
 
 ### Progressive Enhancement
