@@ -9,6 +9,7 @@ This is a unified keyboard productivity configuration system that enhances devel
 - **[[KARABINER-CONFIG]]**: System-wide keyboard modifications and complex key mappings
 - **[[IDEAVIM-CONFIG]]**: Vim emulation for JetBrains IDEs with custom keybindings
 - **[[WEBSTORM-KEYMAP]]**: Custom keymap configurations for IDE productivity
+- **[[WEBSTORM-DOCUMENTATION]]**: Comprehensive WebStorm documentation index with 200+ links to official JetBrains docs covering setup, configuration, development tools, database integration, and full settings reference
 - **[[HOMEROW-CONFIG]]**: macOS keyboard navigation tool for mouse-free UI interaction with [[HJKL-NAVIGATION]] scrolling and dynamic element labeling
 - **[[OBSIDIAN-INTEGRATION]]**: Knowledge management system for tracking keyboard learning journey, binding documentation, and workflow optimization
 - **Documentation**: Comprehensive guides for keyboard navigation and productivity patterns
@@ -25,6 +26,12 @@ This is a unified keyboard productivity configuration system that enhances devel
   - `downloaded/vim.json` - Vim-style navigation rules
 - `configs/idea-vim/.ideavimrc` - IdeaVim configuration with 300+ lines of custom mappings
 - `configs/webstorm/macOS copy.xml` - WebStorm keymap with HJKL navigation integration
+- `configs/webstorm/examples-from-the-web/` - **ActionID reference files**
+  - `$default.xml` - IntelliJ default keymap with 1000+ ActionID mappings
+  - `Mac OS X 10.5+.xml` - Mac-specific keymap with ~800 mappings
+  - `macOS System Shortcuts.xml` - Additional macOS keyboard shortcuts
+  - `IDEA_actions-cleaned.md` - Comprehensive table of 6000+ IntelliJ ActionIDs with groups
+- `obsidian-vault/WEBSTORM-DOCUMENTATION.md` - **NEW: Comprehensive WebStorm documentation site map** with 200+ categorized links to official JetBrains documentation covering installation, configuration, development tools, AI features, database tools, and complete settings reference
 - `docs/` - Extensive documentation on keyboard productivity patterns
   - `philosophy/PHILOSOPHY-INSPIRATION.md` - **UPDATED: 5-layer architecture with DefaultKeyBinding.dict integration**
   - `guides/DEFAULTKEYBINDING-COMPLETE-GUIDE.md` - **NEW: Comprehensive 4000+ line guide to macOS text system mastery**
@@ -46,6 +53,7 @@ This is a unified keyboard productivity configuration system that enhances devel
   - `scripts/` - Generation and export tools
     - `generate-docs.py` - YAML → Markdown converter with ActionID display support
     - `export-csv.py` - YAML → Multiple CSV formats including ActionID columns
+    - `extract-actionids.js` - Generic ActionID extractor from IntelliJ keymap XML files with filtering and comparison features
   - `hooks/` - **NEW: Automation and validation scripts**
     - `validate-yaml.sh` - YAML syntax and schema validation with virtual environment
     - `backup-changes.sh` - Automated backup system with timestamped versions
@@ -88,6 +96,7 @@ This is a unified keyboard productivity configuration system that enhances devel
 
 **ActionID Integration**: Production-ready IntelliJ/WebStorm integration:
 - **6000+ ActionIDs**: Official IntelliJ 2024.2.3 ActionID reference in `docs/reference/List of ActionIDs.mhtml`
+- **Working keymap examples**: `configs/webstorm/examples-from-the-web/` contains official IntelliJ keymaps ($default.xml, Mac OS X 10.5+.xml, macOS System Shortcuts.xml) with real-world ActionID usage patterns
 - **Verified mappings**: All navigation ActionIDs validated against official list (e.g., `EditorLeft/EditorRight`, `EditorDownWithSelection`)
 - **Comprehensive coverage**: 95 bindings with specific ActionIDs for navigation, selection, text editing, window management
 - **Ready for automation**: ActionIDs enable automatic keymap.xml generation and IDE configuration
@@ -110,6 +119,55 @@ This project doesn't have traditional build/test commands as it consists primari
 ### WebStorm Keymap
 - Import `configs/webstorm/macOS copy.xml` through WebStorm settings
 - Modifications require IDE restart to take effect
+
+### WebStorm Documentation (NEW)
+- Comprehensive navigation index: `obsidian-vault/WEBSTORM-DOCUMENTATION.md`
+- Contains 200+ categorized links to official JetBrains documentation
+- Sections include:
+  - **Core Setup & Configuration**: Installation, first launch, customization, IDE configuration
+  - **Development**: Source code editing, AI features, integrated developer tools
+  - **Collaboration & Remote Work**: Code With Me, remote development, Dev Containers, Kubernetes, MCP Server
+  - **Advanced Usage**: Advanced features, Languages & frameworks, Database Tools (30+ data sources)
+  - **Reference**: Complete settings hierarchy with all Editor, Keymap, Code Style, and plugin configurations
+- Use as quick reference for WebStorm features and settings locations
+- Integrates with keyboard configuration workflow for IDE productivity optimization
+
+### WebStorm ActionID References
+- Located in `configs/webstorm/examples-from-the-web/`
+- **$default.xml**: IntelliJ's default keymap showing standard ActionID bindings
+- **Mac OS X 10.5+.xml**: Mac-specific keymap with meta/control key mappings
+- **macOS System Shortcuts.xml**: Additional macOS keyboard shortcuts with ActionIDs
+- **IDEA_actions-cleaned.md**: Comprehensive table of 6000+ ActionIDs organized by group
+- **Use cases**:
+  - Validate ActionIDs before adding to YAML configuration files
+  - Find correct ActionID for specific IDE actions
+  - Understand keymap XML structure for generating custom keymaps
+  - Reference official modifier key patterns (meta, control, alt, shift)
+  - Compare default bindings when designing custom HJKL navigation
+
+### ActionID Extraction Tool (NEW)
+- Generic script for extracting ActionIDs from any IntelliJ keymap XML file
+- Located at `keyboard-config/scripts/extract-actionids.js`
+- **Features**:
+  - Extract bindings for any keys (e.g., H,J,K,L or UP,DOWN,LEFT,RIGHT)
+  - Filter by modifiers (control, shift, alt, meta)
+  - Multiple output formats (Markdown tables, CSV, JSON)
+  - Compare bindings across multiple keymap files
+  - Export to file or stdout
+- **Usage examples**:
+  ```bash
+  # Extract arrow key bindings
+  yarn extract:actionids --keys UP,DOWN,LEFT,RIGHT --file '$default.xml'
+
+  # Extract HJKL with control modifier
+  yarn extract:actionids --keys H,J,K,L --modifier control --file '$default.xml'
+
+  # Compare keymaps
+  yarn extract:actionids --keys H,J --file '$default.xml,Mac OS X 10.5+.xml' --compare
+
+  # Export to CSV
+  yarn extract:actionids --keys H,J,K,L --format csv --output hjkl-bindings.csv
+  ```
 
 ### Homerow Configuration
 - Download and install from https://github.com/nchudleigh/homerow
@@ -337,6 +395,9 @@ yarn check:conflicts                 # Find binding conflicts across all systems
 yarn generate:docs                   # Generate markdown from YAML files
 yarn export:csv                      # Export CSV/TSV for analysis
 
+# ActionID extraction
+yarn extract:actionids               # Extract ActionIDs from keymap XML files
+
 # System status
 yarn hooks:status                    # Show hook logs and backup status
 
@@ -376,10 +437,10 @@ tail -f ~/.claude/hooks/edit-log.txt
 ```
 
 **Current Statistics**: 124 total bindings (45 implemented, 71 planned, 7 available, 1 needs attention), ActionID integration complete, planned action descriptions complete
-**ActionID Status**: 6000+ official IntelliJ ActionIDs available, 95 bindings with verified ActionIDs, production-ready for IDE automation  
-**Automation Status**: 5 hooks active, 3 validation scripts, multi-system conflict detection functional, yarn scripts operational  
-**Package.json**: Updated with 8 convenient yarn scripts for project automation (validate, backup, conflict detection, documentation generation)
-**Testing Results**: All automation systems verified working (YAML validation, timestamped backups, ActionID integration, CSV exports functional)
+**ActionID Status**: 6000+ official IntelliJ ActionIDs available in reference files, 95 bindings with verified ActionIDs, working keymap examples (3 XML files + comprehensive markdown table), production-ready for IDE automation
+**Automation Status**: 5 hooks active, 3 validation scripts, multi-system conflict detection functional, yarn scripts operational
+**Package.json**: Updated with 9 convenient yarn scripts for project automation (validate, backup, conflict detection, documentation generation, ActionID extraction)
+**Testing Results**: All automation systems verified working (YAML validation, timestamped backups, ActionID integration, CSV exports functional, generic ActionID extractor operational)
 
 ## Obsidian Integration
 

@@ -10,6 +10,7 @@
     "check:conflicts": "CLAUDE_PROJECT_DIR=$PWD keyboard-config/hooks/check-conflicts.py",
     "generate:docs": "cd keyboard-config && source venv/bin/activate && python scripts/generate-docs.py",
     "export:csv": "cd keyboard-config && source venv/bin/activate && python scripts/export-csv.py",
+    "extract:actionids": "node keyboard-config/scripts/extract-actionids.js",
     "hooks:status": "echo 'Project Hook Configuration:' && cat .claude/hooks/keyboard-config-hooks.json && echo '\\nHook Logs:' && ls -la .claude/hooks/logs/*.log 2>/dev/null || echo 'No logs yet' && echo '\\nBackups:' && ls -la .claude/hooks/backups/ 2>/dev/null || echo 'No backups yet'",
     "setup": "cd keyboard-config && python -m venv venv && source venv/bin/activate && pip install PyYAML",
     "webstorm:sync": "echo 'Syncing WebStorm configuration from Library to project...' && cp -v \"$HOME/Library/Application Support/JetBrains/WebStorm2025.2/keymaps/\"*.xml configs/webstorm/keymaps/ && cp -v \"$HOME/Library/Application Support/JetBrains/WebStorm2025.2/options/vim_settings\"*.xml configs/webstorm/options/ && cp -v \"$HOME/Library/Application Support/JetBrains/WebStorm2025.2/quicklists/\"*.xml configs/webstorm/quicklists/ && echo '✅ WebStorm configuration synced successfully'",
@@ -29,6 +30,7 @@
   "author": "Artem Sorochynskyi <caelum29@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@kazuph/mcp-obsidian": "^1.0.2"
+    "@kazuph/mcp-obsidian": "^1.0.2",
+    "fast-xml-parser": "^4.3.2"
   }
 }
