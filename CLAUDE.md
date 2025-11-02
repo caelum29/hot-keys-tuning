@@ -36,6 +36,7 @@ This is a unified keyboard productivity configuration system that enhances devel
   - `philosophy/PHILOSOPHY-INSPIRATION.md` - **UPDATED: 5-layer architecture with DefaultKeyBinding.dict integration**
   - `guides/DEFAULTKEYBINDING-COMPLETE-GUIDE.md` - **NEW: Comprehensive 4000+ line guide to macOS text system mastery**
   - `reference/KEY-BINDING-COMBINATIONS.md` - Complete reference of all 57+ possible key binding combinations for a single key
+  - `KARABINER-HJKL-REMAPPING-PLAN.md` - **NEW: 2000+ line implementation plan for removing 125 mouse bindings, adding vim-like navigation, and virtual key integration (15 phases, based on Vonng/Capslock)**
   - `learning-claude-code/` - Claude Code automation and learning materials
     - `CLAUDE-HOOKS-LEARNING.md` - Comprehensive guide for Claude Code hooks and subagents
     - `CLAUDE-CODE-GUIDE.md` - Complete Claude Code feature reference and tutorial
@@ -106,10 +107,14 @@ This is a unified keyboard productivity configuration system that enhances devel
 
 This project doesn't have traditional build/test commands as it consists primarily of configuration files. Key operations:
 
+### Terminal Configuration
+**WebStorm Terminal**: Uses Reworked 2025 engine with zsh shell, Oh-My-Zsh framework, and Powerlevel10k theme. Features include zsh-autosuggestions (history-based autocomplete), fast-syntax-highlighting (real-time validation), and fzf fuzzy finder (Ctrl+R for history, Ctrl+T for files). Homebrew package manager is installed. Full setup documentation: `obsidian-vault/WEBSTORM-TERMINAL-AUTOCOMPLETE.md`
+
 ### Karabiner Configuration
 - Edit `configs/karabiner/karabiner.json` for complex modifications
 - Use Karabiner Elements GUI to import/export configurations
 - Test modifications require Karabiner Elements restart
+- **[[KARABINER-HJKL-REMAPPING-PLAN]]**: Comprehensive 2000+ line implementation plan for removing mouse bindings and creating system-wide vim-like navigation layer (15 detailed phases)
 
 ### IdeaVim Configuration  
 - Edit `configs/idea-vim/.ideavimrc`
@@ -471,3 +476,5 @@ This vault serves as both a configuration repository and knowledge management sy
 - Track learning progress and binding effectiveness over time
 - Document conflict resolutions and optimization decisions
 - Maintain wiki-style connections BETWEEN_RELATED_CONCEPTS
+- brew is installed
+- .p10k.zsh is installed here: /Users/artem/.p10k.zsh - this is the terminal theme I use
