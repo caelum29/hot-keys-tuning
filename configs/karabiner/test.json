@@ -1,0 +1,42 @@
+{
+  "global": {
+    "check_for_updates_on_startup": false
+  },
+  "profiles": [
+    {
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "Restore Caps Lock as Esc",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "escape",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "caps_lock"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "name": "test caps lock",
+      "parameters": {
+        "manipulate_caps_lock_led": false
+      },
+      "virtual_hid_keyboard": {
+        "keyboard_type": "ansi",
+        "keyboard_type_v2": "ansi"
+      }
+    }
+  ]
+}

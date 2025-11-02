@@ -2,6 +2,8 @@
 
 A comprehensive keyboard productivity setup that enhances developer workflow across multiple tools using [[HJKL Navigation]] and systematic key binding management through a [[Five-Layer Architecture]].
 
+> **📢 Recent Update (Nov 2, 2025):** Removed all 127 mouse bindings from Karabiner configuration. Mouse control now exclusively handled by Homerow (Layer 0). See [KARABINER-MOUSE-REMOVAL-COMPLETED](docs/KARABINER-MOUSE-REMOVAL-COMPLETED.md) for details.
+
 ## 🎯 Overview
 
 This project provides a unified approach to keyboard productivity across:
@@ -116,7 +118,7 @@ yarn export:csv
 - **Base**: Character movement
 - **⇧ (Shift)**: Selection/window switching
 - **⌃ (Control)**: Desktop management
-- **⌥ (Option)**: Word movement/mouse control
+- **⌥ (Option)**: Word movement
 - **⌘ (Command)**: Application actions
 - **✱ (Hyper)**: System-wide navigation
 
