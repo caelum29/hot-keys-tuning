@@ -7938,6 +7938,24 @@
                         ]
                     },
                     {
+                        "description": "Hyper+F to Control+Command+F13 (Homerow)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": { "mandatory": ["right_command", "right_control", "right_shift", "right_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f1",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Hyper Navigation",
                         "manipulators": [
                             {
